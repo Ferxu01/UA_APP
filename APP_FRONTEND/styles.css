@@ -1,0 +1,86 @@
+@font-face  {
+    font-family: Poppins;
+    src: url(fuentes/Poppins-Regular.ttf) format('truetype');
+  }
+
+*{
+    font-family: Poppins;
+}
+body{
+    margin: 0px;
+}
+/* HEADER GENERAL */
+header{
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center;
+    background-color: #103240;
+    width: 100%;
+
+    position: fixed;
+}
+
+.imagenHeader{
+    width: 60px;
+   height: 60px;
+}
+
+.cabezeraizquierda{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.cabezeraizquierda>h1{
+    color: white;
+    font-size: 20px;
+    font-weight:500;
+}
+.cabezeraderecha{
+    display: flex;
+    justify-content: right;
+    align-items: center;   
+}
+
+.cabezeraderecha>a{
+    background-color: #A64195;
+    padding: 0.3em;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+}
+/* FIN HEADER GENERAL */
+
+/*FOOTER GENERAL*/
+footer{
+    display: flex; /* Utilizamos flexbox para alinear elementos */
+    justify-content: space-around; /* Espacio entre elementos */
+    align-items: center;
+    background-color: #103240;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  
+}
+
+footer>div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7px;
+   
+}
+footer>div>p{
+    margin-top: 0px;
+   color: #77ABD9;
+   margin-bottom: 3px;
+}
+footer>div>span{
+   
+   color: #77ABD9;
+}
+/*FIN FOOTER GENERAL*/
+/*PAGINA INDEX*/
+.main {
+    padding-top: 60px; /* Margen superior para dejar espacio para el header */
+  }
+/*FIN PAGINA INDEX*/
