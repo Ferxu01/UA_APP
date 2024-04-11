@@ -1,80 +1,69 @@
 // const config = require('../config');
-// const mongojs = require('mongojs');
 const moment = require('moment');
-const { postLogin } = require('../services/auth.service');
-// const TokenHelper = require('../helpers/token.helper');
-// const PassHelper = require('../helpers/pass.helper');
+const { postLogin, postRegister } = require('../services/auth.service');
+const { getUserByEmail } = require('../services/user.service');
+const { userSchema } = require('../schemas/index');
+const { generaToken } = require('../helpers/token.helper');
+const { encriptaPassword, comparaPassword } = require('../helpers/pass.helper');
+const responseError = require('../utils/messages/responseError');
+const responseAuth = require('../utils/messages/responseAuth');
+const catchedAsync = require('../utils/catchedAsync');
+const { generateInsertSqlQuery, getQueryResults } = require('../helpers/query.helper');
 
-// const urlDB = config.DB;
-// const db = mongojs(urlDB);
-// const id = mongojs.ObjectID;
+const signUp = async (req, res, next) => {
+    const validatedResult = await userSchema.validateRegister(req.body);
 
-const signUp = (req, res, next) => {
-    // const { name, email, pass } = req.body;
+    if (validatedResult.error)
+        return responseError(res, 400, JSON.parse(validatedResult.error.message));
 
-    // if (name && email && pass) {
-    //     db.user.findOne({ email: email }, (err, user) => {
+    const { email, password } = validatedResult.data;
+    const usersCount = await getUserByEmail(email);
 
-    //         if (err) return next(err);
-    //         if (!user) {
-    //             PassHelper.encriptaPassword(pass).then(cryptPass => {
-    //                 const nuevoUsuario = {
-    //                     email: email,
-    //                     displayName: name,
-    //                     password: cryptPass,
-    //                     signupDate: moment().unix(),
-    //                     lastLogin: moment().unix()
-    //                 };
-                    
-    //                 db.user.save(nuevoUsuario, (err, user) => {
-    //                     if (err) return next(err);
-                        
-    //                     const token = TokenHelper.creaToken(user);
-    //                     res.json({
-    //                         result: 'OK',
-    //                         token: token,
-    //                         usuario: user
-    //                     });
-    //                 });
-    //             });
-    //         }
-    //     });
-    // }
+    if (usersCount.length === 0) {
+        const encryptedPass = await encriptaPassword(password);
+
+        const usuario = {
+            ...validatedResult.data,
+            password: encryptedPass,
+        };
+        delete usuario.password2;
+
+        const response = await postRegister(usuario);
+        usuario.id = response.insertId;
+
+        const token = generaToken(); // Generar UUID con libreria crypto
+        return responseAuth(res, 200, token, usuario);
+    } else {
+        return responseError(res, 400, 'Este email ya se ha registrado en el sistema');
+    }
 };
 
 const signIn = async (req, res, next) => {
-    const { email, password } = req.body
-    const response = await postLogin({ email, password });
+    const validatedResult = await userSchema.validateLogin(req.body);
+    
+    if (validatedResult.error)
+        return responseError(res, 400, JSON.parse(validatedResult.error.message));
+    
+    const response = await postLogin(validatedResult.data);
 
-    return res.json({ response: req.body });
-    // const { email, pass } = req.body;
-    
-    // if (email && pass) {
-    //     db.user.findOne({ email: email }, (err, user) => {
-    //         if (err) return next(err);
-    //         if (user) {
-    //             PassHelper.comparaPassword(pass, user.password).then(equalPass => {
-    //                 if (equalPass) {
-    //                     db.user.updateOne({ _id: id(user._id)}, {
-    //                         $set: { lastLogin: moment().unix() }
-    //                     });
-    
-    //                     user.lastLogin = moment().unix();
-    //                     const userToken = TokenHelper.creaToken(user);
-    
-    //                     res.json({
-    //                         result: 'OK',
-    //                         token: userToken,
-    //                         usuario: user
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     });
-    // }
+    if (response.length === 0) {
+        return responseError(res, 400, 'No se ha encontrado el usuario con ese email');
+    } else {
+        const { password } = validatedResult.data;
+        const usuario = response[0];
+        const equalPass = await comparaPassword(password, usuario.pwd);
+        delete usuario.pwd;
+
+        if (equalPass) {
+            const token = generaToken(); // Generar UUID con libreria crypto
+            return responseAuth(res, 200, token, usuario);
+        } else {
+            return responseError(res, 401, 'La contraseña es incorrecta');
+        }
+    }
 };
 
 module.exports = {
-    signIn,
-    signUp
+    signIn: catchedAsync(signIn),
+    signUp: catchedAsync(signUp)
 };
