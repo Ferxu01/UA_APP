@@ -1,4 +1,3 @@
-// const config = require('../config');
 const moment = require('moment');
 const { postLogin, postRegister } = require('../services/auth.service');
 const { getUserByEmail } = require('../services/user.service');
@@ -8,7 +7,6 @@ const { encriptaPassword, comparaPassword } = require('../helpers/pass.helper');
 const responseError = require('../utils/messages/responseError');
 const responseAuth = require('../utils/messages/responseAuth');
 const catchedAsync = require('../utils/catchedAsync');
-const { generateInsertSqlQuery, getQueryResults } = require('../helpers/query.helper');
 
 const signUp = async (req, res, next) => {
     const validatedResult = await userSchema.validateRegister(req.body);

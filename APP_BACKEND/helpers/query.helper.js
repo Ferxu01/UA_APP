@@ -1,10 +1,15 @@
-const generateSelectSqlQuery = (table, params) => {
-    const keys = Object.keys(params);
-    const values = keys.map(key => params[key]);
+const generateSelectSqlQuery = (table, params = undefined) => {
+    let query = `SELECT * FROM ${table}`;
 
-    const strQuery = keys.map(key => `${key} = ?`).join(' AND ');
-    const query = `SELECT * FROM ${table} WHERE ${strQuery}`;
-    return { query, values };
+    if (params) {
+        const keys = Object.keys(params);
+        const values = keys.map(key => params[key]);
+        const strQuery = keys.map(key => `${key} = ?`).join(' AND ');
+        query += ` WHERE ${strQuery}`;
+        return { query, values };
+    }
+
+    return { query };
 };
 
 const generateInsertSqlQuery = (table, params) => {
@@ -17,6 +22,7 @@ const generateInsertSqlQuery = (table, params) => {
 
 const generateDeleteSqlQuery = (table, params) => {
     const keys = Object.keys(params);
+    const values = Object.values(params);
     const strQuery = keys.map(key => `${key} = ?`).join(' AND ');
 
     const query = `DELETE FROM ${table} WHERE ${strQuery}`;
@@ -53,10 +59,21 @@ const getQueryResults = (query, values, conexion) => {
     });
 };
 
+const getResults = (query, conexion) => {
+    console.log(query);
+    return new Promise((resolve, reject) => {
+        conexion.query(query, (error, results, fields) => {
+            if (error) reject(error);
+            resolve(results);
+        });
+    });
+};
+
 module.exports = {
     generateSelectSqlQuery,
     generateInsertSqlQuery,
     generateDeleteSqlQuery,
     generateUpdateSqlQuery,
-    getQueryResults
+    getQueryResults,
+    getResults
 };
