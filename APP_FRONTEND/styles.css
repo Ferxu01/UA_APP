@@ -50,6 +50,8 @@ header{
 }
 /* FIN HEADER GENERAL */
 
+
+
 /*FOOTER GENERAL*/
 footer{
     display: flex; /* Utilizamos flexbox para alinear elementos */
@@ -84,3 +86,32 @@ footer>div>span{
     padding-top: 60px; /* Margen superior para dejar espacio para el header */
   }
 /*FIN PAGINA INDEX*/
+
+
+/*PARA LOGIN.HTML*/
+
+.img-login {
+    max-width: 250px;
+    margin: auto auto;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+}
+
+.cuadro-login {
+    display: flex;
+    justify-content: center;
+}
+
+.formulario div{
+  margin: 10px 0px;
+}
+
+.formulario input {
+  border-radius: 10px;
+  width: 90%;
+  height: 30px;
+}
