@@ -87,6 +87,56 @@ footer>a>div>p{
 .main {
     padding-top: 60px; /* Margen superior para dejar espacio para el header */
   }
+
+.ParaTi{
+    
+    display: flex; /* Mostrar los grupos de imágenes en línea horizontalmente */
+    justify-content: space-between; /* Espaciado uniforme entre los grupos de imágenes */
+    margin-top: 30px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    
+}
+.ParaTi>article  {
+    background-color:#103240;
+   display:block;
+   width:auto;
+   height: auto;
+   padding: 0.8em;
+   border-radius: 20px;
+   margin: 0.5em;
+}
+.ParaTi>article>h3{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    color: #F2F2F2;
+}
+.portadaTrabajo{
+    width: 100px;
+    height:auto;
+ }
+.autorTrabajo{
+    position: absolute;
+    top: 85px;
+    right: 79px;
+    width: 30px; /* Ancho de la imagen superpuesta */
+    height: auto; /* Altura automática para mantener la proporción */
+    z-index: 1; /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
+
+
+
+}
+
+
+.contenedor {
+    position: relative;
+  }
+  
+
+  
+  .imagen-superpuesta {
+    
+  }
 /*FIN PAGINA INDEX*/
 
 
