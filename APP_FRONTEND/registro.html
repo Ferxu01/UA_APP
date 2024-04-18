@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
+    <link rel="stylesheet" href="styles.css">
+    <title>RepoUA</title>
+</head>
+
+<body data-pagina="registro">
+   
+    <main>
+        <div class="cuadro-login">
+        <form class="formulario">
+            <a href="index.html"><img src="img/logo.png" alt="logotipo" class="img-reg"></a>
+            <br>
+            <div id="cuadrado">
+            <div>
+                <input type="text" name="nombre" class="estiloform" id="nombre" placeholder="Nombre" required>
+            </div>
+            <div>
+                <input type="text" name="apellidos" class="estiloform" id="apellidos" placeholder="Apellidos" required>
+            </div>
+            <div>
+                <input type="date" name="fecha_nac" class="estiloform" id="fecha_nac" placeholder="Fecha de nacimiento" required>
+            </div>
+            <div>
+                <select>
+                    <option disabled selected>Estudios</option>
+                    <option>Ingeniería Multimedia</option>
+                </select>
+            </div>
+            <div>
+                <select>
+                    <option disabled selected>Curso</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+            <div>
+                <input type="email" name="email" class="estiloform" id ="email" placeholder="Correo electrónico" required>
+            </div>
+            <div>
+                <input type="password" name="pwd" class="estiloform" id ="pwd" placeholder="Contraseña" required>
+            </div>
+            <div>
+                <input type="password" name="pwd2" class="estiloform" id ="pwd2" placeholder="Repetir contraseña" required>
+            </div>
+            <div>
+                <button type="submit">Regístrate</button>
+            </div>
+            <p class="recuperar">¿Ya tienes una cuenta? <br><a class="registrate" href="index.html">Inicia sesión</a></p>
+            </div>
+        </form>
+        </div>
+    </main>
+
+</body>
+</html>

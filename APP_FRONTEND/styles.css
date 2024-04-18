@@ -8,6 +8,7 @@
 }
 body{
     margin: 0px;
+    background-color: #D8F2F2;
 }
 /* HEADER GENERAL */
 header{
@@ -22,7 +23,7 @@ header{
 
 .imagenHeader{
     width: 60px;
-   height: 60px;
+    height: 60px;
 }
 
 .cabezeraizquierda{
@@ -73,8 +74,8 @@ footer>div{
 }
 footer>div>p{
     margin-top: 0px;
-   color: #77ABD9;
-   margin-bottom: 3px;
+    color: #77ABD9;
+    margin-bottom: 3px;
 }
 footer>div>span{
    
@@ -91,8 +92,17 @@ footer>div>span{
 /*PARA LOGIN.HTML*/
 
 .img-login {
-    max-width: 250px;
-    margin: auto auto;
+    display: block;
+    max-width: 50%;
+    margin: auto;
+    margin-top: 8em;
+}
+
+.img-reg {
+    display: block;
+    max-width: 50%;
+    margin: auto;
+    margin-top: 4em;
 }
 
 .formulario {
@@ -103,6 +113,7 @@ footer>div>span{
 
 .cuadro-login {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -111,7 +122,52 @@ footer>div>span{
 }
 
 .formulario input {
-  border-radius: 10px;
-  width: 90%;
-  height: 30px;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+.formulario select {
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+.formulario button {
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #A64195;
+    color: #FFFFFF;
+    border: none;
+    font-size: 18px;
+    font-weight: 1000;
+}
+
+.recuperar {
+    text-align: center;
+    font-size: 15px;
+    color: #FFFFFF;
+    > a {
+        color: #A64195;
+        font-weight: 800;
+    }
+}
+
+#cuadrado {
+    background-color: #103240;
+    border-radius: 10px;
+    padding: 5% 0%;
+    max-width: 80%;
+    display: block;
+    margin: auto;
 }
