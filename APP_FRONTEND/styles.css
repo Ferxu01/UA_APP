@@ -62,24 +62,25 @@ footer{
     width: 100%;
     position: fixed;
     bottom: 0;
-  
+  padding: 0.5em;
 }
 
-footer>div{
+footer>a>div{
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 7px;
    
 }
-footer>div>p{
+footer>a{
     margin-top: 0px;
     color: #77ABD9;
     margin-bottom: 3px;
+    text-decoration: none;
 }
-footer>div>span{
-   
-   color: #77ABD9;
+footer>a>div>p{
+    margin-top:0px;
+    margin-bottom:0px;
 }
 /*FIN FOOTER GENERAL*/
 /*PAGINA INDEX*/
@@ -89,7 +90,7 @@ footer>div>span{
 /*FIN PAGINA INDEX*/
 
 
-/*PARA LOGIN.HTML*/
+/*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
 .img-login {
     display: block;
