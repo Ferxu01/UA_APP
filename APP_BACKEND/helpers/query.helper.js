@@ -60,7 +60,6 @@ const getQueryResults = (query, values, conexion) => {
 };
 
 const getResults = (query, conexion) => {
-    console.log(query);
     return new Promise((resolve, reject) => {
         conexion.query(query, (error, results, fields) => {
             if (error) reject(error);
