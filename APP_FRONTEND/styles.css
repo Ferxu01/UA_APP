@@ -18,6 +18,7 @@ header{
     background-color: #103240;
     width: 100%;
     z-index: 1;
+    padding: .5em;
 }
 
 .imagenHeader{
@@ -62,6 +63,7 @@ footer{
     position: relative;
     bottom: 0;
     padding: 0.5em;
+    margin-top: 2em;
 }
 
 footer>a>div{
@@ -84,7 +86,7 @@ footer>a>div>p{
 /*FIN FOOTER GENERAL*/
 /*PAGINA INDEX*/
 .main {
-    padding-top: 60px; /* Margen superior para dejar espacio para el header */
+    padding-top: 15px; /* Margen superior para dejar espacio para el header */
     
   }
 
@@ -129,6 +131,17 @@ footer>a>div>p{
     height: auto; /* Altura automática para mantener la proporción */
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
 }
+
+.borrarLista{
+    border-radius: 40px;
+    position: absolute;
+    top: 85px;
+    left: 79px;
+    width: 30px; /* Ancho de la imagen superpuesta */
+    height: auto; /* Altura automática para mantener la proporción */
+    /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
+}
+
 .Grado  {
     background-color:#103240;
    display:grid;
@@ -308,4 +321,13 @@ footer>a>div>p{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.inicio {
+  display: grid;
+  gap: 1%;
+  justify-content: center;
+  place-items:  center;
+  grid-template-columns: repeat(2, 1fr);
 }
