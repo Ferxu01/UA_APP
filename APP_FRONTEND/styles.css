@@ -10,6 +10,10 @@ body{
     margin: 0px;
     background-color: #D8F2F2;
 }
+
+::placeholder {
+    color: black;
+}
 /* HEADER GENERAL */
 header{
     display: flex; /* Utilizamos flexbox para alinear elementos */
@@ -330,4 +334,54 @@ footer>a>div>p{
   justify-content: center;
   place-items:  center;
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* FORMULARIO DE BUSCAR.HTML */
+
+
+
+.formulario-busq {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.formulario-busq div{
+  margin: 10px 0px;
+}
+
+.formulario-busq input {
+    color: black;
+    background-color: #77ABD9;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+.formulario-busq select {
+    background-color: #77ABD9;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+#buscar {
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #A64195;
+    color: #FFFFFF;
+    border: none;
+    font-size: 18px;
+    font-weight: 1000;
 }
