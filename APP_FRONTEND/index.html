@@ -6,6 +6,7 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" href="styles.css">
+    <script src="./js/index.js"></script>
     <title>Inicio - RepoUA</title>
 </head>
 <body>
@@ -21,30 +22,12 @@
 </header>
 
 <main class ="main">
-<h3>Para ti</h3>
-<div class="ParaTi">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
+    <h3>Para Ti</h3>
+<div class="ParaTi" id="ParaTi">
+    
 </div>
+<button id="prevButton" class="prev-button" onclick="anterior()">Anterior</button>
+<button id="nextButton" class="next-button"onclick="siguiente()">Siguiente</button>
 <h3>Más visitados</h3>
 <div class="MasVistos">
     <article class="Trabajo">
@@ -150,4 +133,5 @@
     </a>
 </footer>
 </body>
+<script>fotos()</script>
 </html>
