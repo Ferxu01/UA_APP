@@ -1,4 +1,4 @@
-const {  } = require('../services/myList.service');
+const { myListService } = require('../services');
 const catchedAsync = require('../utils/catchedAsync');
 const responseMessage = require('../utils/messages/responseMessage');
 

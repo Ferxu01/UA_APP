@@ -6,6 +6,13 @@ const getAll = async () => {
     return await getResults(query, conexion);
 };
 
+const postOne = async ({ texto }) => {
+    const { query, values } = generateInsertSqlQuery('etiqueta', {
+        texto
+    });
+    return await getQueryResults(query, values, conexion);
+};
+
 const postOneToProject = async ({ tagId, projectId }) => {
     const { query, values } = generateInsertSqlQuery('etiquetado', {
         id_trabajo: projectId,
@@ -22,8 +29,23 @@ const deleteOneFromProject = async ({ tagId, projectId }) => {
     return await getQueryResults(query, values, conexion);
 };
 
+const getTagsFromProject = async () => {
+
+};
+
+const getOneTagged = async ({ projectId, tagId }) => {
+    const { query, values } = generateSelectSqlQuery('etiquetado', {
+        id_trabajo: projectId,
+        id_etiqueta: tagId
+    });
+    console.log(await getQueryResults(query, values, conexion));
+    return await getQueryResults(query, values, conexion);
+};
+
 module.exports = {
     getAll,
+    postOne,
     postOneToProject,
     deleteOneFromProject,
+    getOneTagged,
 };

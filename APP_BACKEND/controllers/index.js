@@ -4,6 +4,8 @@ const studiesCtrl = require('./studies.controller');
 const tagCtrl = require('./tag.controller');
 const projectCtrl = require('./project.controller');
 const myListCtrl = require('./myList.controller');
+const commentCtrl = require('./comment.controller');
+const fileCtrl = require('./file.controller');
 
 module.exports = {
     authCtrl,
@@ -12,4 +14,6 @@ module.exports = {
     tagCtrl,
     projectCtrl,
     myListCtrl,
+    commentCtrl,
+    fileCtrl,
 };

@@ -1,18 +1,22 @@
 const { Router } =  require('express');
-const { projectCtrl } = require('../controllers/');
+const { projectCtrl, commentCtrl, fileCtrl } = require('../controllers');
 const router = Router();
 
+// Búsqueda
+router.get('/find', projectCtrl.findProject);
+
 router.get('/', projectCtrl.getProjects);
+router.get('/:id', projectCtrl.getProject);
 
 // Comentarios
-router.get('/:id/comments', projectCtrl.getProjectComments);
-router.post('/:id/comments', projectCtrl.postComment);
-router.delete('/:projectId/comments/:commentId', projectCtrl.deleteComment);
+router.get('/:id/comments', commentCtrl.getProjectComments);
+router.post('/:id/comments', commentCtrl.postComment);
+router.delete('/:projectId/comments/:commentId', commentCtrl.deleteComment);
 
 // Archivos
-router.get('/:id/files', projectCtrl.getFiles);
-router.post('/:id/files', projectCtrl.postFile);
-router.put('/:projectId/files/:fileId', projectCtrl.getFile);
-router.delete('/:projectId/files/:fileId', projectCtrl.deleteFile);
+router.get('/:id/files', fileCtrl.getFiles);
+router.post('/:id/files', fileCtrl.postFile);
+router.post('/:projectId/files/:fileId', fileCtrl.putFile);
+router.delete('/:projectId/files/:fileId', fileCtrl.deleteFile);
 
 module.exports = router;
