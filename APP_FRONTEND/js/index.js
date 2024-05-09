@@ -16,14 +16,7 @@ function fotos() {
         console.log(r);
         if (r.status == 200) {
             let html = '';
-            let tam = r.response.length - 1;
-
-            if (i < 0) {
-                i = tam;
-            }
-            if (i > tam) {
-                i = 0;
-            }
+            let tam = r.response.length;
 
             let fotosPorPagina = 1;
             if (screenWidth > 400) {
@@ -31,13 +24,11 @@ function fotos() {
             }
 
             for (let j = 0; j < fotosPorPagina; j++) {
-                let currentIndex = i + j;
-                if (currentIndex <= tam) {
-                    let foto = r.response[currentIndex];
-                    html += `<article class="Grado">
-                        <h3>${foto.nombre}</h3>
-                        </article>`;
-                }
+                let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
+                let foto = r.response[currentIndex];
+                html += `<article class="Grado">
+                    <h3>${foto.nombre}</h3>
+                    </article>`;
             }
 
             document.querySelector('#ParaTi').innerHTML = html;
@@ -46,8 +37,11 @@ function fotos() {
     xhr.send();
 }
 
+
 function anterior() {
-    i--;
+    if(i > 0){
+        i--;
+    }
     fotos();
 }
 
