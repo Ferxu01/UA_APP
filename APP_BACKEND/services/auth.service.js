@@ -1,11 +1,12 @@
 const { getQueryResults, generateSelectSqlQuery, generateInsertSqlQuery, generateUpdateSqlQuery } = require('../helpers/query.helper');
 const conexion = require('../config/db');
 
-const postLogin = async ({ email, password }) => {
-    const { query, values } = generateSelectSqlQuery('usuario',{
+const postLogin = async ({ email }) => {
+    const { query, values } = generateSelectSqlQuery('usuario', {
         correo: email,
     });
-    return await getQueryResults(query, values, conexion);
+    const results = await getQueryResults(query, values, conexion);
+    return results[0];
 
     // const objConditions = {
     //     id: 1,
@@ -35,7 +36,7 @@ const postLogin = async ({ email, password }) => {
 };
 
 const postRegister = async ({ nombre, apellidos, curso, estudio, email, password, fechaNacimiento }) => {
-    const { query, values } = generateInsertSqlQuery('usuario',{
+    const { query, values } = generateInsertSqlQuery('usuario', {
         correo: email,
         pwd: password,
         fechaNacimiento,

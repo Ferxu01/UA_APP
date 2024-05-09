@@ -8,9 +8,10 @@ const getAll = async () => {
 
 const getOne = async (id) => {
     const { query, values } = generateSelectSqlQuery('usuario', {
-        id: id
+        id: id,
     });
-    return await getQueryResults(query, values, conexion);
+    const results = await getQueryResults(query, values, conexion);
+    return results[0];
 };
 
 const updateOne = async (id, params) => {
@@ -28,7 +29,8 @@ const getUserByEmail = async (email) => {
     const { query, values } = generateSelectSqlQuery('usuario',{
         correo: email,
     });
-    return await getQueryResults(query, values, conexion);
+    const results = await getQueryResults(query, values, conexion);
+    return results[0];
 };
 
 module.exports = {
