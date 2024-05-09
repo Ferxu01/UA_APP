@@ -10,6 +10,10 @@ body{
     margin: 0px;
     background-color: #D8F2F2;
 }
+
+::placeholder {
+    color: black;
+}
 /* HEADER GENERAL */
 header{
     display: flex; /* Utilizamos flexbox para alinear elementos */
@@ -18,7 +22,7 @@ header{
     background-color: #103240;
     width: 100%;
     z-index: 1;
-    position: fixed;
+    padding: .5em;
 }
 
 .imagenHeader{
@@ -63,6 +67,7 @@ footer{
     position: relative;
     bottom: 0;
     padding: 0.5em;
+    margin-top: 2em;
 }
 
 footer>a>div{
@@ -85,7 +90,7 @@ footer>a>div>p{
 /*FIN FOOTER GENERAL*/
 /*PAGINA INDEX*/
 .main {
-    padding-top: 60px; /* Margen superior para dejar espacio para el header */
+    padding-top: 15px; /* Margen superior para dejar espacio para el header */
     
   }
 
@@ -130,6 +135,17 @@ footer>a>div>p{
     height: auto; /* Altura automática para mantener la proporción */
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
 }
+
+.borrarLista{
+    border-radius: 40px;
+    position: absolute;
+    top: 85px;
+    left: 79px;
+    width: 30px; /* Ancho de la imagen superpuesta */
+    height: auto; /* Altura automática para mantener la proporción */
+    /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
+}
+
 .Grado  {
     background-color:#103240;
    display:grid;
@@ -309,4 +325,63 @@ footer>a>div>p{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.inicio {
+  display: grid;
+  gap: 1%;
+  justify-content: center;
+  place-items:  center;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* FORMULARIO DE BUSCAR.HTML */
+
+
+
+.formulario-busq {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.formulario-busq div{
+  margin: 10px 0px;
+}
+
+.formulario-busq input {
+    color: black;
+    background-color: #77ABD9;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+.formulario-busq select {
+    background-color: #77ABD9;
+    border: none;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+}
+
+#buscar {
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #A64195;
+    color: #FFFFFF;
+    border: none;
+    font-size: 18px;
+    font-weight: 1000;
 }

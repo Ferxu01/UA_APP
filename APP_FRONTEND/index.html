@@ -6,6 +6,7 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" href="styles.css">
+    <script src="./js/index.js"></script>
     <title>Inicio - RepoUA</title>
 </head>
 <body>
@@ -22,29 +23,11 @@
 
 <main class ="main">
     <h3>Para Ti</h3>
-<div class="ParaTi">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
+<div class="ParaTi" id="ParaTi">
+    
 </div>
+<button id="prevButton" class="prev-button" onclick="anterior()">Anterior</button>
+<button id="nextButton" class="next-button"onclick="siguiente()">Siguiente</button>
 <h3>Más visitados</h3>
 <div class="MasVistos">
     <article class="Trabajo">
@@ -69,7 +52,7 @@
         </div>
     </article>
 </div>
-<h3>Añadidos Recientemente</h3>
+<h3>Añadidos recientemente</h3>
 <div class="AnadidosReciente">
     <article class="Trabajo">
         <h3>Titulo</h3>
@@ -117,7 +100,7 @@
         <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
     </article>
 </div>
-<h3>Grados</h3>
+<h3>Másteres</h3>
 <div class="Grados">
     <article class="Grado">
         <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
@@ -136,10 +119,10 @@
             <p>Inicio</p>
         </div>
     </a>
-    <a href="subirTrabajo.html">
+    <a href="miLista.html">
         <div> 
             <span class="material-symbols-rounded">add</span>
-            <p>Subir Trabajo</p>
+            <p>Mi lista</p>
         </div>
     </a>
     <a href="buscar.html">
@@ -150,4 +133,5 @@
     </a>
 </footer>
 </body>
+<script>fotos()</script>
 </html>
