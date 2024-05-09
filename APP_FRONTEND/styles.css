@@ -1,3 +1,12 @@
+:root {
+  --color-primario: #103240;
+  --color-secundario: #77ABD9;
+  --color-terciario: #A64195;
+  --color-fondo: #D8F2F2;
+  --color-texto1: #F2F2F2;
+  --color-texto2: black;
+}
+
 @font-face  {
     font-family: Poppins;
     src: url(fuentes/Poppins-Regular.ttf) format('truetype');
@@ -8,18 +17,18 @@
 }
 body{
     margin: 0px;
-    background-color: #D8F2F2;
+    background-color:var(--color-fondo)
 }
 
 ::placeholder {
-    color: black;
+    color: var(--color-texto2);
 }
 /* HEADER GENERAL */
 header{
     display: flex; /* Utilizamos flexbox para alinear elementos */
     justify-content: space-between; /* Espacio entre elementos */
     align-items: center;
-    background-color: #103240;
+    background-color:var(--color-primario);
     width: 100%;
     z-index: 1;
     padding: .5em;
@@ -36,7 +45,7 @@ header{
     align-items: center;
 }
 .cabezeraizquierda>h1{
-    color: white;
+    color: var(--color-texto1);
     font-size: 20px;
     font-weight:500;
 }
@@ -47,10 +56,10 @@ header{
 }
 
 .cabezeraderecha>.subirtrabajo{
-    background-color: #A64195;
+    background-color: var(--color-terciario);
     padding: 0.3em;
     text-decoration: none;
-    color: white;
+    color: var(--color-texto1);
     border-radius: 20px;
 }
 /* FIN HEADER GENERAL */
@@ -62,12 +71,12 @@ footer{
     display: flex; /* Utilizamos flexbox para alinear elementos */
     justify-content: space-around; /* Espacio entre elementos */
     align-items: center;
-    background-color: #103240;
+    background-color: var(--color-primario);
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
     padding: 0.5em;
-    margin-top: 2em;
+   
 }
 
 footer>a>div{
@@ -79,7 +88,7 @@ footer>a>div{
 }
 footer>a{
     margin-top: 0px;
-    color: #77ABD9;
+    color: var(--color-secundario);
     margin-bottom: 3px;
     text-decoration: none;
 }
@@ -100,7 +109,7 @@ footer>a>div>p{
     margin-left: 10px;
   }
 
-.ParaTi,.MasVistos,.AnadidosReciente,.Grados{
+.ParaTi,.MasVistos,.AnadidosReciente,.Grados,.Masteres{
     
     display: flex; /* Mostrar los grupos de imágenes en línea horizontalmente */
     justify-content: space-between; /* Espaciado uniforme entre los grupos de imágenes */
@@ -108,8 +117,18 @@ footer>a>div>p{
     padding-right: 0.5em;
     
 }
+.Usuarios {
+  display: flex; /* Utilizamos flexbox para alinear y distribuir los elementos */
+  justify-content: center; /* Centra los elementos horizontalmente */
+ 
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-bottom: 5em;
+}
+
+
 .Trabajo,.Grado  {
-    background-color:#103240;
+    background-color:var(--color-primario);
    display:grid;
    width:auto;
    height: auto;
@@ -121,7 +140,7 @@ footer>a>div>p{
 .Trabajo >h3{
     margin-top: 0px;
     margin-bottom: 3px;
-    color: #F2F2F2;
+    color: var(--color-texto1);
 }
 .portadaTrabajo{
     width: 100px;
@@ -146,16 +165,7 @@ footer>a>div>p{
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
 }
 
-.Grado  {
-    background-color:#103240;
-   display:grid;
-   width:auto;
-   height: auto;
-   padding: 0.4em;
-   border-radius: 20px;
-   margin: 0.5em;
-   justify-items: center;
-}
+
 
 .Grado>img{
     width: 60px;
@@ -168,7 +178,31 @@ footer>a>div>p{
     width: 140px;
     margin-bottom: 3px;
     margin-top: 3px;
-    color: #F2F2F2;
+    color: var(--color-texto1);
+}
+.Usuario {
+  display: flex; /* Utilizamos flexbox para alinear los elementos internos */
+  flex-direction: column; /* Alinear los elementos verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente dentro de cada artículo */
+  text-align: center; /* Centra el texto horizontalmente */
+  width: 200px; /* Ancho fijo de cada artículo */
+ 
+  border-radius: 60px;
+  gap: 10px; /* Reducimos el espacio entre los elementos */
+}
+.Usuario>img{
+
+  width: 100px;
+  height:auto;
+
+}
+.Usuario>h3{
+  text-align: center;
+  font-size: 15px;
+  width: 140px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  color: var(--color-texto2);
 }
 
 
@@ -178,9 +212,7 @@ footer>a>div>p{
   
 
   
-  .imagen-superpuesta {
-    
-  }
+ 
 /*FIN PAGINA INDEX*/
 
 
@@ -241,8 +273,8 @@ footer>a>div>p{
     margin: auto;
     border-radius: 10px;
     height: 30px;
-    background-color: #A64195;
-    color: #FFFFFF;
+    background-color: var(--color-terciario);
+    color: var(--color-texto1);
     border: none;
     font-size: 18px;
     font-weight: 1000;
@@ -251,15 +283,16 @@ footer>a>div>p{
 .recuperar {
     text-align: center;
     font-size: 15px;
-    color: #FFFFFF;
-    > a {
-        color: #A64195;
-        font-weight: 800;
-    }
+    color: var(--color-texto1);
+   
+}
+.recuperar> a {
+  color: var(--color-terciario);
+  font-weight: 800;
 }
 
 #cuadrado {
-    background-color: #103240;
+    background-color: var(--color-primario);
     border-radius: 10px;
     padding: 5% 0%;
     max-width: 80%;
@@ -291,7 +324,7 @@ footer>a>div>p{
     width: 80%;
     height: 30px;
     font-size: 15px;
-    background-color: #77ABD9;
+    background-color: var(--color-secundario);
 }
 
 .nuevo-trabajo textarea {
@@ -299,7 +332,7 @@ footer>a>div>p{
     display: block;
     width: 100%;
     border-radius: 10px;
-    background-color: #77ABD9;
+    background-color: var(--color-secundario);
     width: 60%;
     height: 30px;
     font-size: 15px;
@@ -309,8 +342,8 @@ footer>a>div>p{
     margin: auto;
     margin-top: 5px;
     border-radius: 10px;
-    background-color: #A64195;
-    color: #FFFFFF;
+    background-color: var(--color-terciario);
+    color: var(--color-texto1);
     border: none;
     font-size: 18px;
     font-weight: 1000;
@@ -352,8 +385,8 @@ footer>a>div>p{
 }
 
 .formulario-busq input {
-    color: black;
-    background-color: #77ABD9;
+    color: var(--color-texto2);
+    background-color: var(--color-secundario);
     border: none;
     display: block;
     margin: auto;
@@ -364,7 +397,7 @@ footer>a>div>p{
 }
 
 .formulario-busq select {
-    background-color: #77ABD9;
+    background-color: var(--color-secundario);
     border: none;
     display: block;
     margin: auto;
@@ -379,8 +412,8 @@ footer>a>div>p{
     margin: auto;
     border-radius: 10px;
     height: 30px;
-    background-color: #A64195;
-    color: #FFFFFF;
+    background-color: var(--color-terciario);
+    color: var(--color-texto1);
     border: none;
     font-size: 18px;
     font-weight: 1000;
