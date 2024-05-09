@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { studiesCtrl } = require('../controllers/index');
+const { studiesCtrl } = require('../controllers');
 const router = Router();
 
 router.get('/degree', studiesCtrl.getDegrees);

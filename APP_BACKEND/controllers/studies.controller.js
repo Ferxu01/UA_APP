@@ -1,10 +1,10 @@
-const { getAllDegrees, getAllMasters, getOneDegree, getOneMaster } = require('../services/studies.service');
+const { studiesService } = require('../services');
 const catchedAsync = require('../utils/catchedAsync');
 const responseError = require('../utils/messages/responseError');
 const responseMessage = require('../utils/messages/responseMessage');
 
 const getDegrees = async (req, res, next) => {
-    const degrees = await getAllDegrees();
+    const degrees = await studiesService.getAllDegrees();
 
     if (degrees.length === 0)
         return responseError(res, 400, 'Actualmente no disponemos de categorías de grados');
@@ -14,16 +14,17 @@ const getDegrees = async (req, res, next) => {
 
 const getDegree = async (req, res, next) => {
     const id = req.params['id'];
-    const degree = await getOneDegree(id);
+    const degree = await studiesService.getOneDegree(id);
+    console.log(degree);
 
-    if (degree.length === 0)
+    if (!degree)
         return responseError(res, 400, 'No se ha encontrado el grado');
 
     return responseMessage(res, 200, degree);
 };
 
 const getMasters = async (req, res, next) => {
-    const masters = await getAllMasters();
+    const masters = await studiesService.getAllMasters();
 
     if (masters.length === 0)
         return responseError(res, 400, 'Actualmente no disponemos de categorías de másteres');
@@ -33,9 +34,9 @@ const getMasters = async (req, res, next) => {
 
 const getMaster = async (req, res, next) => {
     const id = req.params['id'];
-    const master = await getOneMaster(id);
+    const master = await studiesService.getOneMaster(id);
 
-    if (master.length === 0)
+    if (!master)
         return responseError(res, 400, 'No se ha encontrado el máster');
 
     return responseMessage(res, 200, master);

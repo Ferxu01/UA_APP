@@ -9,16 +9,12 @@ const getAllDegrees = async () => {
 };
 
 const getOneDegree = async (id) => {
-    const response = await getQueryResults(
+    const results = await getQueryResults(
         'SELECT * FROM estudio AS e INNER JOIN grado AS g ON e.id = g.id WHERE e.id = ?', 
         [id],
         conexion
     );
-    
-    if (response.length > 0)
-        return response[0];
-
-    return response;
+    return results[0];
 };
 
 const getAllMasters = async () => {
@@ -29,15 +25,12 @@ const getAllMasters = async () => {
 };
 
 const getOneMaster = async (id) => {
-    const response = await getQueryResults(
+    const results = await getQueryResults(
         'SELECT * FROM estudio AS e INNER JOIN master AS g ON e.id = g.id WHERE e.id = ?', 
         [id], 
         conexion
     );
-    if (response.length > 0)
-        return response[0];
-
-    return response;
+    return results[0];
 };
 
 module.exports = {
