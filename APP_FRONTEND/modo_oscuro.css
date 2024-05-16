@@ -1,8 +1,8 @@
 :root {
-  --color-primario: #103240;
+  --color-primario: #01111F;
   --color-secundario: #77ABD9;
   --color-terciario: #A64195;
-  --color-fondo: #D8F2F2;
+  --color-fondo: #4D637A;
   --color-texto1: #F2F2F2;
   --color-texto2: black;
 }
@@ -32,7 +32,6 @@ header{
     width: 100%;
     z-index: 1;
     padding: .5em;
-    position: fixed;
 }
 
 .imagenHeader{
@@ -108,9 +107,8 @@ footer>a>div>p{
     font-size: 27px;
     margin-bottom: 3px;
     margin-left: 10px;
-
-}
-  
+    color: var(--color-texto1);
+  }
 
 .ParaTi,.MasVistos,.AnadidosReciente,.Grados,.Masteres{
     
