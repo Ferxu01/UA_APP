@@ -33,21 +33,21 @@
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
@@ -57,60 +57,39 @@
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
-            <img src="img/imagen predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
+            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
 </div>
 
 <h3>Grados</h3>
-<div class="Grados">
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
+<div class="Grados" id="Grados">
+   
 </div>
+<button id="prevButton" class="prev-button" onclick="anterior()">Anterior</button>
+<button id="nextButton" class="next-button"onclick="siguiente()">Siguiente</button>
 
-<h3>Grados</h3>
-<div class="Grados">
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
-</div>
 <h3>Másteres</h3>
-<div class="Masteres">
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
-    <article class="Grado">
-        <img src="img/ingenieria biomedica.png" alt="ingenieria biomedica">
-        <h3 title="Ingenieria biomedica">Ingenieria biomedica</h3>
-    </article>
+<div class="Masteres" id="Masteres">
+    
 </div>
+<button id="prevButton" class="prev-button" onclick="anterior()">Anterior</button>
+<button id="nextButton" class="next-button"onclick="siguiente()">Siguiente</button>
 <h3>Másteres</h3>
 <div class="Usuarios">
     <article class="Usuario">
@@ -148,5 +127,9 @@
     </a>
 </footer>
 </body>
-<script>fotos()</script>
+<script>
+        fotos()
+        Grados()
+        Masteres()
+</script>
 </html>
