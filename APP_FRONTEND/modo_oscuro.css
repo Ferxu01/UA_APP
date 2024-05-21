@@ -124,9 +124,12 @@ footer>a>div>p{
  
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin-bottom: 5em;
+  
 }
 
+.botonesCarruselUsuario{
+    margin-bottom: 5em;
+}
 
 .Trabajo,.Grado  {
     background-color:var(--color-primario);
