@@ -32,7 +32,7 @@ header{
     width: 100%;
     z-index: 1;
     padding: .5em;
-    position: fixed;
+    /* position: fixed; */ /* Si el header esta fixed hay elementos que se quedan detras de el */
 }
 
 .imagenHeader{
@@ -305,6 +305,20 @@ footer>a>div>p{
     margin: auto;
 }
 
+#cuadrado > div > button:hover{
+  cursor: pointer;
+}
+
+.cuadritoError{
+  display: flex;
+  justify-content: center
+}
+
+.cuadritoError > p {
+  color: var(--color-texto1);
+  font-weight: bold;
+}
+
 /*PARA SUBIR NUEVO TRABAJO*/
 
 .nuevo-trabajo {
@@ -427,3 +441,92 @@ body.night-mode {
     background-color: #000000; /* Color de fondo para el modo nocturno */
     color: #ffffff; /* Color de texto para el modo nocturno */
 }
+
+/* PARA VER TRABAJO */
+
+.infotrabajo {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.infotrabajo > div {
+  display: block;
+  margin-left: 4em;
+}
+
+.infotrabajo > div > p > a {
+  color: black;
+  &:hover {
+    color: #ff9c4c;
+  }
+}
+
+.infotrabajo > div > div {
+  display: flex;
+}
+
+.infotrabajo > div > div > p {
+  padding: .5em;
+  margin-left: 3px;
+  margin-right: 3px;
+  background-color: #A64195;
+  border-radius: 20px;
+  color: #FFFFFF;
+}
+
+
+
+.tituloyfecha {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.registrate {
+    color: #A64195;
+}
+
+hr {
+    margin-top: 30px;
+    border-color: black;
+}
+
+section {
+  margin-top: 30px;
+}
+
+section > article {
+  background-color: #77ABD9;
+  width: 100%;
+  border-radius: 20px;
+}
+
+section > article > p {
+  text-align: justify;
+  padding: .5em;
+}
+
+section > article > div > p {
+  text-align: justify;
+  padding: 1em;
+  padding-bottom: 0em;
+}
+
+.comentario{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cuadrotrabajo{
+    margin: 1em;
+}
+
+
+
+
+
+
+
+
+/* FIN VER TRABAJO */

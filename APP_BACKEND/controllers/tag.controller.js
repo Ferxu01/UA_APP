@@ -1,11 +1,10 @@
-const { tagService } = require('../services');
-const { getAll, postOne, postOneToProject, deleteOneFromProject, getOneTagged } = require('../services/tag.service');
+const { tagService, projectService } = require('../services');
 const catchedAsync = require('../utils/catchedAsync');
 const responseError = require('../utils/messages/responseError');
 const responseMessage = require('../utils/messages/responseMessage');
 
 const getTags = async (req, res, next) => {
-    const tags = await getAll();
+    const tags = await tagService.getAll();
     
     if (tags.length === 0)
         return responseError(res, 400, 'No se han encontrado las etiquetas');
@@ -15,7 +14,7 @@ const getTags = async (req, res, next) => {
 
 const postTag = async (req, res, next) => {
     const { texto } = req.body;
-    const response = await postOne({ texto });
+    const response = await tagService.postOne({ texto });
     
     if (response.affectedRows > 0)
         return responseMessage(res, 200, 'La etiqueta se añadió correctamente');
@@ -25,18 +24,28 @@ const postTag = async (req, res, next) => {
 
 const getProjectTags = async (req, res, next) => {
     const projectId = req.params['id'];
+    const etiquetas = await tagService.getTagsFromProject({ projectId });
 
-    const response = await tagService.getOneTagged();
+    if (etiquetas.length === 0)
+        return responseError(res, 400, 'Este proyecto no tiene etiquetas');
+    else {
+        return responseMessage(res, 200, etiquetas);
+    }
 };
 
 const postTagProject = async (req, res, next) => {
     const { tagId, projectId } = req.params;
-    const tags = await getOneTagged({ projectId, tagId });
+    const tags = await tagService.getOneTagged({ projectId, tagId });
+    const project = await projectService.getOne(projectId);
+
+    if (!project)
+        return responseError(res, 400, 'No existe el proyecto donde quieres añadir la etiqueta');
 
     if (tags.length > 0)
         return responseError(res, 400, 'Ya has añadido esta etiqueta al proyecto');
     else {
-        const response = await postOneToProject({ tagId, projectId });
+        const response = await tagService.postOneToProject({ tagId, projectId });
+        console.log(response);
 
         if (response.affectedRows > 0)
             return responseMessage(res, 200, 'La etiqueta se añadió correctamente al proyecto');
@@ -47,7 +56,7 @@ const postTagProject = async (req, res, next) => {
 
 const deleteTagFromProject = async (req, res, next) => {
     const { tagId, projectId } = req.params;
-    const response = await deleteOneFromProject({ tagId, projectId });
+    const response = await tagService.deleteOneFromProject({ tagId, projectId });
 
     if (response.affectedRows > 0)
         return responseMessage(res, 200, 'La etiqueta se eliminó correctamente del proyecto');

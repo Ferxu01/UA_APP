@@ -29,8 +29,16 @@ const deleteOneFromProject = async ({ tagId, projectId }) => {
     return await getQueryResults(query, values, conexion);
 };
 
-const getTagsFromProject = async () => {
-
+const getTagsFromProject = async ({ projectId }) => {
+    const { query, values } = generateSelectSqlQuery('etiquetado', {
+        id_trabajo: projectId,
+    }, [
+        {
+            idFieldName: 'id_trabajo',
+            tablename: 'trabajo',
+        }
+    ]);
+    return await getQueryResults(query, values, conexion);
 };
 
 const getOneTagged = async ({ projectId, tagId }) => {
@@ -38,7 +46,6 @@ const getOneTagged = async ({ projectId, tagId }) => {
         id_trabajo: projectId,
         id_etiqueta: tagId
     });
-    console.log(await getQueryResults(query, values, conexion));
     return await getQueryResults(query, values, conexion);
 };
 
@@ -48,4 +55,5 @@ module.exports = {
     postOneToProject,
     deleteOneFromProject,
     getOneTagged,
+    getTagsFromProject,
 };

@@ -20,6 +20,7 @@ function Trabajos() {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
                 html += `<article class="Grado">
+                    <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
                     <h3>${foto.titulo}</h3>
                     <div class="contenedor">
                     <img src="img/${foto.imagen_portada}"class="portadaTrabajo">
