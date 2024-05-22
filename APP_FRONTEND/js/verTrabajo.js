@@ -25,6 +25,7 @@ function trabajo() {
                         <div class="infotrabajo">
                             <img src="img/${r.response.imagen_portada}"class="portadaTrabajo">
                             <div>
+                            
                                 <p id="autor-receta"></p>
                                 <div id="etiqs"></div>
                             </div>

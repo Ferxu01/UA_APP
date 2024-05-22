@@ -134,7 +134,7 @@ footer>a>div>p{
   margin-bottom: 2em;
 }
 .botonesCarruselUsuario{
-    margin-bottom: 5em;
+   
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -308,6 +308,9 @@ footer>a>div>p{
   border-radius: 20px ;
   padding: 0.2em;
   margin-bottom: 0.8em;
+}
+.Estilo{
+  margin-bottom:7em;
 }
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
@@ -536,18 +539,20 @@ body.night-mode {
   display: grid;
   align-items: center;
   justify-content: center;
+  justify-items: center;
+  background-color: var(--color-primario);
+  border-radius: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .infotrabajo > div {
-  display: block;
-  margin-left: 4em;
+  display: grid;
+  justify-items: center;
 }
 
-.infotrabajo > div > p > a {
-  color: black;
-  &:hover {
-    color: #ff9c4c;
-  }
+.infotrabajo > div > p{
+  color: var(--color-texto1);
 }
 
 .infotrabajo > div > div {
