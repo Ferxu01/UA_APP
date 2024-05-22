@@ -2,7 +2,7 @@ let url = "http://localhost:3000";
 let i = 0;
 let screenWidth = window.innerWidth;
 
-function fotos() {
+function Trabajos() {
     fetch(`${url}/project`)
     .then(response => response.json())
     .then(r => {
@@ -11,15 +11,16 @@ function fotos() {
             let html = '';
             let tam = r.response.length;
 
-            let fotosPorPagina = 1;
+            let trabajosPorPagina = 1;
             if (screen.width > 400) {
-                fotosPorPagina = 3;
+                trabajosPorPagina = 3;
             }
 
-            for (let j = 0; j < fotosPorPagina; j++) {
+            for (let j = 0; j < trabajosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
                 html += `<article class="Grado">
+                    <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
                     <h3>${foto.titulo}</h3>
                     <div class="contenedor">
                     <img src="img/${foto.imagen_portada}"class="portadaTrabajo">
@@ -90,59 +91,89 @@ function Masteres() {
     .catch(error => console.error('Error:', error));
 }
 
-function anterior() {
+function Usuario() {
+    fetch(`${url}/user`)
+    .then(response => response.json())
+    .then(r => {
+        console.log(r);
+        if (r.status == 200) {
+            let html = '';
+            let tam = r.response.length;
+
+            let fotosPorPagina = 1;
+            if (screen.width > 400) {
+                fotosPorPagina = 3;
+            }
+
+            for (let j = 0; j < fotosPorPagina; j++) {
+                let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
+                let foto = r.response[currentIndex];
+                html += `<article class="Usuario">
+                <a href="user.html?ID=${encodeURIComponent(foto.id)}">
+                <img src="img/${foto.imagen_perfil}"class="portadaTrabajo">
+                <h3>${foto.nombre}</h3>
+                </a>
+                    </article>`;
+            }
+
+            document.querySelector('#Usuarios').innerHTML = html;
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function anteriorGrado() {
     if(i > 0){
         i--;
     }
-    fotos();
     Grados();
+}
+function siguienteGrado() {
+    i++;
+    Grados();
+}
+function anteriorTrabajo() {
+    if(i > 0){
+        i--;
+    }
+    Trabajos();
+}
+
+function siguienteTrabajo() {
+    i++;
+    Trabajos();
+}
+
+function anteriorMaster() {
+    if(i > 0){
+        i--;
+    }
     Masteres();
 }
 
-function siguiente() {
+function siguienteMaster() {
     i++;
-    fotos();
-    Grados();
     Masteres();
+}
+
+function anteriorUsuario() {
+    if(i > 0){
+        i--;
+    }
+    Usuario();
+}
+
+function siguienteUsuario() {
+    i++;
+    Usuario();
 }
 
 window.addEventListener('resize', function () {
     screenWidth = window.innerWidth;
-    fotos(); // Llama a la función fotos() cuando cambia el tamaño de la pantalla
+    Trabajos(); // Llama a la función fotos() cuando cambia el tamaño de la pantalla
+    Grados();
+    Masteres();
+    Usuario();
 });
 
 
-// function usuarios(){
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const ID = urlParams.get('ID');
-
-//     let xhr = new XMLHttpRequest();
-
-//     xhr.open('GET', `${url}/studies/degree`, true);
-//     xhr.responseType = 'json';
-
-//     xhr.onload = function () {
-//         let r = xhr.response;
-//         console.log(r);
-//         if (r.status == 200) {
-//             let html = '';
-//             let tam = r.response.length;
-
-//             let fotosPorPagina = 1;
-//             if (screenWidth > 400) {
-//                 fotosPorPagina = 3;
-//             }
-
-//             for (let j = 0; j < fotosPorPagina; j++) {
-//                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
-//                 let foto = r.response[currentIndex];
-//                 html += `<article class="Grado">
-//                     <h3>${foto.nombre}</h3>
-//                     </article>`;
-//             }
-
-//             document.querySelector('#ParaTi').innerHTML = html;
-//         }
-//     }
-//     xhr.send();
-// }

@@ -8,22 +8,43 @@ function login(e){
         fd = new FormData(form);
 
     let obj = {
-        email: "fernando@gmail.com",
-        password: "pass1"
+        email: fd.get("email"),
+        password: fd.get("password")
     }
 
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(obj),
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Headers': '*'
-        }
-    })
-    .then(res => res.json())
-    .then(res => console.log(res));
+    let emailValido = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+    if(!emailValido.test(obj.email)){
+        ponMsgErr("Por favor, introduce un email válido.")
+    }else{
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': '*',
+                'Access-Control-Allow-Headers': '*'
+            }
+        })
+        .then(res => res.json())
+        .then(res => {
+            if(res.status == 200){
+                localStorage.setItem('[SESSION]', JSON.stringify(res.response));
+                localStorage.setItem('[TOKEN]', JSON.stringify(res.token));
+        
+                location.href = "index.html";
+            }else if(res.status == 401){
+                ponMsgErr("Email o contraseña equivocados.");
+            }else{
+                ponMsgErr("Algo ha fallado, por favor, vuelve a intentarlo.");
+            }
+    
+        })
+    }
+
+    
+    
 
     // const token = 'usuario1:cdbsjdbbkvsdbkv';
     // fetch('http://localhost:3000/api/usuarios/ferxu01', {
@@ -50,4 +71,19 @@ function login(e){
 // document.getElementById("formLogin").addEventListener("onsubmit", function(){
 //     console.log("Se ha enviado correctamente")
 // });
+}
+
+function ponMsgErr(msg){
+    const divErr = document.getElementsByClassName("cuadritoError");
+
+    if (divErr.length > 0 && divErr[0].firstElementChild) {
+        divErr[0].removeChild(divErr[0].firstElementChild);
+    }
+
+    const msgErr = document.createElement("p");
+    msgErr.setAttribute("class", "msgErr");
+
+    msgErr.textContent = msg;
+
+    divErr[0].appendChild(msgErr);
 }

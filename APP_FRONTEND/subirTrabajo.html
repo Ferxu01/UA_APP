@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" href="styles.css">
     <title>Sube un trabajo - RepoUA</title>
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Comprobar si el usuario está logueado
+            let datosUsu = localStorage.getItem('[SESSION]');
+            if (!datosUsu) {
+                // Usuario no está logueado, redirigir a index.html
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+
     <header>
        <div class="cabezeraizquierda">
         <a href="index.html"><img src="img/logo.png" class=" imagenHeader" alt="logotipo" class="img"></a>
