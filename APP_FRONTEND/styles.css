@@ -292,6 +292,23 @@ footer>a>div>p{
     justify-content: space-between;
 }
 
+.Editar_Perfil{
+  margin-top: 0.8em;
+  text-align: center;
+  color: var(--color-texto1);
+  background-color: var(--color-terciario);
+  border-radius: 20px ;
+  width: 50%;
+ margin-left: 25%;
+}
+.Editar_Imagen{
+  text-align: center;
+  color: var(--color-texto1);
+  background-color: var(--color-terciario);
+  border-radius: 20px ;
+  padding: 0.2em;
+  margin-bottom: 0.8em;
+}
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
 .img-login {
@@ -561,6 +578,10 @@ body.night-mode {
 hr {
     margin-top: 30px;
     border-color: black;
+}
+
+#coments{
+  margin-bottom: 6em;
 }
 
 section {
