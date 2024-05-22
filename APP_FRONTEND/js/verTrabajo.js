@@ -152,7 +152,9 @@ function pedirForm(allcom){
     }
     xhr.send();
     }else{
+        if(allcom === 1){
         let html=` <p>Para dejar un comentario tienes que  <a class="registrate" href="login.html">iniciar sesión</a></p>`;
         document.querySelector('#dejarcomentario').innerHTML += html; 
+        }
     }
 }

@@ -56,3 +56,8 @@ function nomestudios(estud) {
             .catch(error => console.error('Error:', error));
     }
 }
+
+function logout() {
+    localStorage.removeItem('[SESSION]');
+    location.href = 'index.html';
+}
