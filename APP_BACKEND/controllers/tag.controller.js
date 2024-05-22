@@ -25,16 +25,13 @@ const postTag = async (req, res, next) => {
 };
 
 const getProjectTags = async (req, res, next) => {
-    console.log('TESTT');
     const projectId = req.params['id'];
     const etiquetas = await tagService.getTagsFromProject({ projectId });
-    console.log(etiquetas);
 
     if (etiquetas.length === 0)
         return responseError(res, 400, i18n.__('tags.notFound'));
-    else {
-        return responseMessage(res, 200, etiquetas);
-    }
+
+    return responseMessage(res, 200, etiquetas);
 };
 
 const postTagProject = async (req, res, next) => {

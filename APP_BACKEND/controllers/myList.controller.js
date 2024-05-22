@@ -16,9 +16,16 @@ const getFavs = async (req, res, next) => {
 
 const postFav = async (req, res, next) => {
     const { user, project } = req.body;
+    const favs = await myListService.getFavProjects(user)
+
+    const addedFavs = favs.filter(fav => fav['id_usuario'] === user && fav['id_trabajo'] === project);
+
+    if (addedFavs.length > 0)
+        return responseError(res, 400, i18n.__('favourites.duplicateFav'));
+
     const response = await myListService.postProjectToFav({ userId: user, projectId: project });
 
-    if (response.insertId === 0)
+    if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('favourites.addError'));
 
     return responseMessage(res, 200, i18n.__('favourites.addSuccess'));

@@ -10,7 +10,7 @@ function login(e){
     let obj = {
         email: fd.get("email"),
         password: fd.get("password")
-    }
+    };
 
     let emailValido = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
@@ -40,7 +40,7 @@ function login(e){
                 ponMsgErr("Algo ha fallado, por favor, vuelve a intentarlo.");
             }
     
-        })
+        });
     }
 
     

@@ -40,6 +40,18 @@ const postProject = async (req, res, next) => {
     return responseMessage(res, 200, project);
 };
 
+const putProject = async (req, res, next) => {
+    const projectId = req.params['id'];
+    const data = req.body;
+
+    const response = await projectService.updateOne({ projectId, userId: data['usuario'], data});
+
+    if (response.affectedRows === 0)
+        return responseError(res, 400, i18n.__('projects.updateError'));
+
+    return responseMessage(res, 200, i18n.__('projects.updateSuccess'));
+};
+
 const deleteProject = async (req, res, next) => {
     const projectId = req.params['id'];
     const response = await projectService.deleteOne(projectId);
@@ -62,6 +74,7 @@ module.exports = {
     getProjects: catchedAsync(getProjects),
     getProject: catchedAsync(getProject),
     postProject: catchedAsync(postProject),
+    putProject: catchedAsync(putProject),
     deleteProject: catchedAsync(deleteProject),
     findProject: catchedAsync(findProject),
 };

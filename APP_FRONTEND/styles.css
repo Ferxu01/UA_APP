@@ -302,6 +302,27 @@ footer>div>a>div>p{
   margin-bottom:7em;
 }
 
+.Editar_Perfil{
+  margin-top: 0.8em;
+  text-align: center;
+  color: var(--color-texto1);
+  background-color: var(--color-terciario);
+  border-radius: 20px ;
+  width: 50%;
+ margin-left: 25%;
+}
+.Editar_Imagen{
+  text-align: center;
+  color: var(--color-texto1);
+  background-color: var(--color-terciario);
+  border-radius: 20px ;
+  padding: 0.2em;
+  margin-bottom: 0.8em;
+}
+.Estilo{
+  margin-bottom:7em;
+}
+
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
 .img-login {
@@ -535,6 +556,7 @@ body.night-mode {
   margin-left: 15%;
   margin-right: 15%;
   padding: .7em;
+
 }
 
 .infotrabajo > div {
@@ -574,6 +596,10 @@ body.night-mode {
 hr {
     margin-top: 30px;
     border-color: black;
+}
+
+#coments{
+  margin-bottom: 6em;
 }
 
 section {
