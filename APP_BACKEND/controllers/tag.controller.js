@@ -3,11 +3,13 @@ const catchedAsync = require('../utils/catchedAsync');
 const responseError = require('../utils/messages/responseError');
 const responseMessage = require('../utils/messages/responseMessage');
 
+const i18n = require('../config/i18n');
+
 const getTags = async (req, res, next) => {
     const tags = await tagService.getAll();
     
     if (tags.length === 0)
-        return responseError(res, 400, 'No se han encontrado las etiquetas');
+        return responseError(res, 400, i18n.__('tags.notAvailable'));
 
     return responseMessage(res, 200, tags);
 };
@@ -17,9 +19,9 @@ const postTag = async (req, res, next) => {
     const response = await tagService.postOne({ texto });
     
     if (response.affectedRows > 0)
-        return responseMessage(res, 200, 'La etiqueta se añadió correctamente');
+        return responseMessage(res, 200, i18n.__('tags.addSuccess'));
     else
-        return responseError(res, 400, 'Hubo problemas al crear la etiqueta');
+        return responseError(res, 400, i18n.__('tags.addError'));
 };
 
 const getProjectTags = async (req, res, next) => {
@@ -29,7 +31,7 @@ const getProjectTags = async (req, res, next) => {
     console.log(etiquetas);
 
     if (etiquetas.length === 0)
-        return responseError(res, 400, 'Este proyecto no tiene etiquetas');
+        return responseError(res, 400, i18n.__('tags.notFound'));
     else {
         return responseMessage(res, 200, etiquetas);
     }
@@ -41,29 +43,28 @@ const postTagProject = async (req, res, next) => {
     const project = await projectService.getOne(projectId);
 
     if (!project)
-        return responseError(res, 400, 'No existe el proyecto donde quieres añadir la etiqueta');
+        return responseError(res, 400, i18n.__('tags.notExists'));
 
     if (tags.length > 0)
-        return responseError(res, 400, 'Ya has añadido esta etiqueta al proyecto');
-    else {
-        const response = await tagService.postOneToProject({ tagId, projectId });
+        return responseError(res, 400, i18n.__('tags.duplicatedTag'));
+
+    const response = await tagService.postOneToProject({ tagId, projectId });
         console.log(response);
 
-        if (response.affectedRows > 0)
-            return responseMessage(res, 200, 'La etiqueta se añadió correctamente al proyecto');
-        else
-            return responseError(res, 400, 'Hubo problemas al añadir la etiqueta al proyecto');
-    }
+    if (response.affectedRows === 0)
+        return responseError(res, 400, i18n.__('tags.addToProjectError'));
+    
+    return responseMessage(res, 200, i18n.__('tags.addToProjectSuccess'));
 };
 
 const deleteTagFromProject = async (req, res, next) => {
     const { tagId, projectId } = req.params;
     const response = await tagService.deleteOneFromProject({ tagId, projectId });
 
-    if (response.affectedRows > 0)
-        return responseMessage(res, 200, 'La etiqueta se eliminó correctamente del proyecto');
-    else
-        return responseError(res, 400, 'No existe esta etiqueta en el proyecto');
+    if (response.affectedRows === 0)
+        return responseError(res, 400, i18n.__('tags.removeFromProjectError'));
+    
+    return responseMessage(res, 200, i18n.__('tags.removeFromProjectSuccess'));
 };
 
 module.exports = {

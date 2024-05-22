@@ -30,7 +30,7 @@ const postProject = async (req, res, next) => {
     const response = await projectService.postNewProject(data);
 
     if (response.insertId === 0)
-        return responseError(res, 400, 'Hubo errores al subir el trabajo');
+        return responseError(res, 400, i18n.__('projects.error'));
 
     const project = {
         id: response.insertId,

@@ -24,6 +24,41 @@
 	"projects": {
 		"notFound": "There are currently no jobs available",
 		"notExists": "The project does not exist",
-		"removeSuccess": "The job was deleted successfully"
+		"removeSuccess": "The job was deleted successfully",
+		"error": "There were errors when uploading the job"
+	},
+	"files": {
+		"noAttachedFiles": "This project has no attached files",
+		"missingInfo": "Information about the file is missing",
+		"uploadError": "The file could not be uploaded",
+		"uploadSuccess": "The file was uploaded successfully",
+		"updateError": "The file could not be updated",
+		"updateSuccess": "The file has been updated correctly",
+		"removeError": "The file could not be deleted. It may not have been found",
+		"removeSuccess": "The file was deleted successfully"
+	},
+	"studies": {
+		"degreeNotAvailable": "We currently do not have degree categories",
+		"degreeNotFound": "Degree not found",
+		"masterNotAvailable": "We currently do not have master's categories",
+		"masterNotFound": "Master not found"
+	},
+	"tags": {
+		"notAvailable": "Tags not found",
+		"addSuccess": "Tag was added successfully",
+		"addError": "There were problems creating the tag",
+		"notFound": "This project has no tags",
+		"notExists": "The project where you want to add the tag does not exist",
+		"duplicatedTag": "You have already added this tag to the project",
+		"addToProjectError": "There were problems adding the tag to the project",
+		"addToProjectSuccess": "The tag was successfully added to the project",
+		"removeFromProjectError": "This tag does not exist in the project",
+		"removeFromProjectSuccess": "The tag was successfully removed from the project"
+	},
+	"users": {
+		"notAvailable": "There are no registered users in the system",
+		"notFound": "The user does not exist in the system",
+		"notRegistered": "This user is not registered in the system",
+		"removeSuccess": "Your account was successfully deleted"
 	}
 }

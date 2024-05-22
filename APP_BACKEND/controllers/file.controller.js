@@ -4,12 +4,14 @@ const responseMessage = require('../utils/messages/responseMessage');
 const fileUtils = require('../utils/file');
 const responseError = require('../utils/messages/responseError');
 
+const i18n = require('../config/i18n');
+
 const getFiles = async (req, res, next) => {
     const projectId = req.params['id'];
     const files = await fileService.getAllFromProject(projectId);
 
     if (files.length === 0)
-        return responseMessage(res, 200, 'Este proyecto no tiene ficheros adjuntos');
+        return responseMessage(res, 200, i18n.__('files.noAttachedFiles'));
 
     return responseMessage(res, 200, files);
 };
@@ -23,7 +25,7 @@ const postFile = async (req, res, next) => {
     const data = fileUtils.uploadFile(file);
     console.log(data);
     if (!data.filename && !data.filepath)
-        return responseError(res, 400, 'Falta información sobre el fichero');
+        return responseError(res, 400, i18n.__('files.missingInfo'));
 
     const { filename, filepath } = data;
     //console.log(data);
@@ -37,11 +39,11 @@ const postFile = async (req, res, next) => {
     console.log(response);
 
     if (response.affectedRows <= 0)
-        return responseError(res, 400, 'El fichero no se pudo subir');
+        return responseError(res, 400, i18n.__('files.uploadError'));
 
     const fileId = response.insertId;
 
-    return responseMessage(res, 200, 'El fichero se subió correctamente');
+    return responseMessage(res, 200, i18n.__('files.uploadSuccess'));
 };
 
 const putFile = async (req, res, next) => {
@@ -52,7 +54,7 @@ const putFile = async (req, res, next) => {
     const data = fileUtils.uploadFile(file);
     console.log(data);
     if (!data.filename && !data.filepath)
-        return responseError(res, 400, 'Falta información sobre el fichero');
+        return responseError(res, 400, i18n.__('files.missingInfo'));
 
     const { filename, filepath } = data;
 
@@ -66,9 +68,9 @@ const putFile = async (req, res, next) => {
     console.log(response);
 
     if (response.affectedRows <= 0)
-        return responseError(res, 400, 'El fichero no se pudo actualizar');
+        return responseError(res, 400, i18n.__('files.updateError'));
 
-    return responseMessage(res, 200, 'El fichero se ha editado correctamente');
+    return responseMessage(res, 200, i18n.__('files.updateSuccess'));
 };
 
 const deleteFile = async (req, res, next) => {
@@ -76,9 +78,9 @@ const deleteFile = async (req, res, next) => {
     const response = await fileService.deleteOneFromProject({ projectId, fileId });
     
     if (response.affectedRows <= 0)
-        return responseError(res, 400, 'No se ha podido eliminar el fichero. Puede que no se haya encontrado');
+        return responseError(res, 400, i18n.__('files.removeError'));
 
-    return responseMessage(res, 200, 'El fichero se eliminó correctamente');
+    return responseMessage(res, 200, i18n.__('files.removeSuccess'));
 };
 
 module.exports = {

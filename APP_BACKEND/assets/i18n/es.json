@@ -24,6 +24,41 @@
 	"projects": {
 		"notFound": "Actualmente no hay trabajos disponibles",
 		"notExists": "El proyecto no existe",
-		"removeSuccess": "El trabajo se eliminó correctamente"
+		"removeSuccess": "El trabajo se eliminó correctamente",
+		"error": "Hubo errores al subir el trabajo"
+	},
+	"files": {
+		"noAttachedFiles": "Este proyecto no tiene ficheros adjuntos",
+		"missingInfo": "Falta información sobre el fichero",
+		"uploadError": "El fichero no se pudo subir",
+		"uploadSuccess": "El fichero se subió correctamente",
+		"updateError": "El fichero no se pudo actualizar",
+		"updateSuccess": "El fichero se ha editado correctamente",
+		"removeError": "No se ha podido eliminar el fichero. Puede que no se haya encontrado",
+		"removeSuccess": "El fichero se eliminó correctamente"
+	},
+	"studies": {
+		"degreeNotAvailable": "Actualmente no disponemos de categorías de grados",
+		"degreeNotFound": "No se ha encontrado el grado",
+		"masterNotAvailable": "Actualmente no disponemos de categorías de másteres",
+		"masterNotFound": "No se ha encontrado el máster"
+	},
+	"tags": {
+		"notAvailable": "No se han encontrado las etiquetas",
+		"addSuccess": "La etiqueta se añadió correctamente",
+		"addError": "Hubo problemas al crear la etiqueta",
+		"notFound": "Este proyecto no tiene etiquetas",
+		"notExists": "No existe el proyecto donde quieres añadir la etiqueta",
+		"duplicatedTag": "Ya has añadido esta etiqueta al proyecto",
+		"addToProjectError": "Hubo problemas al añadir la etiqueta al proyecto",
+		"addToProjectSuccess": "La etiqueta se añadió correctamente al proyecto",
+		"removeFromProjectError": "No existe esta etiqueta en el proyecto",
+		"removeFromProjectSuccess": "La etiqueta se eliminó correctamente del proyecto"
+	},
+	"users": {
+		"notAvailable": "No existen usuarios registrados en el sistema",
+		"notFound": "No existe el usuario en el sistema",
+		"notRegistered": "Este usuario no está registrado en el sistema",
+		"removeSuccess": "Tu cuenta se eliminó correctamente"
 	}
 }
