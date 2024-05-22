@@ -1,7 +1,8 @@
 const z = require('zod');
+const i18n = require('../config/i18n');
 
 const loginSchema = z.object({
-    email: z.string().email('Este formato de email no es válido'),
+    email: z.string().email(i18n.__('users.wrongEmailFormat')),
     password: z.string()
 });
 
@@ -12,7 +13,7 @@ const registerSchema = z.object({
     fechaNacimiento: z.string(),
     estudio: z.number(),
     curso: z.number(),
-    email: z.string().email('Este formato de email no es válido'),
+    email: z.string().email(i18n.__('users.wrongEmailFormat')),
     password: z.string(),
     password2: z.string()
 })
@@ -20,7 +21,7 @@ const registerSchema = z.object({
     if (password2 !== password) {
         ctx.addIssue({
             code: 'custom',
-            message: 'Las contraseñas no coinciden',
+            message: i18n.__('users.passwordsDontMatch'),
         });
     }
 });

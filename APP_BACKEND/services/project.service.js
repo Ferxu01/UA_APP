@@ -1,4 +1,4 @@
-const { getQueryResults, getResults, generateSelectSqlQuery, generateInsertSqlQuery, generateDeleteSqlQuery } = require('../helpers/query.helper');
+const { getQueryResults, getResults, generateSelectSqlQuery, generateInsertSqlQuery, generateDeleteSqlQuery, generateUpdateSqlQuery } = require('../helpers/query.helper');
 const conexion = require('../config/db');
 
 const getAll = async () => {
@@ -32,6 +32,19 @@ const postNewProject = async ({ titulo, imagen_portada, comentarios, descripcion
         descripcion,
         usuario,
     });
+    return await getQueryResults(query, values, conexion);
+};
+
+const updateOne = async ({ userId, projectId, data }) => {
+    const { query, values } = generateUpdateSqlQuery('trabajo', {
+        titulo: data['titulo'],
+        comentarios: data['comentarios'],
+        descripcion: data['descripcion'],
+    }, 
+    {
+        id: projectId
+    });
+    console.log(query);
     return await getQueryResults(query, values, conexion);
 };
 
@@ -103,22 +116,23 @@ const searchProjects = async (queryParams) => {
     }
 
     if (filterParams.d) {
-        joinClauses.push(`INNER JOIN estudio e ON t.estudio_id = e.id`);
+        joinClauses.push(`INNER JOIN estudio e ON u.estudio = e.id`);
         joinClauses.push(`INNER JOIN grado g ON e.id = g.id`);
         whereClauses.push(`e.id = ?`);
         values.push(filterParams.d);
-    } else if (filterParams.m) {
-        joinClauses.push(`INNER JOIN estudio e ON t.estudio_id = e.id`);
+    } 
+    else if (filterParams.m) {
+        joinClauses.push(`INNER JOIN estudio e ON u.estudio = e.id`);
         joinClauses.push(`INNER JOIN master m ON e.id = m.id`);
         whereClauses.push(`e.id = ?`);
         values.push(filterParams.m);
     }
 
-    // // if (filterParams.t) {
-    // //     joinClauses.push(`INNER JOIN etiquetado et ON t.id = et.id_trabajo`);
-    // //     whereClauses.push(`et.texto = ?`);
-    // //     values.push(filterParams.t);
-    // // }
+    if (filterParams.t) {
+        joinClauses.push(`INNER JOIN etiquetado et ON t.id = et.id_trabajo INNER JOIN etiqueta eti ON et.id_etiqueta = eti.id`);
+        whereClauses.push(`et.id_etiqueta = ?`);
+        values.push(filterParams.t);
+    }
 
     if (joinClauses.length > 0) {
         sql += ' ' + joinClauses.join(' ');
@@ -130,15 +144,18 @@ const searchProjects = async (queryParams) => {
 
     // TODO: STR QUERY PARA FILTRAR POR RANGO DE FECHAS
 
-    // console.log(query);
-    // console.log(values);
-    return await getQueryResults(sql, [''], conexion);
+    sql += ' ORDER BY t.numVisitas DESC';
+
+    console.log(sql);
+    console.log(values);
+    return await getQueryResults(sql, values, conexion);
 };
 
 module.exports = {
     getAll,
     getOne,
     postNewProject,
+    updateOne,
     deleteOne,
     // getProjectFiles,
     // postFileToProject,

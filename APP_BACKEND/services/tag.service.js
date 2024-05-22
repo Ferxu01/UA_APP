@@ -43,7 +43,6 @@ const getTagsFromProject = async ({ projectId }) => {
         }
     ]);
     console.log(query);
-    console.log(values);
     return await getQueryResults(query, values, conexion);
 };
 

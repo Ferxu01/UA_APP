@@ -20,13 +20,16 @@
 		"addError": "El trabajo no pudo añadirse a favoritos",
 		"addSuccess": "El trabajo se añadió a tu lista de favoritos",
 		"removeError": "El trabajo no pudo eliminarse de tu lista de favoritos",
-		"removeSuccess": "El trabajo se eliminó de tu lista de favoritos"
+		"removeSuccess": "El trabajo se eliminó de tu lista de favoritos",
+		"duplicateFav": "Ya has añadido el trabajo a favoritos"
 	},
 	"projects": {
 		"notFound": "Actualmente no hay trabajos disponibles",
 		"notExists": "El proyecto no existe",
 		"removeSuccess": "El trabajo se eliminó correctamente",
-		"error": "Hubo errores al subir el trabajo"
+		"error": "Hubo errores al subir el trabajo",
+		"updateError": "No se pudo actualizar el trabajo",
+		"updateSuccess": "El trabajo se actualizó correctamente"
 	},
 	"files": {
 		"noAttachedFiles": "Este proyecto no tiene ficheros adjuntos",
@@ -60,6 +63,8 @@
 		"notAvailable": "No existen usuarios registrados en el sistema",
 		"notFound": "No existe el usuario en el sistema",
 		"notRegistered": "Este usuario no está registrado en el sistema",
-		"removeSuccess": "Tu cuenta se eliminó correctamente"
+		"removeSuccess": "Tu cuenta se eliminó correctamente",
+		"wrongEmailFormat": "Este formato de email no es válido",
+		"passwordsDontMatch": "Las contraseñas no coinciden"
 	}
 }

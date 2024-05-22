@@ -20,13 +20,16 @@
 		"addError": "The job could not be added to favorites",
 		"addSuccess": "The job was added to your favorites list",
 		"removeError": "The job could not be removed from your favorites list",
-		"removeSuccess": "The job was removed from your favorites list"
+		"removeSuccess": "The job was removed from your favorites list",
+		"duplicateFav": "You have already added the job to favorites"
 	},
 	"projects": {
 		"notFound": "There are currently no jobs available",
 		"notExists": "The project does not exist",
 		"removeSuccess": "The job was deleted successfully",
-		"error": "There were errors when uploading the job"
+		"error": "There were errors when uploading the job",
+		"updateError": "Could not update job",
+		"updateSuccess": "The job was updated successfully"
 	},
 	"files": {
 		"noAttachedFiles": "This project has no attached files",
@@ -60,6 +63,8 @@
 		"notAvailable": "There are no registered users in the system",
 		"notFound": "The user does not exist in the system",
 		"notRegistered": "This user is not registered in the system",
-		"removeSuccess": "Your account was successfully deleted"
+		"removeSuccess": "Your account was successfully deleted",
+		"wrongEmailFormat": "This email format is not valid",
+		"passwordsDontMatch": "Passwords do not match"
 	}
 }

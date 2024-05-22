@@ -8,6 +8,7 @@ router.get('/find', projectCtrl.findProject);
 router.get('/', projectCtrl.getProjects);
 router.get('/:id', projectCtrl.getProject);
 router.post('/', projectCtrl.postProject);
+router.put('/:id', projectCtrl.putProject);
 router.delete('/:id', projectCtrl.deleteProject)
 
 // Comentarios
