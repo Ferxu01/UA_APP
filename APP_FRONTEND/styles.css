@@ -303,6 +303,10 @@ footer>a>div>p{
     margin: auto;
 }
 
+#cuadrado > div > button:hover{
+  cursor: pointer;
+}
+
 /*PARA SUBIR NUEVO TRABAJO*/
 
 .nuevo-trabajo {

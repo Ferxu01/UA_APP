@@ -8,8 +8,8 @@ function login(e){
         fd = new FormData(form);
 
     let obj = {
-        email: "fernando@gmail.com",
-        password: "pass1"
+        email: fd.get("email"),
+        password: fd.get("password")
     }
 
     fetch(url, {
@@ -23,7 +23,19 @@ function login(e){
         }
     })
     .then(res => res.json())
-    .then(res => console.log(res));
+    .then(res => {
+        if(res.status == 200){
+            localStorage.setItem('[SESSION]', JSON.stringify(res.response));
+            localStorage.setItem('[TOKEN]', JSON.stringify(res.token));
+    
+            location.href = "index.html";
+        }else if(res.status == 401){
+            console.log("tamos mal");
+        }
+
+    })
+    
+    
 
     // const token = 'usuario1:cdbsjdbbkvsdbkv';
     // fetch('http://localhost:3000/api/usuarios/ferxu01', {
