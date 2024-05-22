@@ -4,12 +4,14 @@ const commentSchema = require('../schemas/comment');
 const responseMessage = require('../utils/messages/responseMessage');
 const responseError = require('../utils/messages/responseError');
 
+const i18n = require('../config/i18n');
+
 const getProjectComments = async (req, res, next) => {
     const projectId = req.params['id'];
     const projectComments = await commentService.getAllFromProject(projectId);
 
     if (projectComments.length === 0)
-        return responseMessage(res, 200, 'Este proyecto no tiene comentarios');
+        return responseMessage(res, 200, i18n.__('comments.notFound'));
 
     return responseMessage(res, 200, projectComments);
 };
@@ -23,7 +25,7 @@ const postComment = async (req, res, next) => {
 
     const project = await projectService.getOne(projectId);
     if (!project)
-        return responseError(res, 400, 'No existe el proyecto con ese ID');
+        return responseError(res, 400, i18n.__('comments.projectDontExist'));
 
     const response = await commentService.postCommentToProject({
         id_trabajo: projectId,
@@ -31,7 +33,7 @@ const postComment = async (req, res, next) => {
     });
 
     if (response.affectedRows <= 0)
-        return responseError(res, 400, 'Ya has añadido un comentario');
+        return responseError(res, 400, i18n.__('comments.added'));
 
     return responseMessage(res, 200, {
         id: response.insertId,
@@ -49,9 +51,9 @@ const deleteComment = async (req, res, next) => {
     });
 
     if (response.affectedRows === 0)
-        return responseError(res, 400, 'El comentario que intentas eliminar no existe');
+        return responseError(res, 400, i18n.__('comments.notExist'));
 
-    return responseMessage(res, 200, 'El comentario se eliminó correctamente');
+    return responseMessage(res, 200, i18n.__('comments.success'));
 };
 
 module.exports = {

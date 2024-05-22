@@ -6,6 +6,8 @@ const responseError = require('../utils/messages/responseError');
 const responseAuth = require('../utils/messages/responseAuth');
 const catchedAsync = require('../utils/catchedAsync');
 
+const i18n = require('../config/i18n');
+
 const signUp = async (req, res, next) => {
     const validatedResult = await userSchema.validateRegister(req.body);
 
@@ -16,7 +18,7 @@ const signUp = async (req, res, next) => {
     const user = await userService.getUserByEmail(email);
 
     if (user)
-        return responseError(res, 400, 'Este email ya se ha registrado en el sistema');
+        return responseError(res, 400, i18n.__('register.emailExists'));
     else {
         const encryptedPass = await encriptaPassword(password);
 
@@ -43,7 +45,7 @@ const signIn = async (req, res, next) => {
     const user = await authService.postLogin(validatedResult.data);
 
     if (!user) {
-        return responseError(res, 400, 'No se ha encontrado el user con ese email');
+        return responseError(res, 400, i18n.__('login.userNotFound'));
     } else {
         const { password } = validatedResult.data;
         const equalPass = await comparaPassword(password, user.pwd);
@@ -53,7 +55,7 @@ const signIn = async (req, res, next) => {
             const token = generaToken(); // Generar UUID con libreria crypto
             return responseAuth(res, 200, token, user);
         } else {
-            return responseError(res, 401, 'La contraseña es incorrecta');
+            return responseError(res, 401, i18n.__('login.wrongPassword'));
         }
     }
 };

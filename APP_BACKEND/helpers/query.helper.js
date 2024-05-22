@@ -7,27 +7,33 @@
  */
 const generateSelectSqlQuery = (table, params, joins = []) => {
     let query = `SELECT * FROM ${table}`;
+    let values = [];
+
+    if (joins) {
+        joins.map(join => {
+            const { tablename, idFieldName } = join;
+            return query += ` INNER JOIN ${tablename} ON ${table}.${idFieldName} = ${tablename}.id`;
+        }).join(' ');
+    }
 
     if (params) {
         const keys = Object.keys(params);
-        const values = keys.map(key => params[key]);
+        values = keys.map(key => params[key]);
         
-        if (joins) {
-            joins.map(join => {
-                const { tablename, idFieldName } = join;
-                return query += ` INNER JOIN ${tablename} ON ${table}.${idFieldName} = ${tablename}.id`;
-            }).join(' ');
-        }
+        // if (joins) {
+        //     joins.map(join => {
+        //         const { tablename, idFieldName } = join;
+        //         return query += ` INNER JOIN ${tablename} ON ${table}.${idFieldName} = ${tablename}.id`;
+        //     }).join(' ');
+        // }
         
         const strQuery = keys.map(key => `${key} = ?`).join(' AND ');
         query += ` WHERE ${strQuery}`;
 
-        console.log(query);
-
-        return { query, values };
+        //return { query, values };
     }
 
-    return { query };
+    return { query, values };
 };
 
 const generateInsertSqlQuery = (table, params) => {
@@ -69,11 +75,8 @@ const serializeParameter = (value) => {
 };
 
 const getQueryResults = (query, values, conexion) => {
-    console.log(query);
-    console.log(values);
     return new Promise((resolve, reject) => {
         conexion.query(query, values, (error, results, fields) => {
-            console.log(results);
             if (error) reject(error);
             resolve(results);
         });
