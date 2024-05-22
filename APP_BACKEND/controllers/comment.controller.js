@@ -27,7 +27,6 @@ const postComment = async (req, res, next) => {
     if (!project)
         return responseError(res, 400, i18n.__('comments.projectDontExist'));
 
-    //TODO: COMPROBAR QUE SE PUEDEN SUBIR COMENTARIOS
     if (project.comentarios === 0)
         return responseError(res, 400, i18n.__('comments.notAllowed'));
 
