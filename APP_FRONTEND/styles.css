@@ -269,16 +269,26 @@ footer>a>div>p{
     background-color: var(--color-primario);
     padding: 0.8em;
     border-radius: 10px;
+    display: grid;
+    align-items: center;
+    height: 130px;
+
    
+}
+.datos_perfil_usuario>article>span {
+    margin-right: 70px; /* Espacio entre los spans */
+    color: var(--color-texto1);
+}
+
+.datos_perfil_usuario article span.dato {
+    margin-left: 70px; /* Empuja el span.dato hacia la derecha */
+    margin-right: 0px;
 }
 .datos_perfil_usuario>article{
     display: flex;
     justify-content: space-between;
 }
-.datos_perfil_usuario> article>span {
-    margin-right: 30px; /* Aumenta el espacio entre los spans */
-    color: var(--color-texto1);
-}
+
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
 .img-login {
