@@ -9,6 +9,17 @@
     <title>Sube un trabajo - RepoUA</title>
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Comprobar si el usuario está logueado
+            let datosUsu = localStorage.getItem('[SESSION]');
+            if (!datosUsu) {
+                // Usuario no está logueado, redirigir a index.html
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+
     <header>
        <div class="cabezeraizquierda">
         <a href="index.html"><img src="img/logo.png" class=" imagenHeader" alt="logotipo" class="img"></a>
