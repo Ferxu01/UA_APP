@@ -79,7 +79,7 @@ footer{
     align-items: center;
     background-color: var(--color-primario);
     width: 100%;
-   
+   position: fixed;
     bottom: 0;
     padding: 0.5em;
    
