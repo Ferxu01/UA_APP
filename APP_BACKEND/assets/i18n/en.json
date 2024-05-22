@@ -12,7 +12,8 @@
 		"projectDontExist": "The project with that ID does not exist",
 		"added": "You have already added a comment",
 		"notExist": "The comment you are trying to delete does not exist",
-		"success": "Comment was successfully deleted"
+		"success": "Comment was successfully deleted",
+		"notAllowed": "This job is not allowed to upload comments"
 	},
 	"favourites": {
 		"notExists": "You have not added jobs to favorites",
