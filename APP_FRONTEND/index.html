@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
-    <link rel="stylesheet" href="modo_oscuro.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="./js/index.js"></script>
     <title>Inicio - RepoUA</title>
 </head>
@@ -23,13 +23,17 @@
 
 <main class ="main">
     <h3>Para Ti</h3>
-<div class="ParaTi" id="ParaTi">
+
+<section class="botonesCarrusel">
+    <button id="prevButton" class="prev-button" onclick="anteriorTrabajo()">&lt;</button>
+    <div class="ParaTi" id="ParaTi">
     
-</div>
-<button id="prevButton" class="prev-button" onclick="anteriorTrabajo()">Anterior</button>
-<button id="nextButton" class="next-button"onclick="siguienteTrabajo()">Siguiente</button>
+    </div>
+    <button id="nextButton" class="next-button"onclick="siguienteTrabajo()">&gt;</button>
+</section>
+
 <h3>Más visitados</h3>
-<div class="MasVistos">
+<section class="MasVistos">
     <article class="Trabajo">
         <h3>Titulo</h3>
         <div class="contenedor">
@@ -44,59 +48,36 @@
             <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
         </div>
     </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-</div>
-<h3>Añadidos recientemente</h3>
-<div class="AnadidosReciente">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-</div>
+    
+</section>
 
 <h3>Grados</h3>
-<div class="Grados" id="Grados">
-   
-</div>
-<button id="prevButton" class="prev-button" onclick="anteriorGrado()">Anterior</button>
-<button id="nextButton" class="next-button"onclick="siguienteGrado()">Siguiente</button>
+<section class="botonesCarrusel">
+    <button id="prevButton" class="prev-button" onclick="anteriorGrado()">&lt;</button>
+    <div class="Grados" id="Grados">
+       
+    </div>
+    <button id="nextButton" class="next-button"onclick="siguienteGrado()">&gt;</button>
+</section>
+
 
 <h3>Másteres</h3>
-<div class="Masteres" id="Masteres">
+
+<section class="botonesCarrusel">
+    <button id="prevButton" class="prev-button" onclick="anteriorMaster()">&lt;</button>
+    <div class="Masteres" id="Masteres">
     
-</div>
-<button id="prevButton" class="prev-button" onclick="anteriorMaster()">Anterior</button>
-<button id="nextButton" class="next-button"onclick="siguienteMaster()">Siguiente</button>
+    </div>
+    <button id="nextButton" class="next-button"onclick="siguienteMaster()">&gt;</button>
+</section>
+
 <h3>Másteres</h3>
-<div class="Usuarios" id="Usuarios">
-  
-</div>
 <div class="botonesCarruselUsuario">
-    <button id="prevButton" class="prev-button" onclick="anteriorUsuario()">Anterior</button>
-<button id="nextButton" class="next-button"onclick="siguienteUsuario()">Siguiente</button>
+    <button id="prevButton" class="prev-button" onclick="anteriorUsuario()">&lt;</button>
+    <section class="Usuarios" id="Usuarios">
+      
+    </section>
+    <button id="nextButton" class="next-button"onclick="siguienteUsuario()">&gt;</button>
 
 </div>
 </main>

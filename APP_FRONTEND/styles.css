@@ -23,6 +23,9 @@ body{
 ::placeholder {
     color: var(--color-texto2);
 }
+a{
+    text-decoration: none;
+}
 /* HEADER GENERAL */
 header{
     display: flex; /* Utilizamos flexbox para alinear elementos */
@@ -126,12 +129,43 @@ footer>a>div>p{
  
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin-bottom: 5em;
+  margin-bottom: 2em;
 }
 .botonesCarruselUsuario{
     margin-bottom: 5em;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.botonesCarruselUsuario> button{
+    margin: 0.8em;
+    border: none;
+    background-color: var(--color-terciario);
+    padding: 0.8em;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--color-texto1);
+    font-weight:700;
 }
 
+.botonesCarrusel{
+    margin-bottom: 5em;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+.botonesCarrusel> button{
+    margin: 0.8em;
+    border: none;
+    background-color: var(--color-terciario);
+    padding: 0.8em;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--color-texto1);
+    font-weight:700;
+}
 .Trabajo,.Grado  {
     background-color:var(--color-primario);
    display:grid;
@@ -201,13 +235,14 @@ footer>a>div>p{
   height:auto;
 
 }
-.Usuario>h3{
+.Usuario>a>h3{
   text-align: center;
-  font-size: 15px;
+  font-size: 20px;
   width: 140px;
   margin-bottom: 3px;
   margin-top: 3px;
   color: var(--color-texto2);
+  
 }
 
 
@@ -220,7 +255,30 @@ footer>a>div>p{
  
 /*FIN PAGINA INDEX*/
 
-
+/*PARA PERFIL.HTML*/
+.perfil_usuario{
+    display: grid;
+    justify-items: center;
+}
+.perfil_usuario>img{
+    width: 110px;
+  height:auto;
+  padding: 0.8em;
+}
+.datos_perfil_usuario{
+    background-color: var(--color-primario);
+    padding: 0.8em;
+    border-radius: 10px;
+   
+}
+.datos_perfil_usuario>article{
+    display: flex;
+    justify-content: space-between;
+}
+.datos_perfil_usuario> article>span {
+    margin-right: 30px; /* Aumenta el espacio entre los spans */
+    color: var(--color-texto1);
+}
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
 
 .img-login {

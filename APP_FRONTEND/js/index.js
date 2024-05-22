@@ -109,8 +109,10 @@ function Usuario() {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
                 html += `<article class="Usuario">
+                <a href="user.html?ID=${encodeURIComponent(foto.id)}">
                 <img src="img/${foto.imagen_perfil}"class="portadaTrabajo">
                 <h3>${foto.nombre}</h3>
+                </a>
                     </article>`;
             }
 
@@ -169,6 +171,9 @@ function siguienteUsuario() {
 window.addEventListener('resize', function () {
     screenWidth = window.innerWidth;
     Trabajos(); // Llama a la función fotos() cuando cambia el tamaño de la pantalla
+    Grados();
+    Masteres();
+    Usuario();
 });
 
 
