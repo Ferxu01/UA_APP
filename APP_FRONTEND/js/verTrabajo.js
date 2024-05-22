@@ -1,6 +1,5 @@
 let url = "http://localhost:3000";
 let i = 0;
-let id_usu;
 
 function trabajo() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -14,30 +13,39 @@ function trabajo() {
                 if (r.status === 200) {
                     let html = '';
                         //<p>${r.response.fecha}</p> falta añadir, no tienen propiedad fecha aun
-                        id_usu = r.response[0].usuario;
+                        let id_usu = r.response.usuario;
+                        let allow_comments = r.response.comentarios;
                         console.log(id_usu);
+                        console.log(allow_comments);
                         html += `
+                        <div class="cuadrotrabajo">
                         <div class="tituloyfecha">
-                            <h1>${r.response[0].titulo}</h1>
+                            <h1>${r.response.titulo}</h1>
                         </div>
                         <div class="infotrabajo">
-                            <img src="img/${r.response[0].imagen_portada}"class="portadaTrabajo">
+                            <img src="img/${r.response.imagen_portada}"class="portadaTrabajo">
                             <div>
-                                <p id="autor-receta">Autor: </p>
+                                <p id="autor-receta"></p>
+                                <div id="etiqs"></div>
                             </div>
                         </div>
                         <h2>Descripción</h2>
-                        <p id="desc">${r.response[0].descripcion}</p>
+                        <section><article><p id="desc">${r.response.descripcion}</p></article></section>
+                        <hr>
                         <h2>Comentarios</h2>
                         <div id="dejarcomentario"></div>
                         <section id="coments"></section>
+                        </div>
                         `;
 
                     document.querySelector('#trabajo-container').innerHTML = html;
 
-                    //verComentarios();
-                    //pedirForm();
+                    
+                    
                     nombreUsu(id_usu);
+                    etiquetas();
+                    verComentarios(allow_comments);
+                    pedirForm();
                 }
         
             })
@@ -67,106 +75,81 @@ function nombreUsu(id_usu) {
     }
 }
 
-/*
-function ingredientes() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ID = urlParams.get('ID');
-
-    let url = `api/recetas/${ID}/ingredientes`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(r => {
-            if (r.RESULTADO === 'OK') {
-                let html = '';
-                r.FILAS.forEach(function (ingrediente) {
-                    html += `<li><p>${ingrediente.texto}</p></li>`;
-                });
-                document.querySelector('#ing').innerHTML += html;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
-
+// /tag/project/id
 function etiquetas() {
     const urlParams = new URLSearchParams(window.location.search);
     const ID = urlParams.get('ID');
 
-    let url = `api/recetas/${ID}/etiquetas`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(r => {
-            if (r.RESULTADO === 'OK') {
-                let html = '';
-                r.FILAS.forEach(function (etiqueta) {
-                    let nombre = encodeURIComponent(etiqueta.nombre);
-                    html += `<p><a href="buscar.html?e=${nombre}">${etiqueta.nombre}</a></p>`;
-                });
-                document.querySelector('#etiqs').innerHTML += html;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function pasos() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ID = urlParams.get('ID');
-
-    let url = `api/recetas/${ID}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(r => {
-            if (r.RESULTADO === 'OK') {
-                let html = '';
-                var pasos = r.FILAS[0].elaboracion.split("<br>");
-                pasos.forEach(function (paso) {
-                    html += `<li>${paso}</li>`;
-                });
-                document.querySelector('#pasos').innerHTML += html;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-function fotos() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ID = urlParams.get('ID');
-
-    let url = `api/recetas/${ID}/fotos`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(r => {
-            if (r.RESULTADO === 'OK') {
-                let html = '';
-                let tam = r.FILAS.length - 1;
-
-                if (i < 0) {
-                    i = tam;
+    if (ID) {
+        fetch(`${url}/tag/project/${ID}`)
+            .then(response => response.json())
+            .then(r => {
+                console.log(r);
+                if (r.status === 200) {
+                    let html = '';
+                    r.response.forEach(function (etiqueta) {
+                        html += `<p>${etiqueta.texto}</p>`;
+                    });
+                    document.querySelector('#etiqs').innerHTML += html;
                 }
-                if (i > tam) {
-                    i = 0;
-                }
-
-                let foto = r.FILAS[i];
-                html += `<div><img src="fotos/${foto.archivo}" class="pollo2" alt="foto"></div>`;
-                html += `<p>${foto.descripcion}</p>`;
-
-                document.querySelector('#fotos').innerHTML = html;
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            })
+            .catch(error => console.error('Error:', error));
+    }
 }
 
-function anterior() {
-    i--;
-    fotos();
+// Dame todos los comentarios  GET /project/{project-id}/comments
+function verComentarios(allcom){
+    if(allcom === 1){
+        const urlParams = new URLSearchParams(window.location.search);
+        const ID = urlParams.get('ID');
+
+        if (ID) {
+            fetch(`${url}/project/${ID}/comments`)
+                .then(response => response.json())
+                .then(r => {
+                    console.log(r);
+                    if (r.status === 200) {
+                        let html = '';
+                        r.response.forEach(function (comentario) {
+                            html+=`
+                                <article>
+                                <div class="comentario">
+                                    <p>${comentario.nombre} ${comentario.apellidos}</p>
+                                </div>
+                                <p>${comentario.texto}</p>
+                                </article>
+                            `;
+                        });
+                        document.querySelector('#coments').innerHTML += html;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+    else{
+        let html='';
+        html+=`
+            <article>
+            <p>Esta publicación tiene los comentarios desactivados</p>
+            </article>
+        `;
+        document.querySelector('#coments').innerHTML += html;
+    }
 }
 
-function siguiente() {
-    i++;
-    fotos();
+//[SESSION] localStorage.getItem('[SESSION]')
+function pedirForm(){
+    if(localStorage.getItem('[SESSION]')){
+        let url="formcomentario.html",
+        xhr= new XMLHttpRequest();
+        xhr.open("GET",url,true);
+        xhr.onload=function(){
+        let html=xhr.responseText;
+        document.querySelector('#dejarcomentario').innerHTML += html;
+    }
+    xhr.send();
+    }else{
+        let html=` <p>Para dejar un comentario tienes que  <a class="registrate" href="login.html">iniciar sesión</a></p>`;
+        document.querySelector('#dejarcomentario').innerHTML += html; 
+    }
 }
-*/

@@ -435,6 +435,7 @@ body.night-mode {
 .infotrabajo {
   display: grid;
   align-items: center;
+  justify-content: center;
 }
 
 .infotrabajo > div {
@@ -457,15 +458,12 @@ body.night-mode {
   padding: .5em;
   margin-left: 3px;
   margin-right: 3px;
-  background-color: black;
+  background-color: #A64195;
+  border-radius: 20px;
+  color: #FFFFFF;
 }
 
-.infotrabajo > div > div > p > a {
-  color: white;
-  &:hover {
-    color: #ff9c4c;
-  }
-}
+
 
 .tituloyfecha {
   display: grid;
@@ -473,21 +471,28 @@ body.night-mode {
   align-items: center;
 }
 
+.registrate {
+    color: #A64195;
+}
+
+hr {
+    margin-top: 30px;
+    border-color: black;
+}
+
 section {
   margin-top: 30px;
 }
 
 section > article {
-  background-color: #ff9c4c;
+  background-color: #77ABD9;
   width: 100%;
   border-radius: 20px;
 }
 
 section > article > p {
   text-align: justify;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 1em;
+  padding: .5em;
 }
 
 section > article > div > p {
@@ -499,6 +504,10 @@ section > article > div > p {
 .comentario{
   display: flex;
   justify-content: space-between;
+}
+
+.cuadrotrabajo{
+    margin: 1em;
 }
 
 
