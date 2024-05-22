@@ -176,4 +176,12 @@ window.addEventListener('resize', function () {
     Usuario();
 });
 
+function cambiarEstilo() {
+    var estiloCSS = document.getElementById('estilo-css');
+    if (estiloCSS.href.includes('styles.css')) {
+        estiloCSS.href = 'modo_oscuro.css';
+    } else {
+        estiloCSS.href = 'styles.css';
+    }
+}
 

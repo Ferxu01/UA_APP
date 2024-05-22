@@ -25,6 +25,7 @@ function trabajo() {
                         <div class="infotrabajo">
                             <img src="img/${r.response.imagen_portada}"class="portadaTrabajo">
                             <div>
+                            
                                 <p id="autor-receta"></p>
                                 <div id="etiqs"></div>
                             </div>
@@ -151,7 +152,9 @@ function pedirForm(allcom){
     }
     xhr.send();
     }else{
+        if(allcom === 1){
         let html=` <p>Para dejar un comentario tienes que  <a class="registrate" href="login.html">iniciar sesión</a></p>`;
         document.querySelector('#dejarcomentario').innerHTML += html; 
+        }
     }
 }
