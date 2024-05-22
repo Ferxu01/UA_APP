@@ -36,8 +36,14 @@ const getTagsFromProject = async ({ projectId }) => {
         {
             idFieldName: 'id_trabajo',
             tablename: 'trabajo',
+        },
+        {
+            idFieldName: 'id_etiqueta',
+            tablename: 'etiqueta',
         }
     ]);
+    console.log(query);
+    console.log(values);
     return await getQueryResults(query, values, conexion);
 };
 

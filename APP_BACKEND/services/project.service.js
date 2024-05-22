@@ -2,7 +2,12 @@ const { getQueryResults, getResults, generateSelectSqlQuery, generateInsertSqlQu
 const conexion = require('../config/db');
 
 const getAll = async () => {
-    const { query } = generateSelectSqlQuery('trabajo');
+    const { query } = generateSelectSqlQuery('trabajo', undefined, [
+        {
+            'tablename': 'usuario',
+            'idFieldName': 'usuario'
+        }
+    ]);
     return await getResults(query, conexion);
 };
 

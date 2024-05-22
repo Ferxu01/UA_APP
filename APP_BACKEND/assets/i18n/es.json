@@ -1,0 +1,29 @@
+{
+	"login": {
+		"loginFailed": "Login fallido!!!",
+		"userNotFound": "No se ha encontrado el usuario con ese email",
+		"wrongPassword": "La contraseña es incorrecta"
+	},
+	"register": {
+		"emailExists": "Este email ya se ha registrado en el sistema"
+	},
+	"comments": {
+		"notFound": "Este proyecto no tiene comentarios",
+		"projectDontExist": "No existe el proyecto con ese ID",
+		"added": "Ya has añadido un comentario",
+		"notExist": "El comentario que intentas eliminar no existe",
+		"success": "El comentario se eliminó correctamente"
+	},
+	"favourites": {
+		"notExists": "No has añadido trabajos a favoritos",
+		"addError": "El trabajo no pudo añadirse a favoritos",
+		"addSuccess": "El trabajo se añadió a tu lista de favoritos",
+		"removeError": "El trabajo no pudo eliminarse de tu lista de favoritos",
+		"removeSuccess": "El trabajo se eliminó de tu lista de favoritos"
+	},
+	"projects": {
+		"notFound": "Actualmente no hay trabajos disponibles",
+		"notExists": "El proyecto no existe",
+		"removeSuccess": "El trabajo se eliminó correctamente"
+	}
+}

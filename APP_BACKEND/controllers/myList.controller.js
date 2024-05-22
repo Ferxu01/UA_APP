@@ -3,11 +3,13 @@ const catchedAsync = require('../utils/catchedAsync');
 const responseError = require('../utils/messages/responseError');
 const responseMessage = require('../utils/messages/responseMessage');
 
+const i18n = require('../config/i18n');
+
 const getFavs = async (req, res, next) => {
     const { userId } = req.params;
     const favs = await myListService.getFavProjects(userId);
     if (favs.length === 0)
-        return responseError(res, 400, 'No has añadido trabajos a favoritos');
+        return responseError(res, 400, i18n.__('favourites.notExists'));
 
     return responseMessage(res, 200, favs);
 };
@@ -17,9 +19,9 @@ const postFav = async (req, res, next) => {
     const response = await myListService.postProjectToFav({ userId: user, projectId: project });
 
     if (response.insertId === 0)
-        return responseError(res, 400, 'El trabajo no pudo añadirse a favoritos');
+        return responseError(res, 400, i18n.__('favourites.addError'));
 
-    return responseMessage(res, 200, 'El trabajo se añadió a tu lista de favoritos');
+    return responseMessage(res, 200, i18n.__('favourites.addSuccess'));
 };
 
 const deleteFav = async (req, res, next) => {
@@ -27,9 +29,9 @@ const deleteFav = async (req, res, next) => {
     const response = await myListService.deleteProjectFromFav({ projectId, userId });
 
     if (response.affectedRows === 0)
-        return responseError(res, 400, 'El trabajo no pudo eliminarse de tu lista de favoritos');
+        return responseError(res, 400, i18n.__('favourites.removeError'));
 
-    return responseMessage(res, 200, 'El trabajo se eliminó de tu lista de favoritos');
+    return responseMessage(res, 200, i18n.__('favourites.removeSuccess'));
 };
 
 module.exports = {

@@ -6,6 +6,7 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+const i18n = require('./config/i18n');
 
 //Config
 require('dotenv').config();
@@ -27,20 +28,34 @@ app.use(headers.allowCrossTokenMethods);
 app.use(headers.allowCrossTokenHeaders);
 app.use(fileUpload());
 
-app.get('/test', (req, res) => {
-    const queryString = generateSearchUrl({
-        u: 'paramU',
-        t: 'paramT',
-        d: undefined,
-        m: 'paramM',
-        // fIni,
-        // fFin
-    });
-
-    console.log(queryString);
-
-    res.status(200).send({ result: 'OK' });
+app.param('lang', (req, res, next, lang) => {
+    if (i18n.getLocales().includes(lang)) {
+        i18n.setLocale(lang);
+    } else {
+        i18n.setLocale('es'); // O el idioma por defecto
+    }
+    next();
 });
+
+// Rutas con parámetro de idioma
+app.use('/:lang', (req, res, next) => {
+    next();
+}, routes);
+
+// app.get('/test', (req, res) => {
+//     const queryString = generateSearchUrl({
+//         u: 'paramU',
+//         t: 'paramT',
+//         d: undefined,
+//         m: 'paramM',
+//         // fIni,
+//         // fFin
+//     });
+
+//     console.log(queryString);
+
+//     res.status(200).send({ result: 'OK' });
+// });
 
 app.post('/upload', (req, res) => {
     console.log('SUBIR IMAGEN');

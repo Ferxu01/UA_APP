@@ -1,0 +1,29 @@
+{
+	"login": {
+		"loginFailed": "Login failed!!!",
+		"userNotFound": "The user with that email has not been found",
+		"wrongPassword": "Password is incorrect"
+	},
+	"register": {
+		"emailExists": "This email has already been registered in the system"
+	},
+	"comments": {
+		"notFound": "This project has no comments",
+		"projectDontExist": "The project with that ID does not exist",
+		"added": "You have already added a comment",
+		"notExist": "The comment you are trying to delete does not exist",
+		"success": "Comment was successfully deleted"
+	},
+	"favourites": {
+		"notExists": "You have not added jobs to favorites",
+		"addError": "The job could not be added to favorites",
+		"addSuccess": "The job was added to your favorites list",
+		"removeError": "The job could not be removed from your favorites list",
+		"removeSuccess": "The job was removed from your favorites list"
+	},
+	"projects": {
+		"notFound": "There are currently no jobs available",
+		"notExists": "The project does not exist",
+		"removeSuccess": "The job was deleted successfully"
+	}
+}
