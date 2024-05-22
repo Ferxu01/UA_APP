@@ -273,7 +273,7 @@ footer>a>div>p{
     border-radius: 10px;
     display: grid;
     align-items: center;
-    height: 130px;
+    height: 150px;
 
    
 }
@@ -283,7 +283,7 @@ footer>a>div>p{
 }
 
 .datos_perfil_usuario article span.dato {
-    margin-left: 70px; /* Empuja el span.dato hacia la derecha */
+    margin-left: 20px; /* Empuja el span.dato hacia la derecha */
     margin-right: 0px;
     display: block;
 }

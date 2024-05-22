@@ -45,7 +45,7 @@ function trabajo() {
                     nombreUsu(id_usu);
                     etiquetas();
                     verComentarios(allow_comments);
-                    pedirForm();
+                    pedirForm(allow_comments);
                 }
         
             })
@@ -81,15 +81,15 @@ function etiquetas() {
     const ID = urlParams.get('ID');
 
     if (ID) {
-        fetch(`${url}/tag/project/${ID}`)
+        fetch(`${url}/es/tag/project/${ID}`)
             .then(response => response.json())
             .then(r => {
                 console.log(r);
                 if (r.status === 200) {
                     let html = '';
-                    r.response.forEach(function (etiqueta) {
-                        html += `<p>${etiqueta.texto}</p>`;
-                    });
+                    //r.response.forEach(function (etiqueta) {
+                        html += `<p>${r.response[0].texto}</p>`;
+                    //});
                     document.querySelector('#etiqs').innerHTML += html;
                 }
             })
@@ -138,14 +138,16 @@ function verComentarios(allcom){
 }
 
 //[SESSION] localStorage.getItem('[SESSION]')
-function pedirForm(){
+function pedirForm(allcom){
     if(localStorage.getItem('[SESSION]')){
-        let url="formcomentario.html",
-        xhr= new XMLHttpRequest();
-        xhr.open("GET",url,true);
-        xhr.onload=function(){
-        let html=xhr.responseText;
-        document.querySelector('#dejarcomentario').innerHTML += html;
+        if(allcom === 1){
+            let url="formcomentario.html",
+            xhr= new XMLHttpRequest();
+            xhr.open("GET",url,true);
+            xhr.onload=function(){
+            let html=xhr.responseText;
+            document.querySelector('#dejarcomentario').innerHTML += html;
+        }
     }
     xhr.send();
     }else{
