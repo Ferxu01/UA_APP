@@ -15,7 +15,6 @@ const getDegrees = async (req, res, next) => {
 const getDegree = async (req, res, next) => {
     const id = req.params['id'];
     const degree = await studiesService.getOneDegree(id);
-    console.log(degree);
 
     if (!degree)
         return responseError(res, 400, 'No se ha encontrado el grado');

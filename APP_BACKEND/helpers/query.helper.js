@@ -23,6 +23,7 @@ const generateSelectSqlQuery = (table, params, joins = []) => {
         query += ` WHERE ${strQuery}`;
 
         console.log(query);
+
         return { query, values };
     }
 
@@ -68,8 +69,11 @@ const serializeParameter = (value) => {
 };
 
 const getQueryResults = (query, values, conexion) => {
+    console.log(query);
+    console.log(values);
     return new Promise((resolve, reject) => {
         conexion.query(query, values, (error, results, fields) => {
+            console.log(results);
             if (error) reject(error);
             resolve(results);
         });
