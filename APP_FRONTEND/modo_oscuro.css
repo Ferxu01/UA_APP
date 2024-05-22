@@ -1,3 +1,4 @@
+@import "styles.css";
 :root {
   --color-primario: #01111F;
   --color-secundario: #77ABD9;
@@ -6,5 +7,3 @@
   --color-texto1: #F2F2F2;
   --color-texto2: black;
 }
-
-@import "styles.css";
