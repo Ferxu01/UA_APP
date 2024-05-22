@@ -307,6 +307,16 @@ footer>a>div>p{
   cursor: pointer;
 }
 
+.cuadritoError{
+  display: flex;
+  justify-content: center
+}
+
+.cuadritoError > p {
+  color: var(--color-texto1);
+  font-weight: bold;
+}
+
 /*PARA SUBIR NUEVO TRABAJO*/
 
 .nuevo-trabajo {
