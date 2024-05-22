@@ -71,6 +71,16 @@ const deleteOne = async (projectId) => {
 
 // };
 
+const updateProjectViews = async (project) => {
+    const { query, values } = generateUpdateSqlQuery('trabajo', {
+        numVisitas: Number(project['numVisitas'])+1,
+    }, 
+    {
+        id: project['id']
+    });
+    return await getQueryResults(query, values, conexion);
+};
+
 const searchProjects = async (queryParams) => {
     // const mapTableParams = {
     //     u: 'usuario', // Usuario
@@ -157,6 +167,7 @@ module.exports = {
     postNewProject,
     updateOne,
     deleteOne,
+    updateProjectViews,
     // getProjectFiles,
     // postFileToProject,
     // getProjectFile,

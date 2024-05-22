@@ -29,7 +29,9 @@
 		"removeSuccess": "The job was deleted successfully",
 		"error": "There were errors when uploading the job",
 		"updateError": "Could not update job",
-		"updateSuccess": "The job was updated successfully"
+		"updateSuccess": "The job was updated successfully",
+		"updateViewsError": "Views could not be updated",
+		"updateViewsSuccess": "Job views updated successfully"
 	},
 	"files": {
 		"noAttachedFiles": "This project has no attached files",

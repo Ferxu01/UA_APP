@@ -29,7 +29,9 @@
 		"removeSuccess": "El trabajo se eliminó correctamente",
 		"error": "Hubo errores al subir el trabajo",
 		"updateError": "No se pudo actualizar el trabajo",
-		"updateSuccess": "El trabajo se actualizó correctamente"
+		"updateSuccess": "El trabajo se actualizó correctamente",
+		"updateViewsError": "No se han podido actualizar las visualizaciones",
+		"updateViewsSuccess": "Se actualizaron las visualizaciones del trabajo correctamente"
 	},
 	"files": {
 		"noAttachedFiles": "Este proyecto no tiene ficheros adjuntos",

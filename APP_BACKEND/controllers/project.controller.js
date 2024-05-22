@@ -62,6 +62,21 @@ const deleteProject = async (req, res, next) => {
     return responseMessage(res, 200, i18n.__('projects.removeSuccess'));
 };
 
+const updateViews = async (req, res, next) => {
+    const projectId = req.params['id'];
+    const project = await projectService.getOne(projectId);
+
+    if (!project)
+        return responseError(res, 400, i18n.__('projects.notExists'));
+
+    const response = await projectService.updateProjectViews(project);
+
+    if (response.affectedRows === 0)
+        return responseError(res, 400, i18n.__('projects.updateViewsError'));
+
+    return responseMessage(res, 200, i18n.__('projects.updateViewsSuccess'));
+};
+
 const findProject = async (req, res, next) => {
     const params = req.query;
     //console.log(params);
@@ -76,5 +91,6 @@ module.exports = {
     postProject: catchedAsync(postProject),
     putProject: catchedAsync(putProject),
     deleteProject: catchedAsync(deleteProject),
+    updateViews: catchedAsync(updateViews),
     findProject: catchedAsync(findProject),
 };

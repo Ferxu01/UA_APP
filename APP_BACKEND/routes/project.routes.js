@@ -10,6 +10,7 @@ router.get('/:id', projectCtrl.getProject);
 router.post('/', projectCtrl.postProject);
 router.put('/:id', projectCtrl.putProject);
 router.delete('/:id', projectCtrl.deleteProject)
+router.put('/:id/views', projectCtrl.updateViews);
 
 // Comentarios
 router.get('/:id/comments', commentCtrl.getProjectComments);
