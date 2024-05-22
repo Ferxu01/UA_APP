@@ -32,7 +32,7 @@ header{
     width: 100%;
     z-index: 1;
     padding: .5em;
-    position: fixed;
+    /* position: fixed; */ /* Si el header esta fixed hay elementos que se quedan detras de el */
 }
 
 .imagenHeader{
@@ -425,3 +425,83 @@ body.night-mode {
     background-color: #000000; /* Color de fondo para el modo nocturno */
     color: #ffffff; /* Color de texto para el modo nocturno */
 }
+
+/* PARA VER TRABAJO */
+
+.infotrabajo {
+  display: grid;
+  align-items: center;
+}
+
+.infotrabajo > div {
+  display: block;
+  margin-left: 4em;
+}
+
+.infotrabajo > div > p > a {
+  color: black;
+  &:hover {
+    color: #ff9c4c;
+  }
+}
+
+.infotrabajo > div > div {
+  display: flex;
+}
+
+.infotrabajo > div > div > p {
+  padding: .5em;
+  margin-left: 3px;
+  margin-right: 3px;
+  background-color: black;
+}
+
+.infotrabajo > div > div > p > a {
+  color: white;
+  &:hover {
+    color: #ff9c4c;
+  }
+}
+
+.tituloyfecha {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  margin-top: 30px;
+}
+
+section > article {
+  background-color: #ff9c4c;
+  width: 100%;
+  border-radius: 20px;
+}
+
+section > article > p {
+  text-align: justify;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+section > article > div > p {
+  text-align: justify;
+  padding: 1em;
+  padding-bottom: 0em;
+}
+
+.comentario{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+/* FIN VER TRABAJO */
