@@ -27,6 +27,9 @@ const postComment = async (req, res, next) => {
     if (!project)
         return responseError(res, 400, i18n.__('comments.projectDontExist'));
 
+    if (project.comentarios === 0)
+        return responseError(res, 400, i18n.__('comments.notAllowed'));
+
     const response = await commentService.postCommentToProject({
         id_trabajo: projectId,
         ...validatedResult,

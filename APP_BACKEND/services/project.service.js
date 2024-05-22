@@ -8,14 +8,19 @@ const getAll = async () => {
             'idFieldName': 'usuario'
         }
     ]);
-    return await getResults(query, conexion);
+
+    let sql = `SELECT * FROM trabajo t INNER JOIN usuario u ON t.usuario = u.id INNER JOIN estudio e ON u.estudio = e.id`;
+    return await getResults(sql, conexion);
 };
 
 const getOne = async (projectId) => {
     const { query, values } = generateSelectSqlQuery('trabajo', {
         id: projectId
     });
-    const results = await getQueryResults(query, values, conexion);
+
+    // Por revisar la generación automática desde generateSelectSqlQuery
+    let sql = `SELECT * FROM trabajo t INNER JOIN usuario u ON t.usuario = u.id INNER JOIN estudio e ON u.estudio = e.id WHERE t.id = ?`;
+    const results = await getQueryResults(sql, values, conexion);
     return results[0];
 };
 

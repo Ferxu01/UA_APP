@@ -12,7 +12,8 @@
 		"projectDontExist": "No existe el proyecto con ese ID",
 		"added": "Ya has añadido un comentario",
 		"notExist": "El comentario que intentas eliminar no existe",
-		"success": "El comentario se eliminó correctamente"
+		"success": "El comentario se eliminó correctamente",
+		"notAllowed": "Este trabajo no tiene permitido subir comentarios"
 	},
 	"favourites": {
 		"notExists": "No has añadido trabajos a favoritos",
