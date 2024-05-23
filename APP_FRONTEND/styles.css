@@ -190,6 +190,9 @@ footer>div>a>div>p{
     margin-bottom: 3px;
     color: var(--color-texto1);
 }
+.Trabajo >h3{
+    color: var(--color-texto1);
+}
 .portadaTrabajo{
     width: 100px;
     height:auto;

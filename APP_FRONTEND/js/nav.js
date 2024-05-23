@@ -21,7 +21,6 @@ function mostrarMenu(){  //menu cambia en funcion de si usuario esta logeado o n
         if(pagina!= 'milista'){
             html2 += '<a href="miLista.html"><div> <span class="material-symbols-rounded">add</span><p>Mi lista</p></div></a>';
         }
-        html1+=' <button class="Estilo" onclick="cambiarEstilo()"><span class="material-symbols-rounded">dark_mode</span></button>'
         
     }
 
@@ -36,6 +35,8 @@ function mostrarMenu(){  //menu cambia en funcion de si usuario esta logeado o n
         }
     
     }
+
+    html1+=' <button class="Estilo" onclick="cambiarEstilo()"><span class="material-symbols-rounded">dark_mode</span></button>';
     
     
     
