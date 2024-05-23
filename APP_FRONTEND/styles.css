@@ -55,6 +55,7 @@ header{
     display: flex;
     justify-content: left;
     align-items: center;
+    margin-right: 1em;
 }
 .cabezeraizquierda>h1{
     color: var(--color-texto1);
@@ -71,7 +72,7 @@ header{
     margin: .2em;
     background-color: var(--color-terciario);
     padding: 0.3em;
-    text-decoration: none;
+    text-align: center;
     color: var(--color-texto1);
     border-radius: 20px;
 }
@@ -298,9 +299,7 @@ footer>div>a>div>p{
     justify-content: space-between;
 }
 
-.Estilo{
-  margin-bottom:7em;
-}
+
 
 .Editar_Perfil{
   margin-top: 0.8em;
@@ -320,7 +319,13 @@ footer>div>a>div>p{
   margin-bottom: 0.8em;
 }
 .Estilo{
-  margin-bottom:7em;
+  margin-left: 1em;
+  border: none;
+  background-color: var(--color-terciario);
+  color: var(--color-texto1);
+  display: flex;
+  padding: 0.5em;
+  border-radius: 100%;
 }
 
 /*PARA LOGIN.HTML Y REGISTRO.HTML*/
