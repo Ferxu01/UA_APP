@@ -5,6 +5,7 @@
   --color-fondo: #D8F2F2;
   --color-texto1: #F2F2F2;
   --color-texto2: black;
+  --titulo-oscuro:black;
 }
 
 @font-face  {
@@ -121,7 +122,7 @@ footer>div>a>div>p{
     font-size: 27px;
     margin-bottom: 3px;
     margin-left: 10px;
-
+    color: var(--titulo-oscuro);
 }
   
 
@@ -139,7 +140,7 @@ footer>div>a>div>p{
  
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin-bottom: 2em;
+  margin-bottom: 5em;
 }
 .botonesCarruselUsuario{
     display:flex;

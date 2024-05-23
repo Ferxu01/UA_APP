@@ -12,8 +12,11 @@ function Trabajos() {
             let tam = r.response.length;
 
             let trabajosPorPagina = 1;
-            if (screen.width > 400) {
-                trabajosPorPagina = 3;
+            if (screen.width > 767 && screen.width<=1023) {
+                trabajosPorPagina = 4;
+            }
+            if (screen.width > 1023) {
+                trabajosPorPagina = 9;
             }
 
             for (let j = 0; j < trabajosPorPagina; j++) {
