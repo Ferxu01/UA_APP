@@ -597,6 +597,9 @@ body.night-mode {
   justify-content: center;
   align-items: center;
 }
+.tituloyfecha>h1{
+  color:var(--titulo-oscuro);
+}
 
 .registrate {
     color: #A64195;
@@ -641,6 +644,9 @@ section > article > div > p {
     margin: 1em;
 }
 
+.cuadrotrabajo>h2{
+  color: var(--titulo-oscuro);
+}
 
 
 

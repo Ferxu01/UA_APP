@@ -23,7 +23,7 @@ function trabajo() {
                             <h1>${r.response.titulo}</h1>
                         </div>
                         <div class="infotrabajo">
-                            <img src="img/${r.response.imagen_portada}"class="portadaTrabajo">
+                            <img src="img/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">
                             <div>
                             
                                 <p id="autor-receta"></p>
