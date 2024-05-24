@@ -35,6 +35,7 @@
 	},
 	"files": {
 		"noAttachedFiles": "Este proyecto no tiene ficheros adjuntos",
+		"notFound": "No se encontró el fichero",
 		"missingInfo": "Falta información sobre el fichero",
 		"uploadError": "El fichero no se pudo subir",
 		"uploadSuccess": "El fichero se subió correctamente",

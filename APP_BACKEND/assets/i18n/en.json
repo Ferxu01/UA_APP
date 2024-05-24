@@ -35,6 +35,7 @@
 	},
 	"files": {
 		"noAttachedFiles": "This project has no attached files",
+		"notFound": "The file was not found",
 		"missingInfo": "Information about the file is missing",
 		"uploadError": "The file could not be uploaded",
 		"uploadSuccess": "The file was uploaded successfully",

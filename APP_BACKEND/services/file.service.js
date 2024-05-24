@@ -11,27 +11,35 @@ const getAllFromProject = async (projectId) => {
     return await getQueryResults(query, values, conexion);
 };
 
-const postFileToProject = async ({ projectId, description, filename, filepath }) => {
+const getOne = async (fileId) => {
+    const { query, values } = generateSelectSqlQuery('archivo', {
+        id: fileId,
+    });
+    const results = await getQueryResults(query, values, conexion);
+    return results[0];
+};
+
+const postFileToProject = async ({ projectId, description, filename, filepath, alternativo }) => {
     const { query, values } = generateInsertSqlQuery('archivo', {
         id_trabajo: projectId,
         descripcion: description,
         nombre: filename,
         ruta_archivo: filepath,
+        alternativo,
     });
     return await getQueryResults(query, values, conexion);
 };
 
-const updateFileOnProject = async ({ projectId, fileId, description, filename, filepath }) => {
+const updateFileOnProject = async ({ projectId, fileId, description, filename, filepath, alternativo }) => {
     const { query, values } = generateUpdateSqlQuery('archivo', {
         descripcion: description,
         nombre: filename,
         ruta_archivo: filepath,
+        alternativo,
     }, {
         id_trabajo: projectId,
         id: fileId,
     });
-    console.log(query);
-    console.log(values);
     return await getQueryResults(query, values, conexion);
 };
 
@@ -45,6 +53,7 @@ const deleteOneFromProject = async ({ projectId, fileId }) => {
 
 module.exports = {
     getAllFromProject,
+    getOne,
     postFileToProject,
     updateFileOnProject,
     deleteOneFromProject,

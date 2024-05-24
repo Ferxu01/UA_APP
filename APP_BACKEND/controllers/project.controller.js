@@ -79,9 +79,7 @@ const updateViews = async (req, res, next) => {
 
 const findProject = async (req, res, next) => {
     const params = req.query;
-    //console.log(params);
     const projects = await projectService.searchProjects(params);
-    //console.log(projects);
     return responseMessage(res, 200, projects);
 };
 

@@ -44,7 +44,6 @@ const updateOne = async ({ userId, projectId, data }) => {
     {
         id: projectId
     });
-    console.log(query);
     return await getQueryResults(query, values, conexion);
 };
 

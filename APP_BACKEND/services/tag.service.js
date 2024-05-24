@@ -42,7 +42,6 @@ const getTagsFromProject = async ({ projectId }) => {
             tablename: 'etiqueta',
         }
     ]);
-    console.log(query);
     return await getQueryResults(query, values, conexion);
 };
 

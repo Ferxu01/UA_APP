@@ -46,7 +46,6 @@ const postTagProject = async (req, res, next) => {
         return responseError(res, 400, i18n.__('tags.duplicatedTag'));
 
     const response = await tagService.postOneToProject({ tagId, projectId });
-        console.log(response);
 
     if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('tags.addToProjectError'));
