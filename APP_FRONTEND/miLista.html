@@ -7,7 +7,16 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" href="styles.css">
     <script src="./js/nav.js"></script>
+    <script src="./js/header.js"></script>
     <title>Mi lista - RepoUA</title>
+    <script>
+        // Establecer el estilo inicial al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+             var estilo = localStorage.getItem('estilo') || 'claro';
+             var estiloCSS = document.getElementById('estilo-css');
+             estiloCSS.href = estilo === 'oscuro' ? 'modo_oscuro.css' : 'styles.css';
+         });
+     </script>
 </head>
 <body data-pagina="milista">
 <header>
