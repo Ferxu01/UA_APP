@@ -16,12 +16,12 @@ const getUsers = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
     const id = Number(req.params['id']);
-    const users = await getOne(id);
+    const user = await getOne(id);
     
-    if (users.length === 0)
+    if (!user)
         return responseError(res, 400, i18n.__('users.notFound'));
 
-    return responseMessage(res, 200, users);
+    return responseMessage(res, 200, user);
 };
 
 const updateUser = async (req, res, next) => {

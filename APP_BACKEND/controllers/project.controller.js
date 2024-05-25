@@ -64,7 +64,7 @@ const deleteProject = async (req, res, next) => {
 
 const updateViews = async (req, res, next) => {
     const projectId = req.params['id'];
-    const project = await projectService.getOne(projectId);
+    const project = await projectService.getOne(projectId, true);
 
     if (!project)
         return responseError(res, 400, i18n.__('projects.notExists'));
@@ -80,6 +80,7 @@ const updateViews = async (req, res, next) => {
 const findProject = async (req, res, next) => {
     const params = req.query;
     const projects = await projectService.searchProjects(params);
+    console.log(projects);
     return responseMessage(res, 200, projects);
 };
 

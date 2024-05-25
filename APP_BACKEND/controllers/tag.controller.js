@@ -18,10 +18,10 @@ const postTag = async (req, res, next) => {
     const { texto } = req.body;
     const response = await tagService.postOne({ texto });
     
-    if (response.affectedRows > 0)
-        return responseMessage(res, 200, i18n.__('tags.addSuccess'));
-    else
+    if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('tags.addError'));
+    
+    return responseMessage(res, 200, i18n.__('tags.addSuccess'));
 };
 
 const getProjectTags = async (req, res, next) => {

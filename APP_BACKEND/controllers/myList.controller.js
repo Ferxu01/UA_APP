@@ -1,4 +1,4 @@
-const { myListService } = require('../services');
+const { myListService, projectService } = require('../services');
 const catchedAsync = require('../utils/catchedAsync');
 const responseError = require('../utils/messages/responseError');
 const responseMessage = require('../utils/messages/responseMessage');
@@ -17,6 +17,10 @@ const getFavs = async (req, res, next) => {
 const postFav = async (req, res, next) => {
     const { user, project } = req.body;
     const favs = await myListService.getFavProjects(user)
+
+    const _project = await projectService.getOne(project);
+    if (!_project)
+        return responseError(res, 400, i18n.__('projects.notExists'));
 
     const addedFavs = favs.filter(fav => fav['id_usuario'] === user && fav['id_trabajo'] === project);
 
