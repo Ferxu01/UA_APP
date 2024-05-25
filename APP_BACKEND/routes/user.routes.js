@@ -6,5 +6,6 @@ router.get('/', userCtrl.getUsers);
 router.get('/:id', userCtrl.getUser);
 router.put('/:id', userCtrl.updateUser);
 router.delete('/:id', userCtrl.deleteUser);
+router.patch('/:id/password', userCtrl.updatePassword);
 
 module.exports = router;

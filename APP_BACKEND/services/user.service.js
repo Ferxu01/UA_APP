@@ -14,8 +14,29 @@ const getOne = async (id) => {
     return results[0];
 };
 
-const updateOne = async (id, params) => {
+const updateUserPassword = async ({ userId, password }) => {
+    const { query, values } = generateUpdateSqlQuery('usuario', {
+        pwd: password,
+    },
+    {
+        id: userId,
+    });
+    return await getQueryResults(query, values, conexion);
+};
 
+const updateOne = async (userId, { nombre, apellidos, fechaNacimiento, email, estudio, curso }) => {
+    const { query, values } = generateUpdateSqlQuery('usuario', {
+        nombre,
+        apellidos,
+        fechaNacimiento,
+        correo: email,
+        estudio,
+        curso
+    },
+    {
+        id: userId,
+    });
+    return await getQueryResults(query, values, conexion);
 };
 
 const deleteOne = async (id) => {
@@ -36,6 +57,7 @@ const getUserByEmail = async (email) => {
 module.exports = {
     getAll,
     getOne,
+    updateUserPassword,
     updateOne,
     deleteOne,
     getUserByEmail,

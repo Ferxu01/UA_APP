@@ -26,6 +26,19 @@ const registerSchema = z.object({
     }
 });
 
+const changePasswordSchema = z.object({
+    password: z.string(),
+    password2: z.string()
+})
+.superRefine(({ password2, password }, ctx) => {
+    if (password2 !== password) {
+        ctx.addIssue({
+            code: 'custom',
+            message: i18n.__('users.passwordsDontMatch'),
+        });
+    }
+});
+
 function validateLogin(obj) {
     return loginSchema.safeParseAsync(obj);
 }
@@ -34,7 +47,12 @@ function validateRegister(obj) {
     return registerSchema.safeParseAsync(obj);
 }
 
+function validateChangePasswordSchema(obj) {
+    return changePasswordSchema.safeParseAsync(obj);
+}
+
 module.exports = {
     validateLogin,
-    validateRegister
+    validateRegister,
+    validateChangePasswordSchema,
 };

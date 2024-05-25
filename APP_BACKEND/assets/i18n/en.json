@@ -68,6 +68,10 @@
 		"notRegistered": "This user is not registered in the system",
 		"removeSuccess": "Your account was successfully deleted",
 		"wrongEmailFormat": "This email format is not valid",
-		"passwordsDontMatch": "Passwords do not match"
+		"passwordsDontMatch": "Passwords do not match",
+		"updatePasswordError": "There was an error trying to update the password",
+		"updatePasswordSuccess": "The password has been updated correctly",
+		"updateUserError": "There was an error trying to update the user",
+		"updateUserSuccess": "The user has been successfully updated"
 	}
 }

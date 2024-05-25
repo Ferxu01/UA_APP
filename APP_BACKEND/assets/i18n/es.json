@@ -68,6 +68,10 @@
 		"notRegistered": "Este usuario no está registrado en el sistema",
 		"removeSuccess": "Tu cuenta se eliminó correctamente",
 		"wrongEmailFormat": "Este formato de email no es válido",
-		"passwordsDontMatch": "Las contraseñas no coinciden"
+		"passwordsDontMatch": "Las contraseñas no coinciden",
+		"updatePasswordError": "Hubo un error intentando actualizar la contraseña",
+		"updatePasswordSuccess": "La contraseña se ha actualizado correctamente",
+		"updateUserError": "Hubo un error intentando actualizar el usuario",
+		"updateUserSuccess": "El usuario se ha actualizado correctamente"
 	}
 }
