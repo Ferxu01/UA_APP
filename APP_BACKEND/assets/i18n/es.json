@@ -1,4 +1,8 @@
 {
+	"token": {
+		"notExists": "No existe token de acceso al sistema. Por favor, autentícate en el sistema.",
+		"invalid": "El token no tiene un formato válido"
+	},
 	"login": {
 		"loginFailed": "Login fallido!!!",
 		"userNotFound": "No se ha encontrado el usuario con ese email",
