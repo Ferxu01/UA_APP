@@ -6,6 +6,7 @@ const responseError = require('../utils/messages/responseError');
 
 const i18n = require('../config/i18n');
 const { encriptaPassword } = require('../helpers/pass.helper');
+const fileUtils = require('../utils/file');
 
 const getUsers = async (req, res, next) => {
     const users = await userService.getAll();
@@ -24,6 +25,32 @@ const getUser = async (req, res, next) => {
         return responseError(res, 400, i18n.__('users.notFound'));
 
     return responseMessage(res, 200, user);
+};
+
+const updateAvatar = async (req, res, next) => {
+    const userId = req.params['id'];
+    const { data, fileName } = req.body;
+
+    const user = await userService.getOne(userId);
+
+    if (!user)
+        return responseError(res, 400, i18n.__('users.notFound'));
+
+    const resp = fileUtils.uploadFile({ data, filename: fileName });
+    if (!resp.filename && !resp.filepath)
+        return responseError(res, 400, i18n.__('files.missingInfo'));
+
+    const { filename, filepath } = resp;
+
+    const response = await userService.updateUserAvatar({ userId, imgName: filename });
+
+    if (response.affectedRows === 0)
+        return responseError(res, 400, i18n.__('files.uploadError'));
+
+    if (user.imagen_perfil !== null)
+        fileUtils.removeFileFromDirectory(user.imagen_perfil);
+
+    return responseMessage(res, 200, i18n.__('files.uploadSuccess'));
 };
 
 const updatePassword = async (req, res, next) => {
@@ -66,7 +93,6 @@ const updateUser = async (req, res, next) => {
         estudio, 
         curso
     });
-    console.log(response);
 
     if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('users.updateUserError'));
@@ -76,10 +102,18 @@ const updateUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
     const id = Number(req.params['id']);
+    const user = await userService.getOne(id);
+
+    if (!user)
+        return responseError(res, 400, i18n.__('users.notFound'));
+    
     const response = await userService.deleteOne(id);
 
     if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('users.notRegistered'));
+
+    if (user.imagen_perfil !== null)
+        fileUtils.removeFileFromDirectory(user.imagen_perfil);
 
     return responseMessage(res, 200, i18n.__('users.removeSuccess'));
 };
@@ -87,6 +121,7 @@ const deleteUser = async (req, res, next) => {
 module.exports = {
     getUsers: catchedAsync(getUsers),
     getUser: catchedAsync(getUser),
+    updateAvatar: catchedAsync(updateAvatar),
     updatePassword: catchedAsync(updatePassword),
     updateUser: catchedAsync(updateUser),
     deleteUser: catchedAsync(deleteUser),

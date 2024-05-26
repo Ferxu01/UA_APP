@@ -143,8 +143,6 @@ const searchProjects = async (queryParams) => {
 
     sql += ' ORDER BY t.numVisitas DESC';
 
-    console.log(sql);
-    console.log(values);
     return await getQueryResults(sql, values, conexion);
 };
 

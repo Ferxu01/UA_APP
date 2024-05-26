@@ -39,6 +39,16 @@ const updateOne = async (userId, { nombre, apellidos, fechaNacimiento, email, es
     return await getQueryResults(query, values, conexion);
 };
 
+const updateUserAvatar = async ({ userId, imgName }) => {
+    const { query, values } = generateUpdateSqlQuery('usuario', {
+        imagen_perfil: imgName,
+    },
+    {
+        id: userId,
+    });
+    return await getQueryResults(query, values, conexion);
+};
+
 const deleteOne = async (id) => {
     const { query, values } = generateDeleteSqlQuery('usuario', {
         id: id
@@ -59,6 +69,7 @@ module.exports = {
     getOne,
     updateUserPassword,
     updateOne,
+    updateUserAvatar,
     deleteOne,
     getUserByEmail,
 };
