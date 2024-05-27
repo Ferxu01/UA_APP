@@ -1,0 +1,107 @@
+{
+    "pageTitle": {
+        "home": "Home - RepoUA",
+        "search": "Search - RepoUA",
+        "login": "Login - RepoUA",
+        "register": "Register - RepoUA",
+        "profile": "Profile - RepoUA",
+        "myProfile": "My profile - RepoUA",
+        "myList": "Favourite projects - RepoUA",
+        "viewProject": "View project - RepoUA",
+        "uploadProject": "Upload project - RepoUA",
+        "formComment": "Comment project - RepoUA"
+    },
+    "header": {
+        "login": "Log in",
+        "register": "Sign up",
+        "uploadProject": "Upload project",
+        "myProfile": "My profile"
+    },
+    "footer": {
+        "home": "Home",
+        "search": "Search",
+        "myList": "My list"
+    },
+    "index": {
+        "forYou": "For you",
+        "mostVisited": "Most visited",
+        "degrees": "Degrees",
+        "masters": "Masters",
+        "featuredUsers": "Featured users"
+    },
+    "search": {
+        "form": {
+            "enterSearchLabel": "Enter your search:",
+            "enterSearchText": "Search:",
+            "selectProjectUserLabel": "Projects or users:",
+            "selectProjectUserText": "Choose between user or project",
+            "selectTagsLabel": "Tags:",
+            "selectTagsText": "Choose a tag",
+            "selectStudiesLabel": "Studies:",
+            "selectStudiesText": "Choose some studies",
+            "searchBtn": "Search"
+        }
+    },
+    "login": {
+        "form": {
+            "emailLabel": "Email",
+            "passwordLabel": "Password"
+        },
+        "recoverPasswordLabel": "Have you forgotten your password?",
+        "recoverPasswordLink": "Get it back",
+        "newAccountLabel": "Don't you have an account yet?",
+        "newAccountLink": "Sign up",
+        "loginBtn": "Log in"
+    },
+    "register": {
+        "form": {
+            "nameLabel": "Name",
+            "surnameLabel": "Surbame",
+            "studiesLabel": "Studies",
+            "courseLabel": "Course",
+            "emailLabel": "Email",
+            "passwordLabel": "Password",
+            "passwordConfirmLabel": "Repeat password"
+        },
+        "loginAccountLabel": "Do you already have an account?",
+        "loginAccountLink": "Log in",
+        "registerBtn": "Sign up"
+    },
+    "myList": {
+        "favouriteProjectsHeader": "Projects you like"
+    },
+    "profile": {
+        "profileHeader": "My profile",
+        "userProfileHeader": "User profile",
+        "editImgLink": "Edit image",
+        "nameLabel": "Name:",
+        "surnameLabel": "Surname:",
+        "emailLabel": "Email:",
+        "studiesLabel": "Studies:",
+        "courseLabel": "Course:",
+        "signOutBtn": "Sign out",
+        "myProjectsTitle": "My projects",
+        "lastProjectsTitle": "Latest projects:"
+    },
+    "uploadProject": {
+        "form": {
+            "titleLabel": "Title: (*)",
+            "titleText": "Project title",
+            "imageLabel": "Cover image: (*)",
+            "attachedFileLabel": "Attached files: (*)",
+            "descriptionLabel": "Description:",
+            "descriptionText": "Project description...",
+            "tagsLabel": "Tags:",
+            "tagsText": "Tags...",
+            "addTag": "Add",
+            "addedTagsLabel": "Added tags:",
+            "allowComments": "Allow comments:",
+            "uploadProjectBtn": "Upload project"
+        }
+    },
+    "viewProject": {
+        "descriptionLabel": "Description",
+        "commentsLabel": "Comments",
+        "disabledCommentsLabel": "This post has comments disabled"
+    }
+}

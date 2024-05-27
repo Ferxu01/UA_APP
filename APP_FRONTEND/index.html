@@ -6,9 +6,11 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" id="estilo-css">
+    <script src="./js/language.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/nav.js"></script>
     <script src="./js/header.js"></script>
+    <script src="./js/translatePageTexts.js"></script>
     <title>Inicio - RepoUA</title>
     <script>
         // Establecer el estilo inicial al cargar la página
@@ -31,7 +33,7 @@
 </header>
 
 <main class ="main">
-    <h3>Para ti</h3>
+    <h3 class="forYou">Para ti</h3>
 
 <section class="botonesCarrusel">
     <button id="prevButton" class="prev-button" onclick="anteriorTrabajo()">&lt;</button>
@@ -41,7 +43,7 @@
     <button id="nextButton" class="next-button"onclick="siguienteTrabajo()">&gt;</button>
 </section>
 
-<h3>Más visitados</h3>
+<h3 class="mostVisited">Más visitados</h3>
 <section class="MasVistos">
     <article class="Trabajo">
         <h3>Titulo</h3>
@@ -60,7 +62,7 @@
     
 </section>
 
-<h3>Grados</h3>
+<h3 class="degreeHeader">Grados</h3>
 <section class="botonesCarrusel">
     <button id="prevButton" class="prev-button" onclick="anteriorGrado()">&lt;</button>
     <div class="Grados" id="Grados">
@@ -70,7 +72,7 @@
 </section>
 
 
-<h3>Másteres</h3>
+<h3 class="masterHeader">Másteres</h3>
 
 <section class="botonesCarrusel">
     <button id="prevButton" class="prev-button" onclick="anteriorMaster()">&lt;</button>
@@ -80,7 +82,7 @@
     <button id="nextButton" class="next-button"onclick="siguienteMaster()">&gt;</button>
 </section>
 
-<h3>Usuarios destacados</h3>
+<h3 class="featuredUsers">Usuarios destacados</h3>
 <div class="botonesCarruselUsuario">
     <button id="prevButton" class="prev-button" onclick="anteriorUsuario()">&lt;</button>
     <section class="Usuarios" id="Usuarios">
@@ -104,5 +106,6 @@
         Masteres()
         Usuario()
         mostrarMenu();
+        translateIndexPage();
 </script>
 </html>

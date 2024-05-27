@@ -1,6 +1,6 @@
 
 function login(e){
-    event.preventDefault(e);
+    e.preventDefault();
 
     url = "http://localhost:3000/auth/login"
 

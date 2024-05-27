@@ -1,0 +1,107 @@
+{
+    "pageTitle": {
+        "home": "Inicio - RepoUA",
+        "search": "Buscar - RepoUA",
+        "login": "Inicia sesión - RepoUA",
+        "register": "Registro - RepoUA",
+        "profile": "Perfil - RepoUA",
+        "myProfile": "Mi perfil - RepoUA",
+        "myList": "Trabajos favoritos - RepoUA",
+        "viewProject": "Ver trabajo - RepoUA",
+        "uploadProject": "Subir trabajo - RepoUA",
+        "formComment": "Comentar trabajo - RepoUA"
+    },
+    "header": {
+        "login": "Inicia sesión",
+        "register": "Regístrate",
+        "uploadProject": "Subir trabajo",
+        "myProfile": "Mi perfil"
+    },
+    "footer": {
+        "home": "Inicio",
+        "search": "Buscar",
+        "myList": "Mi lista"
+    },
+    "index": {
+        "forYou": "Para ti",
+        "mostVisited": "Más visitados",
+        "degrees": "Grados",
+        "masters": "Másteres",
+        "featuredUsers": "Usuarios destacados"
+    },
+    "search": {
+        "form": {
+            "enterSearchLabel": "Introduce tu búsqueda:",
+            "enterSearchText": "Búsqueda",
+            "selectProjectUserLabel": "Trabajos o usuarios:",
+            "selectProjectUserText": "Elige entre usuario o proyecto",
+            "selectTagsLabel": "Etiquetas:",
+            "selectTagsText": "Elige una etiqueta",
+            "selectStudiesLabel": "Estudios:",
+            "selectStudiesText": "Elige unos estudios",
+            "searchBtn": "Buscar"
+        }
+    },
+    "login": {
+        "form": {
+            "emailLabel": "Correo electrónico",
+            "passwordLabel": "Contraseña"
+        },
+        "recoverPasswordLabel": "¿Has olvidade tu contraseña?",
+        "recoverPasswordLink": "Recupérala",
+        "newAccountLabel": "¿Aún no tienes una cuenta?",
+        "newAccountLink": "Regístrate",
+        "loginBtn": "Iniciar sesión"
+    },
+    "register": {
+        "form": {
+            "nameLabel": "Nombre",
+            "surnameLabel": "Apellidos",
+            "studiesLabel": "Estudios",
+            "courseLabel": "Curso",
+            "emailLabel": "Correo electrónico",
+            "passwordLabel": "Contraseña",
+            "passwordConfirmLabel": "Repetir contraseña"
+        },
+        "loginAccountLabel": "¿Ya tienes una cuenta?",
+        "loginAccountLink": "Inicia sesión",
+        "registerBtn": "Regístrate"
+    },
+    "myList": {
+        "favouriteProjectsHeader": "Trabajos que te gustan"
+    },
+    "profile": {
+        "profileHeader": "Mi perfil",
+        "userProfileHeader": "Perfil de usuario",
+        "editImgLink": "Editar imagen",
+        "nameLabel": "Nombre:",
+        "surnameLabel": "Apellidos:",
+        "emailLabel": "Email:",
+        "studiesLabel": "Estudios:",
+        "courseLabel": "Curso:",
+        "signOutBtn": "Cerrar sesión",
+        "myProjectsTitle": "Mis trabajos",
+        "lastProjectsTitle": "Últimos trabajos:"
+    },
+    "uploadProject": {
+        "form": {
+            "titleLabel": "Título: (*)",
+            "titleText": "Título del trabajo",
+            "imageLabel": "Imagen de portada: (*)",
+            "attachedFileLabel": "Archivos adjuntos: (*)",
+            "descriptionLabel": "Descripción:",
+            "descriptionText": "Descripción del trabajo...",
+            "tagsLabel": "Etiquetas:",
+            "tagsText": "Etiquetas...",
+            "addTag": "Añadir",
+            "addedTagsLabel": "Etiquetas añadidas:",
+            "allowComments": "Permitir comentarios:",
+            "uploadProjectBtn": "Subir trabajo"
+        }
+    },
+    "viewProject": {
+        "descriptionLabel": "Descripción",
+        "commentsLabel": "Comentarios",
+        "disabledCommentsLabel": "Esta publicación tiene los comentarios desactivados"
+    }
+}
