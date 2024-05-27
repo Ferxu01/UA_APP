@@ -8,6 +8,7 @@
     <link rel="stylesheet" id="estilo-css">
     <script src="./js/nav.js"></script>
     <script src="./js/header.js"></script>
+    <script src="./js/search.js"></script>
     <title>Inicio - RepoUA</title>
     <script>
         // Establecer el estilo inicial al cargar la página
@@ -33,17 +34,30 @@
    <div class="form-busqueda">
         <form class="formulario-busq">
             <div>
-                <input class="estiloform" type="text" name="autor" id="autor" placeholder="Introduce tu búsqueda">
+                <label for="autor">Introduce tu búsqueda:</label>
+                <input class="estiloform" type="text" name="autor" id="autor" placeholder="Búsqueda">
+            </div>
+
+            <div>
+                <label for="selProyectPerson">Proyectos o usuarios:</label>
+                <select name="selProyectPerson" id="selProyectPerson" class="estiloform">
+                    <option value="" disabled selected>Elige entre usuario o proyecto</option>
+                    <option value="0">Proyectos</option>
+                    <option value="1">Usuarios</option>
+                </select>
             </div>
 
             <div> 
-                <input class="estiloform" type="text" name="etiqueta" id="etiqueta" placeholder="Etiquetas">
+                <label for="etiqueta">Etiquetas:</label>
+                <select class="estiloform" type="text" name="etiqueta" id="etiqueta" placeholder="Etiquetas">
+                    <option value="" disabled selected>Elige una etiqueta</option>
+                </select>
             </div>
 
             <div> 
-                <select name="estudios" id="estudios" placeholder="Estudios" class="estiloform">
-                    <option value="ing.mult">Ingeniería Multimedia</option>
-                    <option value="ing.inf">Ingeniería Informática</option>
+                <label for="estudios">Estudios:</label>
+                <select name="estudios" id="estudios" class="estiloform">
+                    <option value="" disabled selected>Elige unos estudios</option>
                 </select>
             </div>
             <input id="buscar" type="submit" value="Buscar">
@@ -132,5 +146,7 @@
 </body>
 <script>
         mostrarMenu();
+        cargaGradoMaster();
+        cargaEtiquetas();
 </script>
 </html>
