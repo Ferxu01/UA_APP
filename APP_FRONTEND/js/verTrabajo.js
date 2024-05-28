@@ -30,10 +30,10 @@ function trabajo() {
                                 <div id="etiqs"></div>
                             </div>
                         </div>
-                        <h2>Descripción</h2>
+                        <h2 class="descriptionHeader">Descripción</h2>
                         <section><article><p id="desc">${r.response.descripcion}</p></article></section>
                         <hr>
-                        <h2>Comentarios</h2>
+                        <h2 class="commentsHeader">Comentarios</h2>
                         <div id="dejarcomentario"></div>
                         <section id="coments"></section>
                         </div>
@@ -131,7 +131,7 @@ function verComentarios(allcom){
         let html='';
         html+=`
             <article>
-            <p>Esta publicación tiene los comentarios desactivados</p>
+            <p class="disabledCommentsMsg">Esta publicación tiene los comentarios desactivados</p>
             </article>
         `;
         document.querySelector('#coments').innerHTML += html;
@@ -158,3 +158,8 @@ function pedirForm(allcom){
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    translateNav();
+    translateViewProjectPage();
+});

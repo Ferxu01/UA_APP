@@ -1,11 +1,11 @@
 'use strict';
 
 function setLanguage(lang) {
-    sessionStorage.setItem('[LANG]', lang);
+    localStorage.setItem('[LANG]', lang);
 }
 
 function getLanguage() {
-    return sessionStorage.getItem('[LANG]') || 'es';
+    return localStorage.getItem('[LANG]') || 'es';
 }
 
 async function getLangFile() {

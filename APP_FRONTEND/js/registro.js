@@ -111,3 +111,7 @@ function cargaGradoMaster(){
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    translateRegisterPage();
+});

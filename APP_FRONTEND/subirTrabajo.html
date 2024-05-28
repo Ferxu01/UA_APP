@@ -6,8 +6,11 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" id="estilo-css">
+    <script src="./js/language.js"></script>
     <script src="./js/nav.js"></script>
     <script src="./js/header.js"></script>
+    <script src="./js/subirTrabajo.js"></script>
+    <script src="./js/translatePageTexts.js"></script>
     <title>Sube un trabajo - RepoUA</title>
     <script>
         // Establecer el estilo inicial al cargar la página
@@ -45,51 +48,51 @@
         <form action="index.html" class="nuevo-trabajo">
 
         <div>
-            <label>Título: (*)</label>
-            <input type="text" name="titulo" required maxlength="100" placeholder="Título del trabajo">
+            <label class="titleLabel">Título: (*)</label>
+            <input type="text" id="title" name="titulo" required maxlength="100" placeholder="Título del trabajo">
         </div>
 
         <div>
-            <label>Imagen de portada: (*)</label>
+            <label class="imgLabel">Imagen de portada: (*)</label>
             <input type="file" id="subirfoto" accept="image/*">
         </div>
 
         <div>
-            <label>Archivos adjuntos: (*)</label>
+            <label class="attachedFilesLabel">Archivos adjuntos: (*)</label>
             <input type="file" id="subirfoto" accept=".pdf" multiple>
         </div>
 
         <div>
-            <label>Descripción:</label>
-            <textarea required placeholder="Descripción del trabajo..."></textarea>
+            <label class="descripcionLabel">Descripción:</label>
+            <textarea required id="description" placeholder="Descripción del trabajo..."></textarea>
         </div>
 
        
             
         <div>
-            <label for="etiquetas">Etiquetas:</label><br>
+            <label class="tagsLabel" for="etiquetas">Etiquetas:</label><br>
             <input type="text" id="etiquetas" name="etiquetas" list="lista-etiquetas" placeholder="Etiquetas...">
             <datalist id="lista-etiquetas">
                 <option value="Multimedia">
                 <option value="Usabilidad">
                 <option value="Accesibilidad">
             </datalist>
-            <button type="button">Añadir</button><br>
+            <button class="addTagBtn" type="button">Añadir</button><br>
         </div>
 
         <div>
-            <label>Etiquetas añadidas:</label>
+            <label class="addedTagsLabel">Etiquetas añadidas:</label>
             <p>Multimedia<button type="button">x</button></p>
             <p>Usabilidad<button type="button">x</button></p>
         </div>
 
         <div>
-            <label>Permitir comentarios:</label>
+            <label class="allowCommentsLabel">Permitir comentarios:</label>
             <input type="checkbox" name="sicom" value="si">
         </div>
         <br>
-        <button type="submit" class="subir-trabajo">Subir trabajo</button><br>
-        <button type="reset" class="subir-trabajo">Limpiar formulario</button>
+        <button type="submit" class="uploadProjectBtn subir-trabajo">Subir trabajo</button><br>
+        <button type="reset" class="resetFormBtn subir-trabajo">Limpiar formulario</button>
 
          
         </form>

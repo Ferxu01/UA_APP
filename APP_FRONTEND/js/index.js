@@ -178,5 +178,3 @@ window.addEventListener('resize', function () {
     Masteres();
     Usuario();
 });
-
-

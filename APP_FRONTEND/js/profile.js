@@ -8,25 +8,25 @@ function miperfil() {
         let html = '';
 
         html += `<article>
-                    <span>Nombre:</span>
+                    <span class="profileName">Nombre:</span>
                     <span class="dato">${usu.nombre}</span>
                 </article>
                 <article>
-                    <span>Apellidos:</span>
+                    <span class="profileSurname">Apellidos:</span>
                     <span class="dato">${usu.apellidos}</span>
                 </article>
                 <article>
-                    <span>Email:</span>
+                    <span class="profileEmail">Email:</span>
                     <span class="dato">${usu.correo}</span>
     
                 </article>
                 <article>
-                    <span>Estudios:</span>
+                    <span class="profileStudies">Estudios:</span>
                     <span id="estud" class="dato"></span>
     
                 </article>
                 <article>
-                    <span>Curso:</span>
+                    <span class="profileCourse">Curso:</span>
                     <span class="dato">${usu.curso}</span>
     
                 </article>`;
@@ -61,3 +61,8 @@ function logout() {
     localStorage.removeItem('[SESSION]');
     location.href = 'index.html';
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    translateNav();
+    translateProfilePage();
+});
