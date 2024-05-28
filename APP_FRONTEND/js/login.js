@@ -87,3 +87,7 @@ function ponMsgErr(msg){
 
     divErr[0].appendChild(msgErr);
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    translateLoginPage();
+});

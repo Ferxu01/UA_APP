@@ -47,7 +47,7 @@
             "emailLabel": "Correo electrónico",
             "passwordLabel": "Contraseña"
         },
-        "recoverPasswordLabel": "¿Has olvidade tu contraseña?",
+        "recoverPasswordLabel": "¿Has olvidado tu contraseña?",
         "recoverPasswordLink": "Recupérala",
         "newAccountLabel": "¿Aún no tienes una cuenta?",
         "newAccountLink": "Regístrate",

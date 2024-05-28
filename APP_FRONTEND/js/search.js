@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    translateNav();
+    translateSearchPage();
+
     const selProyectPerson = document.getElementById('selProyectPerson');
     const etiqueta = document.getElementById('etiqueta');
 
