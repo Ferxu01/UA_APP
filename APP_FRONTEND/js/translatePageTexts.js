@@ -136,7 +136,8 @@ async function translateUploadProjectPage() {
     addTagBtn.textContent = i18nFile.uploadProject.form.addTag;
 
     const addedTagsLabel = document.querySelector('.addedTagsLabel');
-    addedTagsLabel.textContent = i18nFile.uploadProject.form.addedTagsLabel;
+    if (addedTagsLabel !== null)
+        addedTagsLabel.textContent = i18nFile.uploadProject.form.addedTagsLabel;
 
     const allowCommentsLabel = document.querySelector('.allowCommentsLabel');
     allowCommentsLabel.textContent = i18nFile.uploadProject.form.allowComments;
