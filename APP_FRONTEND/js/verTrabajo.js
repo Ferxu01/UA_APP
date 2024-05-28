@@ -11,12 +11,22 @@ function trabajo() {
             .then(r => {
                 console.log(r);
                 if (r.status === 200) {
-                    let html = '';
+                        let html = '';
                         //<p>${r.response.fecha}</p> falta añadir, no tienen propiedad fecha aun
                         let id_usu = r.response.usuario;
                         let allow_comments = r.response.comentarios;
                         console.log(id_usu);
                         console.log(allow_comments);
+
+                        const fecha = new Date(r.response.fecha);
+                        const dia = String(fecha.getDate()).padStart(2, '0');
+                        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
+                        const año = fecha.getFullYear();
+
+                        // Formatear la fecha como dd/mm/aaaa
+                        let fechabuena = `${dia}/${mes}/${año}`;
+
+
                         html += `
                         <div class="cuadrotrabajo">
                         <div class="tituloyfecha">
@@ -27,6 +37,7 @@ function trabajo() {
                             <div>
                             
                                 <p id="autor-receta"></p>
+                                <p id="fecha-trabajo">${fechabuena}</p>
                                 <div id="etiqs"></div>
                             </div>
                         </div>
@@ -117,7 +128,9 @@ function verComentarios(allcom){
                                 <div class="comentario">
                                     <p>${comentario.nombre} ${comentario.apellidos}</p>
                                 </div>
-                                <p>${comentario.texto}</p>
+                                <div class="comentario2">
+                                     <p>${comentario.texto}</p>
+                                </div>
                                 </article>
                             `;
                         });
@@ -141,17 +154,18 @@ function verComentarios(allcom){
 //[SESSION] localStorage.getItem('[SESSION]')
 function pedirForm(allcom){
     if(localStorage.getItem('[SESSION]')){
+        let xhr= new XMLHttpRequest();
         if(allcom === 1){
-            let url="formcomentario.html",
-            xhr= new XMLHttpRequest();
+            let url="formcomentario.html";
             xhr.open("GET",url,true);
             xhr.onload=function(){
             let html=xhr.responseText;
             document.querySelector('#dejarcomentario').innerHTML += html;
         }
     }
-    xhr.send();
-    }else{
+        xhr.send();
+    }
+    else{
         if(allcom === 1){
         let html=` <p>Para dejar un comentario tienes que  <a class="registrate" href="login.html">iniciar sesión</a></p>`;
         document.querySelector('#dejarcomentario').innerHTML += html; 

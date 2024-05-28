@@ -10,8 +10,12 @@
     <script src="./js/nav.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/search.js"></script>
+<<<<<<< HEAD
+    <title>Buscar - RepoUA</title>
+=======
     <script src="./js/translatePageTexts.js"></script>
     <title>Inicio - RepoUA</title>
+>>>>>>> acb5757d38f585b1bbf4dd4a69deb2301af652a9
     <script>
         // Establecer el estilo inicial al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
@@ -34,7 +38,7 @@
 
 <main class ="main">
    <div class="form-busqueda">
-        <form class="formulario-busq">
+        <form class="formulario-busq" onsubmit="busqueda(event)">
             <div>
                 <label class="searchLabel" for="autor">Introduce tu búsqueda:</label>
                 <input class="searchInput estiloform" type="text" name="autor" id="autor" placeholder="Búsqueda">
@@ -43,8 +47,7 @@
             <div>
                 <label class="selectProjectUserLabel" for="selProyectPerson">Proyectos o usuarios:</label>
                 <select name="selProyectPerson" id="selProyectPerson" class="estiloform">
-                    <option class="selectType" value="" disabled selected>Elige entre usuario o proyecto</option>
-                    <option value="0">Proyectos</option>
+                    <option value="0" selected>Proyectos</option>
                     <option value="1">Usuarios</option>
                 </select>
             </div>
@@ -66,77 +69,9 @@
         </form>
     </div>
 
-    <div class="AnadidosReciente">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-   </div>
+    <section class="respuestaBusqueda" id="respuestaBusqueda">
 
-   <div class="AnadidosReciente">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-   </div>
-
-   <div class="AnadidosReciente">
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-   </div>
+    </section>
 
 </main>
 <footer>

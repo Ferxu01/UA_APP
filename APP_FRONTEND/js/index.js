@@ -26,7 +26,7 @@ function Trabajos() {
                     <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
                     <h3>${foto.titulo}</h3>
                     <div class="contenedor">
-                    <img src="img/${foto.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">
+                    <img src="img/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
                     <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">
                     <div>
                     </article>`;
@@ -113,7 +113,7 @@ function Usuario() {
                 let foto = r.response[currentIndex];
                 html += `<article class="Usuario">
                 <a href="user.html?ID=${encodeURIComponent(foto.id)}">
-                <img src="img/${foto.imagen_perfil}"class="portadaTrabajo">
+                <img src="../APP_BACKEND/files/${foto.imagen_perfil}"class="profilePicture">
                 <h3>${foto.nombre}</h3>
                 </a>
                     </article>`;

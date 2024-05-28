@@ -1,4 +1,7 @@
-//let url = "http://localhost:3000";
+let url = "http://localhost:3000";
+let i = 0;
+let screenWidth = window.innerWidth;
+let id;
 
 function miperfil() {
     if(localStorage.getItem('[SESSION]')){
@@ -6,8 +9,15 @@ function miperfil() {
         let usu = JSON.parse(localStorage.getItem('[SESSION]'));
         let estud = usu.estudio;
         let html = '';
+        let html2 = '';
+        id = usu.id;
 
-        html += `<article>
+        html2 += `
+                <img src="../APP_BACKEND/files/${usu.imagen_perfil}" id="profilePicture" class="profilePicture" alt="Imagen de usuario por defecto" width="100" title="Usuario">
+                `;
+
+        html += `
+                <article>
                     <span class="profileName">Nombre:</span>
                     <span class="dato">${usu.nombre}</span>
                 </article>
@@ -32,6 +42,7 @@ function miperfil() {
                 </article>`;
 
         document.querySelector('#datos_perfil_usuario').innerHTML = html;
+        document.querySelector('#foto_perfil_usuario').innerHTML = html2;
 
         nomestudios(estud);
     }
@@ -66,3 +77,101 @@ document.addEventListener('DOMContentLoaded', (event) => {
     translateNav();
     translateProfilePage();
 });
+
+
+function Trabajos() {
+    fetch(`${url}/project`)
+    .then(response => response.json())
+    .then(r => {
+        console.log(r);
+        if (r.status == 200) {
+            let html = '';
+            let tam = r.response.length;
+
+            let trabajosPorPagina = 1;
+            if (screen.width > 767 && screen.width<=1023) {
+                trabajosPorPagina = 4;
+            }
+            if (screen.width > 1023) {
+                trabajosPorPagina = 9;
+            }
+
+            for (let j = 0; j < trabajosPorPagina; j++) {
+                let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
+                let foto = r.response[currentIndex];
+                html += `<article class="Trabajo">
+                    <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
+                    <h3>${foto.titulo}</h3>
+                    <div class="contenedor">
+                    <img src="img/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
+                    <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">
+                    <div>
+                    </article>`;
+            }
+
+            document.querySelector('#ParaTi').innerHTML = html;
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function anteriorTrabajo() {
+    if(i > 0){
+        i--;
+    }
+    Trabajos();
+}
+
+function siguienteTrabajo() {
+    i++;
+    Trabajos();
+}
+
+
+function changeProfilePicture(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const imgDataUrl = e.target.result;
+            document.getElementById('profilePicture').src = imgDataUrl;
+
+            const userId = id; //
+            const apiUrl = `${url}/user/${userId}/avatar`;
+
+            const obj = {
+                'fileName': 'fotoperfil.png',
+                'data': imgDataUrl
+            }
+
+            // Enviar la petición PATCH
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(obj)
+                });
+
+                const result = await response.json();
+                console.log('Imagen de perfil actualizada:', result);
+
+                fetch(`${url}/user/${userId}`, {
+                    method: 'GET'
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if(res.status == 200){
+                        localStorage.setItem('[SESSION]', JSON.stringify(res.response));
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
