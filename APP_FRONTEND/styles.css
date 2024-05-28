@@ -275,10 +275,12 @@ footer>div>a>div>p{
 }
 .perfil_usuario>img{
     width: 110px;
-  height:auto;
-  padding: 0.8em;
+    height: 110px;
+    padding: 0.8em;
+    border-radius: 20px;
 }
 .datos_perfil_usuario{
+    margin-top: 11px;
     background-color: var(--color-primario);
     padding: 0.8em;
     border-radius: 10px;
@@ -302,6 +304,14 @@ footer>div>a>div>p{
     display: flex;
     justify-content: space-between;
 }
+
+.profilePicture {
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+
 
 
 
@@ -639,11 +649,19 @@ section > article > p {
 
 section > article > div > p {
   text-align: justify;
-  padding: 1em;
+  padding-left: 1em;
   padding-bottom: 0em;
 }
 
 .comentario{
+  font-size: 20px;
+  display: flex;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 0em;
+}
+
+.comentario2{
   display: flex;
   justify-content: space-between;
 }
@@ -657,8 +675,9 @@ section > article > div > p {
 }
 
 
-
-
+#fileInput {
+    display: none;
+}
 
 
 

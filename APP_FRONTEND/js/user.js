@@ -11,7 +11,12 @@ function usuario() {
                 console.log(r);
                 if (r.status === 200) {
                     let html = '';
+                    let html2 = '';
                     let usu = r.response;
+
+                    html2 += `
+                            <img src="../APP_BACKEND/files/${usu.imagen_perfil}" id="profilePicture" class="profilePicture" alt="Imagen de usuario por defecto" width="100" title="Usuario">
+                            `;
 
                     html += `<article>
 	                    <span class="profileName">Nombre:</span>
@@ -40,6 +45,7 @@ function usuario() {
                     `;
 
                     document.querySelector('#datos_user').innerHTML = html;
+                    document.querySelector('#foto_perfil_usuario').innerHTML = html2;
 
                     
                     

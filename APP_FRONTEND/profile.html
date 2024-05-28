@@ -7,7 +7,6 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" >
     <link rel="stylesheet" id="estilo-css">
     <script src="./js/language.js"></script>
-    <script src="./js/index.js"></script>
     <script src="./js/profile.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/nav.js"></script>
@@ -39,8 +38,11 @@
 
 
         <div class="perfil_usuario">
-            <img src="./img/defaultprofile.png" alt="Imagen de usuario por defecto" width="100" title="Usuario">
-            <a href="" class="registrate" id="editImgLink">Editar imagen</a>
+            <div id="foto_perfil_usuario">
+                
+            </div>
+            <button class="cerrarses" id="editImgLink" onclick="document.getElementById('fileInput').click()">Editar imagen</button>
+            <input type="file" id="fileInput" accept="image/*" onchange="changeProfilePicture(event)">
             <div class="datos_perfil_usuario" id="datos_perfil_usuario">
                 
             </div>
@@ -63,11 +65,11 @@
     
     </div>
     </footer>
-</body>
-</html>
-<script>
+    <script>
     Trabajos();
     miperfil();
     mostrarMenu();
  
-</script>
+    </script>
+</body>
+</html>
