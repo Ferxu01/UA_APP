@@ -21,7 +21,10 @@ const postTag = async (req, res, next) => {
     if (response.affectedRows === 0)
         return responseError(res, 400, i18n.__('tags.addError'));
     
-    return responseMessage(res, 200, i18n.__('tags.addSuccess'));
+    return responseMessage(res, 200, {
+        id: response.insertId,
+        message: i18n.__('tags.addSuccess')
+    });
 };
 
 const getProjectTags = async (req, res, next) => {

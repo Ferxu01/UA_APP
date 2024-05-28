@@ -29,7 +29,13 @@ const uploadFile = ({ data, filename }) => {
     const directoryPath = path.join(__dirname, '../files');
     const filepath = path.join(directoryPath, `${formatDate}_${filename}.${extension}`);
 
-    const base64Data = data.replace(/^data:image\/\w+;base64,/, '');
+    let base64Data = '';
+    if (extension === 'pdf') {
+        base64Data = data.replace(/^data:application\/pdf;base64,/, '');
+    } else if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
+        base64Data = data.replace(/^data:image\/\w+;base64,/, '');
+    }
+    
     const binaryData = convertBase64ToFile(base64Data);
 
     fs.writeFile(filepath, binaryData, err => {
