@@ -3,15 +3,25 @@
 function setLanguage(lang) {
     localStorage.setItem('[LANG]', lang);
 
+    let pagina = document.querySelector('body').getAttribute('data-pagina');
+
     translateNav();
-    translateProfilePage();
-    translateIndexPage();
-    translateSearchPage();
-    translateLoginPage();
-    translateRegisterPage();
-    translateViewProjectPage();
-    translateUploadProjectPage();
-    translateMyListPage();
+    if (pagina === 'index')
+        translateIndexPage();
+    else if (pagina === 'buscar')
+        translateSearchPage();
+    else if (pagina === 'login')
+        translateLoginPage();
+    else if (pagina === 'milista')
+        translateMyListPage();
+    else if (pagina === 'miperfil' || pagina === 'usu')
+        translateProfilePage();
+    else if (pagina === 'registro')
+        translateRegisterPage();
+    else if (pagina === 'nueva')
+        translateUploadProjectPage();
+    else if (pagina === 'viewTrabajo')
+        translateViewProjectPage();
 }
 
 function getLanguage() {
