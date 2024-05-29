@@ -124,7 +124,7 @@ function Trabajos() {
                 let foto = r.response[currentIndex];
                 if(foto.usuario === userid){
                     html += `<article class="Trabajo">
-                        <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
+                        <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id_trabajo)}">
                         <h3>${foto.titulo}</h3>
                         <div class="contenedor">`;
 
