@@ -22,6 +22,10 @@ function Trabajos() {
                 trabajosPorPagina = 9;
             }
 
+            if (tam < trabajosPorPagina) {
+                trabajosPorPagina = tam;
+            }
+
             for (let j = 0; j < trabajosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
@@ -66,6 +70,10 @@ function Grados() {
                 fotosPorPagina = 3;
             }
 
+            if (tam < fotosPorPagina) {
+                fotosPorPagina = tam;
+            }
+
             for (let j = 0; j < fotosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
@@ -95,6 +103,10 @@ function Masteres() {
                 fotosPorPagina = 3;
             }
 
+            if (tam < fotosPorPagina) {
+                fotosPorPagina = tam;
+            }
+
             for (let j = 0; j < fotosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
@@ -122,6 +134,10 @@ function Usuario() {
             let fotosPorPagina = 1;
             if (screen.width > 400) {
                 fotosPorPagina = 3;
+            }
+
+            if (tam < fotosPorPagina) {
+                fotosPorPagina = tam;
             }
 
             for (let j = 0; j < fotosPorPagina; j++) {

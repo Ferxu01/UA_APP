@@ -50,9 +50,9 @@ function miperfil() {
 ///studies/degree/{id}
 
 function nomestudios(estud) {
-    let url = "http://localhost:3000";
     if (estud != 0) {
-        fetch(`${url}/studies/degree/${estud}`)
+        let url = getRequestUrl(`/studies/degree/${estud}`);
+        fetch(url)
             .then(response => response.json())
             .then(r => {
                 console.log(r);
@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 function Trabajos() {
-    fetch(`${url}/project`)
+    let url = getRequestUrl('/project');
+    fetch(url)
     .then(response => response.json())
     .then(r => {
         console.log(r);
@@ -94,6 +95,10 @@ function Trabajos() {
             }
             if (screen.width > 1023) {
                 trabajosPorPagina = 9;
+            }
+
+            if (tam < trabajosPorPagina) {
+                trabajosPorPagina = tam;
             }
 
             for (let j = 0; j < trabajosPorPagina; j++) {
@@ -137,8 +142,7 @@ function changeProfilePicture(event) {
             const imgDataUrl = e.target.result;
             document.getElementById('profilePicture').src = imgDataUrl;
 
-            const userId = id; //
-            //const apiUrl = `${url}/user/${userId}/avatar`;
+            const userId = id;
             const apiUrl = getRequestUrl(`/user/${userId}/avatar`);
 
             const obj = {
