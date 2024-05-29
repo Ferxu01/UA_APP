@@ -199,10 +199,23 @@ footer>div>a>div>p{
    margin: 0.5em;
    justify-items: center;
 }
+
+
+.Trabajo > a > h3 {
+    margin-top: 0;
+    margin-bottom: 3px;
+    color: var(--color-texto1);
+    text-overflow: ellipsis;
+    white-space:  nowrap;
+    overflow: hidden;
+    width: 80px;
+}
+
 .Trabajo >a>h3{
     margin-top: 0px;
     margin-bottom: 3px;
     color: var(--color-texto1);
+    text-overflow: ellipsis;
 }
 .Trabajo >h3{
     color: var(--color-texto1);
