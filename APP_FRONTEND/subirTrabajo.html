@@ -27,7 +27,8 @@
 
     <main>
         <div id="cuadro-nuevo">
-        <form onsubmit="subirTrabajo(event)" class="nuevo-trabajo">
+        <!-- onsubmit="subirTrabajo(event)" -->
+        <form id="formulario" onsubmit="subirTrabajo(event)" method="post" enctype="multipart/form-data"  class="nuevo-trabajo">
 
         <div>
             <label class="titleLabel">Título: (*)</label>

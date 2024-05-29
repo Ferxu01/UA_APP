@@ -27,7 +27,7 @@ function miperfil() {
                 </article>
                 <article>
                     <span class="profileEmail">Email:</span>
-                    <span class="dato">${usu.correo}</span>
+                    <span class="dato">${usu.email}</span>
     
                 </article>
                 <article>
@@ -70,6 +70,7 @@ function nomestudios(estud) {
 
 function logout() {
     localStorage.removeItem('[SESSION]');
+    localStorage.removeItem('[TOKEN]');
     location.href = 'index.html';
 }
 

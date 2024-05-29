@@ -19,15 +19,14 @@ const getFile = async (filename) => {
 };
 
 const uploadFile = ({ data, filename }) => {
-    filename = filename.split('.')[0];
-
-    let extension = data.split(';')[0];
-    extension = extension.split('/')[1];
+    const fichero = filename.split('.');
+    const nomFichero = fichero[0];
+    const extension = fichero[1];
 
     const formatDate = moment().format('DD-MM-YYYY_HH-mm-ss');
 
     const directoryPath = path.join(__dirname, '../files');
-    const filepath = path.join(directoryPath, `${formatDate}_${filename}.${extension}`);
+    const filepath = path.join(directoryPath, `${formatDate}_${nomFichero}.${extension}`);
 
     let base64Data = '';
     if (extension === 'pdf') {

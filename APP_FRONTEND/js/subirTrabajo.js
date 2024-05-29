@@ -37,13 +37,16 @@ function actualizaEtiquetas(tag) {
 }
 
 async function postFicheroATrabajo(idTrabajo, body) {
+    let idFichero = 25;
+    //const url = getRequestUrl(`/project/${idTrabajo}/files/${idFichero}`);
     const url = getRequestUrl(`/project/${idTrabajo}/files`);
+    console.log(url);
     return fetch(url, {
         method: 'POST',
-        body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(body)
     })
     .then(res => res.json());
 }
@@ -135,43 +138,42 @@ async function subirTrabajo(e) {
         if (opcion !== null) {
             //AGREGAR LA ETIQUETA AL PROYECTO
             const res = await postTagToProject(idTrabajo, idEtiqueta);
-            console.log('ultima respuesta dada');
-            console.log(res);
         }
     }
 
     let inputImg = document.querySelector('input[name="adjunto"]');
-        const file = inputImg.files[0];
+    const file = inputImg.files[0];
+    const base64String = await convertirBase64(file);
 
-        const base64String = await convertirBase64(file);
-        console.log(base64String);
-        const respTrabajo = await postFicheroATrabajo(idTrabajo, {
-            'descripcion': '',
-            'fileName': file.name,
-            'alternativo': 'Fichero del trabajo',
-            'data': base64String
-        });
-        console.log(respTrabajo);
+    const objFile = {
+        'descripcion': '',
+        'fileName': file.name,
+        'alternativo': 'Fichero del trabajo',
+        'data': base64String
+    };
+    const respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
+    if (respTrabajo.status === 200)
+        location.href = 'profile.html';
 
-        // if (file) {
-        //     const reader = new FileReader();
+    // if (file) {
+    //     const reader = new FileReader();
 
-        //     reader.onload = async (event) => {
-        //         // Datos de la imagen en base64
-        //         const base64String = event.target.result;
+    //     reader.onload = async (event) => {
+    //         // Datos de la imagen en base64
+    //         const base64String = event.target.result;
 
-        //         // AGREGAR EL FICHERO DEL TRABAJO
-        //         // const respTrabajo = await postFicheroATrabajo(idTrabajo, {
-        //         //     'descripcion': '',
-        //         //     'fileName': file.name,
-        //         //     'alternativo': 'Fichero del trabajo',
-        //         //     'data': base64String
-        //         // });
-        //         // console.log(base64String);
-        //     };
+    //         // AGREGAR EL FICHERO DEL TRABAJO
+    //         // const respTrabajo = await postFicheroATrabajo(idTrabajo, {
+    //         //     'descripcion': '',
+    //         //     'fileName': file.name,
+    //         //     'alternativo': 'Fichero del trabajo',
+    //         //     'data': base64String
+    //         // });
+    //         // console.log(base64String);
+    //     };
 
-        //     reader.readAsDataURL(file);
-        // }
+    //     reader.readAsDataURL(file);
+    // }
 }
 
 function convertirBase64(file) {
@@ -212,7 +214,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     translateUploadProjectPage();
 
     const etiquetas = await obtenerEtiquetas();
-    console.log(etiquetas);
 
     const datalist = document.getElementById('lista-etiquetas');
     datalist.innerHTML = '';
