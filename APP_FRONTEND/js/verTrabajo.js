@@ -10,7 +10,6 @@ function trabajo() {
         fetch(url)
             .then(response => response.json())
             .then(r => {
-                console.log(r);
                 if (r.status === 200) {
                     aumentarVisitaTrabajo(ID);
 
@@ -36,7 +35,6 @@ function trabajo() {
                         <h1>${r.response.titulo}</h1>
                     </div>
                     <div class="infotrabajo">`;
-                    console.log(r.response.imagen_portada);
                     if (r.response.imagen_portada === '')
                         html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo">`;
                     else
@@ -66,6 +64,8 @@ function trabajo() {
                     etiquetas();
                     verComentarios(allow_comments);
                     pedirForm(allow_comments);
+
+                    translateViewProjectPage(); // Para traducir los textos de comentario también
                 }
         
             })
@@ -83,9 +83,9 @@ async function aumentarVisitaTrabajo(idTrabajo) {
 }
 
 function nombreUsu(id_usu) {
-    let url = "http://localhost:3000";
     if (id_usu != 0) {
-        fetch(`${url}/user/${id_usu}`)
+        let url = getRequestUrl(`/user/${id_usu}`);
+        fetch(url)
             .then(response => response.json())
             .then(r => {
                 console.log(r);
@@ -112,7 +112,6 @@ function etiquetas() {
         fetch(url)
             .then(response => response.json())
             .then(r => {
-                console.warn(r);
                 if (r.status === 200) {
                     if (Array.isArray(r.response)) {
                         let html = '';
@@ -175,16 +174,16 @@ function verComentarios(allcom){
 //[SESSION] localStorage.getItem('[SESSION]')
 function pedirForm(allcom){
     if(localStorage.getItem('[SESSION]')){
-        let xhr= new XMLHttpRequest();
         if(allcom === 1){
+            let xhr= new XMLHttpRequest();
             let url="formcomentario.html";
             xhr.open("GET",url,true);
             xhr.onload=function(){
-            let html=xhr.responseText;
-            document.querySelector('#dejarcomentario').innerHTML += html;
+                let html=xhr.responseText;
+                document.querySelector('#dejarcomentario').innerHTML += html;
+            }
+            xhr.send();
         }
-    }
-        xhr.send();
     }
     else{
         if(allcom === 1){
