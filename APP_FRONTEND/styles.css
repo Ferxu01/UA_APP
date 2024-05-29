@@ -179,12 +179,22 @@ footer>div>a>div>p{
 .idiomas{
   margin-bottom: 5em;
 }
-.Trabajo,.Grado  {
-    background-color:var(--color-primario);
+.Trabajo{
+   background-color:var(--color-primario);
    display:grid;
-   width:auto;
-   height: auto;
+   width: 110px;
+   height: 160px;
    padding: 0.8em;
+   border-radius: 20px;
+   margin: 0.5em;
+   justify-items: center;
+}
+.Grado  {
+   background-color:var(--color-primario);
+   display:grid;
+   width: auto;
+   height: auto;
+   padding: 1em;
    border-radius: 20px;
    margin: 0.5em;
    justify-items: center;
@@ -198,15 +208,16 @@ footer>div>a>div>p{
     color: var(--color-texto1);
 }
 .portadaTrabajo{
-    width: 100px;
-    height:auto;
+    width: 80px;
+    height: 90px;
  }
 .autorTrabajo{
     position: absolute;
     top: 85px;
-    right: 79px;
+    right: 65px;
     width: 30px; /* Ancho de la imagen superpuesta */
-    height: auto; /* Altura automática para mantener la proporción */
+    height: 30px;
+    border-radius: 50px; /* Altura automática para mantener la proporción */
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
 }
 
@@ -313,6 +324,8 @@ footer>div>a>div>p{
     width: 100px;
     height: 100px;
 }
+
+
 
 
 

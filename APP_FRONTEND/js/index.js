@@ -45,7 +45,7 @@ function Trabajos() {
                     html += `<img src="../APP_BACKEND/files/${foto.imagen_perfil}" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">`;
 
 
-                html += `<div>
+                html += `</div>
                     </article>`;
             }
 
