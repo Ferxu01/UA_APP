@@ -41,6 +41,7 @@ function usuario() {
 	                    <span class="dato">${usu.curso}</span>
 	    
 	                </article>
+                    
 
                     `;
 
