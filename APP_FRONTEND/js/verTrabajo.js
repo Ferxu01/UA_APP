@@ -35,10 +35,15 @@ function trabajo() {
                     <div class="tituloyfecha">
                         <h1>${r.response.titulo}</h1>
                     </div>
-                    <div class="infotrabajo">
-                        <img src="img/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">
+                    <div class="infotrabajo">`;
+                    console.log(r.response.imagen_portada);
+                    if (r.response.imagen_portada === '')
+                        html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo">`;
+                    else
+                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">`;
+                    
+                    html += `
                         <div>
-                        
                             <p id="autor-receta"></p>
                             <p id="fecha-trabajo">${fechabuena}</p>
                             <div id="etiqs"></div>
@@ -103,16 +108,19 @@ function etiquetas() {
     const ID = urlParams.get('ID');
 
     if (ID) {
-        fetch(`${url}/es/tag/project/${ID}`)
+        let url = getRequestUrl(`/tag/project/${ID}`);
+        fetch(url)
             .then(response => response.json())
             .then(r => {
-                console.log(r);
+                console.warn(r);
                 if (r.status === 200) {
-                    let html = '';
-                    //r.response.forEach(function (etiqueta) {
-                        html += `<p>${r.response[0].texto}</p>`;
-                    //});
-                    document.querySelector('#etiqs').innerHTML += html;
+                    if (Array.isArray(r.response)) {
+                        let html = '';
+                        //r.response.forEach(function (etiqueta) {
+                            html += `<p>${r.response[0].texto}</p>`;
+                        //});
+                        document.querySelector('#etiqs').innerHTML += html;
+                    }
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -126,25 +134,28 @@ function verComentarios(allcom){
         const ID = urlParams.get('ID');
 
         if (ID) {
-            fetch(`${url}/project/${ID}/comments`)
+            let url = getRequestUrl(`/project/${ID}/comments`);
+            fetch(url)
                 .then(response => response.json())
                 .then(r => {
                     console.log(r);
                     if (r.status === 200) {
-                        let html = '';
-                        r.response.forEach(function (comentario) {
-                            html+=`
-                                <article>
-                                <div class="comentario">
-                                    <p>${comentario.nombre} ${comentario.apellidos}</p>
-                                </div>
-                                <div class="comentario2">
-                                     <p>${comentario.texto}</p>
-                                </div>
-                                </article>
-                            `;
-                        });
-                        document.querySelector('#coments').innerHTML += html;
+                        if (Array.isArray(r.response)) {
+                            let html = '';
+                            r.response.forEach(function (comentario) {
+                                html+=`
+                                    <article>
+                                    <div class="comentario">
+                                        <p>${comentario.nombre} ${comentario.apellidos}</p>
+                                    </div>
+                                    <div class="comentario2">
+                                        <p>${comentario.texto}</p>
+                                    </div>
+                                    </article>
+                                `;
+                            });
+                            document.querySelector('#coments').innerHTML += html;
+                        }
                     }
                 })
                 .catch(error => console.error('Error:', error));
