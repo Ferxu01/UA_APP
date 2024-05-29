@@ -50,6 +50,7 @@ function miperfil() {
         document.querySelector('#foto_perfil_usuario').innerHTML = html2;
 
         nomestudios(estud);
+        Trabajos();
     }
 }
 
@@ -86,11 +87,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 function Trabajos() {
+    // const divTrabajos = document.querySelector('#ParaTi');
+    // divTrabajos.innerHTML = '';
     let url = getRequestUrl('/project');
+    const userid = id;
     fetch(url)
     .then(response => response.json())
     .then(r => {
-        console.log(r);
+        console.log(r.response);
         if (r.status == 200) {
             let html = '';
             let tam = r.response.length;
@@ -110,14 +114,26 @@ function Trabajos() {
             for (let j = 0; j < trabajosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
-                html += `<article class="Trabajo">
-                    <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
-                    <h3>${foto.titulo}</h3>
-                    <div class="contenedor">
-                    <img src="../APP_BACKEND/files/portadas/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
-                    <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">
-                    <div>
-                    </article>`;
+                if(foto.usuario === userid){
+                    html += `<article class="Trabajo">
+                        <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
+                        <h3>${foto.titulo}</h3>
+                        <div class="contenedor">`;
+
+                    if (foto.imagen_portada === '')
+                        html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="Portada del trabajo">`;
+                    else
+                        html += `<img src="../APP_BACKEND/files/portadas/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">`;
+
+                    if (foto.imagen_perfil === null)
+                        html += `<img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">`;
+                    else
+                        html += `<img src="../APP_BACKEND/files/${foto.imagen_perfil}" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">`;
+
+
+                    html += `</div>
+                        </article>`;
+                }
             }
 
             document.querySelector('#ParaTi').innerHTML = html;
