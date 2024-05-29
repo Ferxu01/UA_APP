@@ -5,7 +5,6 @@ let id;
 
 function miperfil() {
     if(localStorage.getItem('[SESSION]')){
-    	console.log(JSON.parse(localStorage.getItem('[SESSION]')));
         let usu = JSON.parse(localStorage.getItem('[SESSION]'));
         let estud = usu.estudio;
         let html = '';
@@ -104,7 +103,7 @@ function Trabajos() {
                     <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
                     <h3>${foto.titulo}</h3>
                     <div class="contenedor">
-                    <img src="img/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
+                    <img src="../APP_BACKEND/files/portadas/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
                     <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">
                     <div>
                     </article>`;
@@ -130,6 +129,7 @@ function siguienteTrabajo() {
 
 
 function changeProfilePicture(event) {
+    event.preventDefault();
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -138,7 +138,8 @@ function changeProfilePicture(event) {
             document.getElementById('profilePicture').src = imgDataUrl;
 
             const userId = id; //
-            const apiUrl = `${url}/user/${userId}/avatar`;
+            //const apiUrl = `${url}/user/${userId}/avatar`;
+            const apiUrl = getRequestUrl(`/user/${userId}/avatar`);
 
             const obj = {
                 'fileName': 'fotoperfil.png',
@@ -150,7 +151,8 @@ function changeProfilePicture(event) {
                 const response = await fetch(apiUrl, {
                     method: 'PATCH',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'token': localStorage.getItem('[TOKEN]')
                     },
                     body: JSON.stringify(obj)
                 });
@@ -158,11 +160,13 @@ function changeProfilePicture(event) {
                 const result = await response.json();
                 console.log('Imagen de perfil actualizada:', result);
 
-                fetch(`${url}/user/${userId}`, {
+                let url = getRequestUrl(`/user/${userId}`);
+                fetch(url, {
                     method: 'GET'
                 })
                 .then(res => res.json())
                 .then(res => {
+                    console.warn(res);
                     if(res.status == 200){
                         localStorage.setItem('[SESSION]', JSON.stringify(res.response));
                     }

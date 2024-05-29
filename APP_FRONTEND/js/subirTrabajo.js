@@ -44,7 +44,8 @@ async function postFicheroATrabajo(idTrabajo, body) {
     return fetch(url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'token': localStorage.getItem('[TOKEN]')
         },
         body: JSON.stringify(body)
     })
@@ -67,6 +68,7 @@ async function postEtiqueta(body) {
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
+            'token': localStorage.getItem('[TOKEN]')
         }
     })
     .then(res => res.json());
@@ -80,6 +82,7 @@ async function postTrabajo(body) {
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
+            'token': localStorage.getItem('[TOKEN]')
         }
     })
     .then(res => res.json());

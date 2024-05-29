@@ -37,7 +37,7 @@ function registro(e){
         .then(res => {
             if(res.status == 200){
                 localStorage.setItem('[SESSION]', JSON.stringify(res.response));
-                localStorage.setItem('[TOKEN]', JSON.stringify(res.token));
+                localStorage.setItem('[TOKEN]', res.token);
         
                 location.href = "index.html";
             }else{

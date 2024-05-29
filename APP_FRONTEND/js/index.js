@@ -26,7 +26,7 @@ function Trabajos() {
                     <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id)}">
                     <h3>${foto.titulo}</h3>
                     <div class="contenedor">
-                    <img src="img/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
+                    <img src="../APP_BACKEND/files/portadas/${foto.imagen_portada}"class="portadaTrabajo" title="Portada del trabajo">
                     <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo" title="autor del trabajo">
                     <div>
                     </article>`;
