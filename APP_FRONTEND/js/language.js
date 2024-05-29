@@ -2,7 +2,9 @@
 
 function setLanguage(lang) {
     localStorage.setItem('[LANG]', lang);
-    
+
+    translateNav();
+    translateProfilePage();
 }
 
 function getLanguage() {
