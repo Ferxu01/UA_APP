@@ -159,7 +159,7 @@ footer>div>a>div>p{
 }
 
 .botonesCarrusel{
-    margin-bottom: 5em;
+  
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -175,6 +175,9 @@ footer>div>a>div>p{
     font-size: 20px;
     color: var(--color-texto1);
     font-weight:700;
+}
+.idiomas{
+  margin-bottom: 5em;
 }
 .Trabajo,.Grado  {
     background-color:var(--color-primario);

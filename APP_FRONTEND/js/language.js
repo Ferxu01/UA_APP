@@ -2,6 +2,7 @@
 
 function setLanguage(lang) {
     localStorage.setItem('[LANG]', lang);
+    
 }
 
 function getLanguage() {
