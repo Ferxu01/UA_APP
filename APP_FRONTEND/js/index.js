@@ -3,7 +3,10 @@ let i = 0;
 let screenWidth = window.innerWidth;
 
 function Trabajos() {
-    fetch(`${url}/project`)
+    // const divTrabajos = document.querySelector('#ParaTi');
+    // divTrabajos.innerHTML = '';
+    let url = getRequestUrl('/project');
+    fetch(url)
     .then(response => response.json())
     .then(r => {
         console.log(r);
@@ -39,7 +42,8 @@ function Trabajos() {
 }
 
 function Grados() {
-    fetch(`${url}/studies/degree`)
+    let url = getRequestUrl('/studies/degree');
+    fetch(url)
     .then(response => response.json())
     .then(r => {
         console.log(r);
@@ -67,7 +71,8 @@ function Grados() {
 }
 
 function Masteres() {
-    fetch(`${url}/studies/master`)
+    let url = getRequestUrl('/studies/master');
+    fetch(url)
     .then(response => response.json())
     .then(r => {
         console.log(r);
@@ -95,10 +100,11 @@ function Masteres() {
 }
 
 function Usuario() {
-    fetch(`${url}/user`)
+    let url = getRequestUrl('/user');
+    fetch(url)
     .then(response => response.json())
     .then(r => {
-        console.log(r);
+        console.log(r.response);
         if (r.status == 200) {
             let html = '';
             let tam = r.response.length;
@@ -111,10 +117,18 @@ function Usuario() {
             for (let j = 0; j < fotosPorPagina; j++) {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
+
+                
+
                 html += `<article class="Usuario">
-                <a href="user.html?ID=${encodeURIComponent(foto.id)}">
-                <img src="../APP_BACKEND/files/${foto.imagen_perfil}"class="profilePicture">
-                <h3>${foto.nombre}</h3>
+                <a href="user.html?ID=${encodeURIComponent(foto.id)}">`;
+
+                if (foto.imagen_perfil === null)
+                    html += `<img src="./img/defaultprofile.png"class="profilePicture">`;
+                else
+                    html += `<img src="../APP_BACKEND/files/${foto.imagen_perfil}"class="profilePicture">`;
+                
+                html += `<h3>${foto.nombre}</h3>
                 </a>
                     </article>`;
             }
