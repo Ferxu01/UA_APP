@@ -14,9 +14,14 @@ function usuario() {
                     let html2 = '';
                     let usu = r.response;
 
-                    html2 += `
+                   if (!usu.imagen_perfil){
+                                html2 += `<img src="./img/defaultprofile.png" id="profilePicture" class="profilePicture">`;
+                    }
+                    else{
+                                html2 += `
                             <img src="../APP_BACKEND/files/${usu.imagen_perfil}" id="profilePicture" class="profilePicture" alt="Imagen de usuario por defecto" width="100" title="Usuario">
                             `;
+                    }
 
                     html += `<article>
 	                    <span class="profileName">Nombre:</span>
@@ -28,7 +33,7 @@ function usuario() {
 	                </article>
 	                <article>
 	                    <span class="profileEmail">Email:</span>
-	                    <span class="dato">${usu.correo}</span>
+	                    <span class="dato">${usu.email}</span>
 	    
 	                </article>
 	                <article>
