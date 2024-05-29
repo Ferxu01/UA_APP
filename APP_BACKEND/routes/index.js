@@ -13,10 +13,10 @@ const router = Router();
 //TODO INCLUIR MIDDLEWARE "authMid" TO ROUTES THAT NEEDS
 
 router.use('/auth', auth);
-router.use('/user',/* authMid,*/ user);
+router.use('/user', user);
 router.use('/studies', studies);
 router.use('/tag', tag);
 router.use('/project', project);
-router.use('/favList', favList);
+router.use('/favList', authMid, favList);
 
 module.exports = router;
