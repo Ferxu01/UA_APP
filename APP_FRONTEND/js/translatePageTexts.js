@@ -76,6 +76,14 @@ async function translateViewProjectPage() {
     const disabledCommentsLabel = document.querySelector('p.disabledCommentsMsg');
     if (disabledCommentsLabel !== null)
         disabledCommentsLabel.textContent = i18nFile.viewProject.disabledCommentsLabel;
+
+    const commentLabel = document.querySelector('.commentLabel');
+    if (commentLabel !== null)
+        commentLabel.textContent = i18nFile.viewProject.commentLabel;
+
+    const btnComment = document.querySelector('.btnComment');
+    if (btnComment !== null)
+        btnComment.value = i18nFile.viewProject.commentBtn;
 }
 
 async function translateNav() {
