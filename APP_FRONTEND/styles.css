@@ -62,6 +62,7 @@ header{
     color: var(--color-texto1);
     font-size: 20px;
     font-weight:500;
+    margin-left: 10px;
 }
 .cabezeraderecha{
     display: flex;
@@ -220,9 +221,15 @@ footer>div>a>div>p{
 .Trabajo >h3{
     color: var(--color-texto1);
 }
-.portadaTrabajo{
+.portadaTrabajo2{
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+ }
+ .portadaTrabajo{
     width: 80px;
     height: 90px;
+    border-radius: 20px
  }
 .autorTrabajo{
     position: absolute;
@@ -634,15 +641,15 @@ body.night-mode {
 /* PARA VER TRABAJO */
 
 .infotrabajo {
-  display: grid;
+  display: block;
   align-items: center;
   justify-content: center;
   justify-items: center;
   background-color: var(--color-primario);
   border-radius: 20px;
-  margin-left: 15%;
-  margin-right: 15%;
-  padding: .7em;
+  margin: auto;
+  padding: 1em;
+  width: fit-content;
 
 }
 

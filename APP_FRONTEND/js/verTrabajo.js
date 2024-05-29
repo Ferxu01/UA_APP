@@ -36,9 +36,9 @@ function trabajo() {
                     </div>
                     <div class="infotrabajo">`;
                     if (r.response.imagen_portada === '')
-                        html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo">`;
+                        html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo" class="portadaTrabajo2">`;
                     else
-                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">`;
+                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}" class="portadaTrabajo2" title="portada del trabajo">`;
                     
                     html += `
                         <div>
