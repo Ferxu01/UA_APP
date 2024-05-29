@@ -50,6 +50,8 @@ const signIn = async (req, res, next) => {
         const { password } = validatedResult.data;
         const equalPass = await comparaPassword(password, user.pwd);
         delete user.pwd;
+        user.email = user.correo;
+        delete user.correo;
 
         if (equalPass) {
             const token = generaToken(); // Generar UUID con libreria crypto
