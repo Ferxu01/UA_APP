@@ -18,14 +18,20 @@ const getFile = async (filename) => {
     }
 };
 
-const uploadFile = ({ data, filename }) => {
+const uploadFile = ({ data, filename, portada }) => {
     const fichero = filename.split('.');
     const nomFichero = fichero[0];
     const extension = fichero[1];
 
     const formatDate = moment().format('DD-MM-YYYY_HH-mm-ss');
+    let directoryPath = null;
 
-    const directoryPath = path.join(__dirname, '../files');
+    if (portada) {
+        directoryPath = path.join(__dirname, '../files/portadas');
+    } else {
+        directoryPath = path.join(__dirname, '../files');
+    }
+
     const filepath = path.join(directoryPath, `${formatDate}_${nomFichero}.${extension}`);
 
     let base64Data = '';
@@ -52,8 +58,13 @@ const uploadFile = ({ data, filename }) => {
     };;
 };
 
-const removeFileFromDirectory = (filename) => {
-    const pathFile = path.join(__dirname, '../files', filename);
+const removeFileFromDirectory = (filename, portada) => {
+    let pathFile = null;
+    if (portada) {
+        pathFile = path.join(__dirname, '../files/portadas', filename);
+    } else {
+        pathFile = path.join(__dirname, '../files', filename);
+    }
     fs.unlink(pathFile);
 };
 

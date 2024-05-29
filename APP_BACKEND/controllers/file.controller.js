@@ -27,9 +27,9 @@ const getFiles = async (req, res, next) => {
 
 const postFile = async (req, res, next) => {
     const projectId = req.params['id'];
-    const { data, fileName, descripcion, alternativo } = req.body;
+    const { data, fileName, descripcion, alternativo, portada } = req.body;
     
-    const resp = fileUtils.uploadFile({ data, filename: fileName });
+    const resp = fileUtils.uploadFile({ data, filename: fileName, portada });
     if (!resp.filename && !resp.filepath)
         return responseError(res, 400, i18n.__('files.missingInfo'));
 

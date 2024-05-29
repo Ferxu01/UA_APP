@@ -118,12 +118,13 @@ async function subirTrabajo(e) {
         }
     }
     
-    let imagenPortada = fd.get('imagen_portada'); //AHORA MISMO NO SE ENVIA
+    //IMAGEN DE LA PORTADA (nombre del fichero con extension)
+    let imagenPortada = fd.get('imagen_portada');
     
     const user = getSession();
     let objTrabajo = {
         titulo: fd.get('titulo'),
-        imagen_portada: 'prueba',//imagenPortada.name,
+        imagen_portada: imagenPortada.name || '',
         comentarios: fd.get('sicom') || 0,
         descripcion: fd.get('descripcion'),
         usuario: parseInt(user.id),
@@ -141,17 +142,40 @@ async function subirTrabajo(e) {
         }
     }
 
+    let inputPortada = document.querySelector('input[name="imagen_portada"]');
+    const filePortada = inputPortada.files[0];
     let inputImg = document.querySelector('input[name="adjunto"]');
     const file = inputImg.files[0];
-    const base64String = await convertirBase64(file);
+    let base64String = null, base64StringPortada = null;
+    let respTrabajo = null, respTrabajo2 = null;
+    
+    if (file) {
+        base64String = await convertirBase64(file);
 
-    const objFile = {
-        'descripcion': '',
-        'fileName': file.name,
-        'alternativo': 'Fichero del trabajo',
-        'data': base64String
-    };
-    const respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
+        const objFile = {
+            'descripcion': '',
+            'fileName': file.name,
+            'alternativo': 'Fichero del trabajo',
+            'data': base64String
+        };
+
+        respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
+    }
+
+    if (filePortada) {
+        base64StringPortada = await convertirBase64(filePortada);
+
+        const objFilePortada = {
+            'descripcion': '',
+            'fileName': filePortada.name,
+            'alternativo': 'Portada del trabajo',
+            'data': base64StringPortada,
+            'portada': true
+        };
+
+        respTrabajo2 = await postFicheroATrabajo(idTrabajo, objFilePortada);
+    }
+
     if (respTrabajo.status === 200)
         location.href = 'profile.html';
 
