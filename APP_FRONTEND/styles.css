@@ -403,6 +403,26 @@ footer>div>a>div>p{
   margin: 10px 0px;
 }
 
+.formulario p{
+    text-align: center;
+}
+
+.formulario label{
+    color: var(--color-texto1);
+    font-size: 18px;
+}
+
+.cuadro-comment{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primario);
+    border-radius: 20px;
+    padding: 1em;
+    width: fit-content;
+}
+
 .formulario input {
     border: none;
     display: block;
@@ -508,6 +528,17 @@ footer>div>a>div>p{
 }
 
 .nuevo-trabajo button {
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: var(--color-terciario);
+    color: var(--color-texto1);
+    border: none;
+    font-size: 18px;
+    font-weight: 1000;
+}
+
+.btnComment {
     margin: auto;
     margin-top: 5px;
     border-radius: 10px;

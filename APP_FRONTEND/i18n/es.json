@@ -103,7 +103,7 @@
         "descriptionLabel": "Descripción",
         "commentsLabel": "Comentarios",
         "disabledCommentsLabel": "Esta publicación tiene los comentarios desactivados",
-        "commentLabel": "Escribe aquí tu comentario",
+        "commentLabel": "Escribe aquí tu comentario:",
         "commentBtn": "Dejar comentario"
     }
 }

@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="cuadro-comment">
     <form  class="formulario"  id="formularioComentario" onsubmit="dejarComentario(event)">
         <div>
-            <p><label class="commentLabel" for="texto">Escribe aqui tu comentario</label><br>
+            <p><label class="commentLabel" for="texto">Escribe aqui tu comentario:</label>
+                <br><br>
                 <input type="textarea" name="texto" class="estiloform" id="texto" required>
                 <!-- <span id="mensajePassword" style="color: red;"></span><br> -->
             </p>
         </div>
         <input class="btnComment" type="submit" value="Dejar comentario" >
     </form>
+    </div>
 </body>
 </html>

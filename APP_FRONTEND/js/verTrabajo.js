@@ -197,3 +197,54 @@ document.addEventListener('DOMContentLoaded', (event) => {
     translateNav();
     translateViewProjectPage();
 });
+
+
+
+function dejarComentario(evt) {
+    evt.preventDefault();
+    const formulario = evt.currentTarget;
+    const texto = formulario.elements['texto'].value;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const ID = urlParams.get('ID');
+
+    const url = getRequestUrl(`/project/${ID}/comments`);
+
+    const token = localStorage.getItem('[TOKEN]');
+
+    if (token && texto) {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            },
+            body: JSON.stringify({ texto: texto })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al enviar el comentario');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Manejar la respuesta del servidor
+            console.log(data);
+            if (data.status === 200) {
+                // Actualizar sin recargar
+                verComentarios();
+                // Limpiar el formulario
+                formulario.reset();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Manejar el error, mostrar un mensaje al usuario, etc.
+        });
+    } else {
+        console.error('Token o texto del comentario vacío');
+        // Manejar el caso donde el token o el texto del comentario están vacíos
+    }
+
+    return false;
+}

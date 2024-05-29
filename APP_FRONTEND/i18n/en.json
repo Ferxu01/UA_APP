@@ -81,7 +81,7 @@
         "courseLabel": "Course:",
         "signOutBtn": "Sign out",
         "myProjectsTitle": "My projects",
-        "lastProjectsTitle": "Latest projects:"
+        "lastProjectsTitle": "Latest projects"
     },
     "uploadProject": {
         "form": {
@@ -103,7 +103,7 @@
         "descriptionLabel": "Description",
         "commentsLabel": "Comments",
         "disabledCommentsLabel": "This post has comments disabled",
-        "commentLabel": "Leave your comment here",
+        "commentLabel": "Leave your comment here:",
         "commentBtn": "Leave comment"
     }
 }
