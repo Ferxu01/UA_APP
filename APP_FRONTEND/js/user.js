@@ -122,7 +122,7 @@ function Trabajos() {
                 if(foto.usuario === userid){
                     html += `<article class="Trabajo">
                         <a href="verTrabajo.html?ID=${encodeURIComponent(foto.id_trabajo)}">
-                        <h3>${foto.titulo}</h3>
+                        <h3 title="${foto.titulo}">${foto.titulo}</h3>
                         <div class="contenedor">`;
 
                     if (foto.imagen_portada === '')
