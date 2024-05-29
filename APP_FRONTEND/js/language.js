@@ -5,6 +5,13 @@ function setLanguage(lang) {
 
     translateNav();
     translateProfilePage();
+    translateIndexPage();
+    translateSearchPage();
+    translateLoginPage();
+    translateRegisterPage();
+    translateViewProjectPage();
+    translateUploadProjectPage();
+    translateMyListPage();
 }
 
 function getLanguage() {

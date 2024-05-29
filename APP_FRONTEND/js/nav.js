@@ -37,6 +37,22 @@ function mostrarMenu(){  //menu cambia en funcion de si usuario esta logeado o n
     }
 
     html1+=' <button class="Estilo" onclick="cambiarEstilo()"><span class="material-symbols-rounded">dark_mode</span></button>';
+
+    /*
+    if(localStorage.getItem('[LANG]')) {
+        let language = localStorage.getItem('[LANG]');
+        if(language === "es"){
+            html1+=' <button class="Estilo" onclick="setLanguage(\'en\')"><span class="material-symbols-rounded">language_us</span></button>';
+        }
+        else if(language === "en"){
+            html1+=' <button class="Estilo" onclick="setLanguage(\'es\')"><span class="material-symbols-rounded">language_spanish</span></button>';
+        }
+    }
+    */
+
+    html1+= '<select class="subirtrabajo" id="miSelect" onchange="setLanguage(this.value)"><option value="" selected disabled>ES/EN</option> <option value="es">Español</option> <option value="en">English</option>  </select>'
+
+
     
     
     
