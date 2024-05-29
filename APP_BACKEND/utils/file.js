@@ -24,15 +24,15 @@ const uploadFile = ({ data, filename, portada }) => {
     const extension = fichero[1];
 
     const formatDate = moment().format('DD-MM-YYYY_HH-mm-ss');
-    let directoryPath = null;
+    let directoryPath = null, filepath = null;
 
     if (portada) {
         directoryPath = path.join(__dirname, '../files/portadas');
+        filepath = path.join(directoryPath, `${nomFichero}.${extension}`);
     } else {
         directoryPath = path.join(__dirname, '../files');
+        filepath = path.join(directoryPath, `${formatDate}_${nomFichero}.${extension}`);
     }
-
-    const filepath = path.join(directoryPath, `${formatDate}_${nomFichero}.${extension}`);
 
     let base64Data = '';
     if (extension === 'pdf') {

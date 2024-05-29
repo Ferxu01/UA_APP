@@ -14,6 +14,12 @@ const getUsers = async (req, res, next) => {
     if (users.length === 0)
         return responseError(res, 400, i18n.__('users.notAvailable'));
 
+    users.map(user => {
+        user.email = user.correo;
+        delete user.correo;
+        return;
+    });
+
     return responseMessage(res, 200, users);
 };
 
@@ -24,6 +30,9 @@ const getUser = async (req, res, next) => {
     if (!user)
         return responseError(res, 400, i18n.__('users.notFound'));
 
+    user.email = user.correo;
+    delete user.correo;
+    
     return responseMessage(res, 200, user);
 };
 
