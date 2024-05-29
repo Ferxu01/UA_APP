@@ -6,14 +6,20 @@ let id;
 function miperfil() {
     if(localStorage.getItem('[SESSION]')){
         let usu = JSON.parse(localStorage.getItem('[SESSION]'));
+        console.log(usu);
         let estud = usu.estudio;
         let html = '';
         let html2 = '';
         id = usu.id;
 
-        html2 += `
+        if (!usu.imagen_perfil){
+                    html2 += `<img src="./img/defaultprofile.png" id="profilePicture" class="profilePicture">`;
+        }
+        else{
+                    html2 += `
                 <img src="../APP_BACKEND/files/${usu.imagen_perfil}" id="profilePicture" class="profilePicture" alt="Imagen de usuario por defecto" width="100" title="Usuario">
                 `;
+        }
 
         html += `
                 <article>
