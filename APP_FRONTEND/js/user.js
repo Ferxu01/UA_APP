@@ -7,7 +7,8 @@ function usuario() {
     const ID = urlParams.get('ID');
 
     if (ID) {
-        fetch(`${url}/user/${ID}`)
+        let url = getRequestUrl(`/user/${ID}`);
+        fetch(url)
             .then(response => response.json())
             .then(r => {
                 console.log(r);
@@ -15,18 +16,14 @@ function usuario() {
                     let html = '';
                     let html2 = '';
                     let usu = r.response;
-                    console.log(usu);
                     id = usu.id;
-                    console.log(id);
 
-                   if (!usu.imagen_perfil){
-                                html2 += `<img src="./img/defaultprofile.png" id="profilePicture" class="profilePicture">`;
-                    }
-                    else{
-                                html2 += `
+                   if (!usu.imagen_perfil)
+                        html2 += `<img src="./img/defaultprofile.png" id="profilePicture" class="profilePicture">`;
+                    else
+                        html2 += `
                             <img src="../APP_BACKEND/files/${usu.imagen_perfil}" id="profilePicture" class="profilePicture" alt="Imagen de usuario por defecto" width="100" title="Usuario">
-                            `;
-                    }
+                        `;
 
                     html += `<article>
 	                    <span class="profileName">Nombre:</span>

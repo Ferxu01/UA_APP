@@ -181,9 +181,10 @@ async function translateProfilePage() {
         const signOutBtn = document.querySelector('#signOutBtn');
         signOutBtn.textContent = i18nFile.profile.signOutBtn;
     }
-
+    
     const profileName = document.querySelector('.profileName');
-    profileName.textContent = i18nFile.profile.nameLabel;
+    if (profileName !== null)
+        profileName.textContent = i18nFile.profile.nameLabel;
 
     const profileSurname = document.querySelector('.profileSurname');
     profileSurname.textContent = i18nFile.profile.surnameLabel;
