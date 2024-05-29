@@ -10,7 +10,7 @@ const getAll = async () => {
         }
     ]);
 
-    let sql = `SELECT * FROM trabajo t INNER JOIN usuario u ON t.usuario = u.id INNER JOIN estudio e ON u.estudio = e.id`;
+    let sql = `SELECT t.id AS id_trabajo, u.id AS id_usuario, e.id AS id_estudio, t.*, u.*, e.* FROM trabajo t INNER JOIN usuario u ON t.usuario = u.id INNER JOIN estudio e ON u.estudio = e.id`;
     return await getResults(sql, conexion);
 };
 

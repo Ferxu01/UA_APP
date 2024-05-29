@@ -16,7 +16,7 @@ const getProjects = async (req, res, next) => {
 
 const getProject = async (req, res, next) => {
     const projectId = req.params['id'];
-    const project = await projectService.getOne(projectId);
+    const project = await projectService.getOne(projectId, true);
 
     if (!project)
         return responseError(res, 400, i18n.__('projects.notExists'));

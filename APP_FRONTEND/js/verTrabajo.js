@@ -6,49 +6,52 @@ function trabajo() {
     const ID = urlParams.get('ID');
 
     if (ID) {
-        fetch(`${url}/project/${ID}`)
+        let url = getRequestUrl(`/project/${ID}`);
+        fetch(url)
             .then(response => response.json())
             .then(r => {
                 console.log(r);
                 if (r.status === 200) {
-                        let html = '';
-                        //<p>${r.response.fecha}</p> falta añadir, no tienen propiedad fecha aun
-                        let id_usu = r.response.usuario;
-                        let allow_comments = r.response.comentarios;
-                        console.log(id_usu);
-                        console.log(allow_comments);
+                    aumentarVisitaTrabajo(ID);
 
-                        const fecha = new Date(r.response.fecha);
-                        const dia = String(fecha.getDate()).padStart(2, '0');
-                        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
-                        const año = fecha.getFullYear();
+                    let html = '';
+                    //<p>${r.response.fecha}</p> falta añadir, no tienen propiedad fecha aun
+                    let id_usu = r.response.usuario;
+                    let allow_comments = r.response.comentarios;
+                    console.log(id_usu);
+                    console.log(allow_comments);
 
-                        // Formatear la fecha como dd/mm/aaaa
-                        let fechabuena = `${dia}/${mes}/${año}`;
+                    const fecha = new Date(r.response.fecha);
+                    const dia = String(fecha.getDate()).padStart(2, '0');
+                    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
+                    const año = fecha.getFullYear();
+
+                    // Formatear la fecha como dd/mm/aaaa
+                    let fechabuena = `${dia}/${mes}/${año}`;
 
 
-                        html += `
-                        <div class="cuadrotrabajo">
-                        <div class="tituloyfecha">
-                            <h1>${r.response.titulo}</h1>
+                    html += `
+                    <div class="cuadrotrabajo">
+                    <div class="tituloyfecha">
+                        <h1>${r.response.titulo}</h1>
+                    </div>
+                    <div class="infotrabajo">
+                        <img src="img/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">
+                        <div>
+                        
+                            <p id="autor-receta"></p>
+                            <p id="fecha-trabajo">${fechabuena}</p>
+                            <div id="etiqs"></div>
                         </div>
-                        <div class="infotrabajo">
-                            <img src="img/${r.response.imagen_portada}"class="portadaTrabajo" title="portada del trabajo">
-                            <div>
-                            
-                                <p id="autor-receta"></p>
-                                <p id="fecha-trabajo">${fechabuena}</p>
-                                <div id="etiqs"></div>
-                            </div>
-                        </div>
-                        <h2 class="descriptionHeader">Descripción</h2>
-                        <section><article><p id="desc">${r.response.descripcion}</p></article></section>
-                        <hr>
-                        <h2 class="commentsHeader">Comentarios</h2>
-                        <div id="dejarcomentario"></div>
-                        <section id="coments"></section>
-                        </div>
-                        `;
+                    </div>
+                    <h2 class="descriptionHeader">Descripción</h2>
+                    <section><article><p id="desc">${r.response.descripcion}</p></article></section>
+                    <hr>
+                    <h2 class="commentsHeader">Comentarios</h2>
+                    <div id="dejarcomentario"></div>
+                    <section id="coments"></section>
+                    </div>
+                    `;
 
                     document.querySelector('#trabajo-container').innerHTML = html;
 
@@ -65,6 +68,13 @@ function trabajo() {
     } else {
         window.location.href = "index.html";
     }
+}
+
+async function aumentarVisitaTrabajo(idTrabajo) {
+    let url = getRequestUrl(`/project/${idTrabajo}/views`);
+    return fetch(url, {
+        method: 'PUT'
+    });
 }
 
 function nombreUsu(id_usu) {
