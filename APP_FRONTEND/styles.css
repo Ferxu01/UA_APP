@@ -427,6 +427,7 @@ footer>div>a>div>p{
     background-color: var(--color-primario);
     border-radius: 20px;
     padding: 1em;
+    width: fit-content;
 }
 
 .vercoments {
