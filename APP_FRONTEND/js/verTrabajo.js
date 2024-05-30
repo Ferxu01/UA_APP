@@ -44,6 +44,7 @@ function trabajo() {
                         <div>
                             <p id="autor-receta"></p>
                             <p id="fecha-trabajo">${fechabuena}</p>
+                            <p>${r.response.numVisitas} visitas</p>
                             <div id="etiqs"></div>
                         </div>
                     </div>
@@ -115,9 +116,9 @@ function etiquetas() {
                 if (r.status === 200) {
                     if (Array.isArray(r.response)) {
                         let html = '';
-                        //r.response.forEach(function (etiqueta) {
-                            html += `<p>${r.response[0].texto}</p>`;
-                        //});
+                        r.response.forEach(function (etiqueta) {
+                            html += `<p>${etiqueta.texto}</p>`;
+                        });
                         document.querySelector('#etiqs').innerHTML += html;
                     }
                 }

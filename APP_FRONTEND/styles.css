@@ -664,6 +664,8 @@ body.night-mode {
 
 .infotrabajo > div > p{
   color: var(--color-texto1);
+  margin-bottom: 0em;
+  margin-top: .5em;
 }
 
 .infotrabajo > div > div {
@@ -671,7 +673,7 @@ body.night-mode {
 }
 
 .infotrabajo > div > div > p {
-  padding: .5em;
+  padding: 0em;
   margin-left: 3px;
   margin-right: 3px;
   background-color: #A64195;
