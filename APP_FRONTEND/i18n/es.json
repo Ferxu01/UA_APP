@@ -96,7 +96,8 @@
             "addTag": "Añadir",
             "addedTagsLabel": "Etiquetas añadidas:",
             "allowComments": "Permitir comentarios:",
-            "uploadProjectBtn": "Subir trabajo"
+            "uploadProjectBtn": "Subir trabajo",
+            "resetProjectBtn": "Limpiar formulario"
         }
     },
     "viewProject": {
@@ -104,6 +105,7 @@
         "commentsLabel": "Comentarios",
         "disabledCommentsLabel": "Esta publicación tiene los comentarios desactivados",
         "commentLabel": "Escribe aquí tu comentario:",
-        "commentBtn": "Dejar comentario"
+        "commentBtn": "Dejar comentario",
+        "downloadBtn": "Descargar"
     }
 }

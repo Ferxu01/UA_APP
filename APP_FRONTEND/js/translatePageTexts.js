@@ -84,6 +84,9 @@ async function translateViewProjectPage() {
     const btnComment = document.querySelector('.btnComment');
     if (btnComment !== null)
         btnComment.value = i18nFile.viewProject.commentBtn;
+
+    const btnDescarga = document.querySelector('#descargar');
+    btnDescarga.textContent = i18nFile.viewProject.downloadBtn;
 }
 
 async function translateNav() {
@@ -152,6 +155,9 @@ async function translateUploadProjectPage() {
 
     const uploadProjectBtn = document.querySelector('.uploadProjectBtn');
     uploadProjectBtn.textContent = i18nFile.uploadProject.form.uploadProjectBtn;
+
+    const resetProjectBtn = document.querySelector('.resetFormBtn');
+    resetProjectBtn.textContent = i18nFile.uploadProject.form.resetProjectBtn;
 }
 
 async function translateProfilePage() {
