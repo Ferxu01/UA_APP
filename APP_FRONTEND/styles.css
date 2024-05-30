@@ -427,7 +427,11 @@ footer>div>a>div>p{
     background-color: var(--color-primario);
     border-radius: 20px;
     padding: 1em;
-    width: fit-content;
+}
+
+.vercoments {
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .formulario input {
@@ -717,20 +721,31 @@ section > article > p {
 section > article > div > p {
   text-align: justify;
   padding-left: 1em;
-  padding-bottom: 0em;
+  padding-bottom: .5em;
+  padding-top: .5em;
 }
 
 .comentario{
   font-size: 20px;
-  display: flex;
+  display: block;
   font-weight: 600;
-  justify-content: space-between;
+  justify-content: left;
   padding: 0em;
 }
 
 .comentario2{
   display: flex;
   justify-content: space-between;
+  width: 90%;
+  text-overflow: ellipsis;
+  white-space:  nowrap;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.comentario p, .comentario2 p {
+  margin: 0; /* Eliminar márgenes de los párrafos */
+  padding-left: 1em; /* Eliminar relleno de los párrafos */
 }
 
 .cuadrotrabajo{

@@ -143,17 +143,17 @@ function verComentarios(allcom){
                             let html = '';
                             r.response.forEach(function (comentario) {
                                 html+=`
-                                    <article>
+                                    <article class="vercoments">
                                     <div class="comentario">
                                         <p>${comentario.nombre} ${comentario.apellidos}</p>
                                     </div>
                                     <div class="comentario2">
-                                        <p>${comentario.texto}</p>
+                                        <p title="${comentario.texto}">${comentario.texto}</p>
                                     </div>
                                     </article>
                                 `;
                             });
-                            document.querySelector('#coments').innerHTML += html;
+                            document.querySelector('#coments').innerHTML = html;
                         }
                     }
                 })
@@ -167,7 +167,7 @@ function verComentarios(allcom){
             <p class="disabledCommentsMsg">Esta publicación tiene los comentarios desactivados</p>
             </article>
         `;
-        document.querySelector('#coments').innerHTML += html;
+        document.querySelector('#coments').innerHTML = html;
     }
 }
 
@@ -211,6 +211,13 @@ function dejarComentario(evt) {
     const url = getRequestUrl(`/project/${ID}/comments`);
 
     const token = localStorage.getItem('[TOKEN]');
+    const sesion = JSON.parse(localStorage.getItem('[SESSION]'));
+    console.log(sesion);
+
+    let obj = {
+        texto: texto,
+        id_usuario: parseInt(sesion.id)
+    };
 
     if (token && texto) {
         fetch(url, {
@@ -219,7 +226,7 @@ function dejarComentario(evt) {
                 'Content-Type': 'application/json',
                 'token': token
             },
-            body: JSON.stringify({ texto: texto })
+            body: JSON.stringify(obj)
         })
         .then(response => {
             if (!response.ok) {
@@ -232,7 +239,7 @@ function dejarComentario(evt) {
             console.log(data);
             if (data.status === 200) {
                 // Actualizar sin recargar
-                verComentarios();
+                verComentarios(1);
                 // Limpiar el formulario
                 formulario.reset();
             }
