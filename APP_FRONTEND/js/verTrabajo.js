@@ -97,6 +97,7 @@ function botonMiLista(id){
         const sec = document.getElementById('proyectDesc');
 
         const button = document.createElement('button');
+        button.setAttribute('id', 'addToList');
         button.textContent = "Añadir a mi lista";
         button.onclick = function() {
             addToList(id);
