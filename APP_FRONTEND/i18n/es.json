@@ -107,6 +107,7 @@
         "disabledCommentsLabel": "Esta publicación tiene los comentarios desactivados",
         "commentLabel": "Escribe aquí tu comentario:",
         "commentBtn": "Dejar comentario",
-        "downloadBtn": "Descargar"
+        "downloadBtn": "Descargar",
+        "addToList": "Añadir a mi lista"
     }
 }
