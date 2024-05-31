@@ -13,7 +13,6 @@ function busqueda(e){
     console.log('holi');
     
     //TODO: cambiar esta llamada
-    const lang = sessionStorage.getItem('lang') || 'es';
     
     const form = e.currentTarget,
     fd = new FormData(form);
@@ -26,49 +25,92 @@ function busqueda(e){
         urlFind: getRequestUrl(`/project/find`)
     }
 
+    console.warn(obj);
 
-    let url = '';
-    let urlCurso = getRequestUrl(`/studies/degree`);
-    let esGrado = -1;
-    let pu = "";
-
-    if(obj.curso){
-        fetch(urlCurso, {
-            method: 'GET',
-
-        })
+    if (obj.proyOrUser === 1) {
+        let busqueda = obj.title.toLowerCase();
+        //BUSCAR POR USUARIO
+        let url = getRequestUrl(`/user`);
+        fetch(url)
         .then(res => res.json())
-        .then(res => {
+        .then(resp => {
+            console.log(resp);
+            let usuarios = resp.response;
+            //FILTRAR USUARIOS POR PARAMETRO
+            usuarios = usuarios.filter(user => {
+                return user.nombre.toLowerCase().includes(busqueda);
+            });
 
-            esGrado = encuentra(obj.curso, res.response); 
+            muestraRespuestaUsuarios(usuarios);
+        });
+    } else { //SI VALOR 'proyOrUser' ES 0
+        let url = '';
+        let urlCurso = getRequestUrl(`/studies/degree`);
+        let esGrado = -1;
+        let pu = "";
 
+        if(!isNaN(obj.curso)){
+            fetch(urlCurso, {
+                method: 'GET',
+
+            })
+            .then(res => res.json())
+            .then(res => {
+
+                esGrado = encuentra(obj.curso, res.response); 
+
+                url = creaURL(obj, esGrado);
+                //TODO: añadir fetch de busqueda y montar resultado
+                console.log(url);
+
+                fetch(url, {
+                    method: 'GET',
+        
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    muestraRespuesta(res);
+                });
+            });
+        }else{
             url = creaURL(obj, esGrado);
-            console.log(url);
 
+            //TODO: añadir fetch de busqueda y montar resultado
+            console.log(url);
             fetch(url, {
                 method: 'GET',
-    
+
             })
             .then(res => res.json())
             .then(res => {
                 console.log(res);
                 muestraRespuesta(res);
             });
-        });
-    }else{
-        url = creaURL(obj, esGrado);
-
-        console.log(url);
-        fetch(url, {
-            method: 'GET',
-
-        })
-        .then(res => res.json())
-        .then(res => {
-            console.log(res);
-            muestraRespuesta(res);
-        });
+        }
     }
+}
+
+function muestraRespuestaUsuarios(usuarios) {
+    const div = document.getElementById('respuestaBusqueda');
+    div.innerHTML = '';
+    let html = '';
+
+    usuarios.forEach(user => {
+        console.warn(user);
+        html += `<article class="Usuario">
+            <a href="user.html?ID=${encodeURIComponent(user.id)}">`;
+
+        if (user.imagen_perfil === null)
+            html += `<img src="./img/defaultprofile.png" class="profilePicture">`;
+        else
+            html += `<img src="../APP_BACKEND/files/${user.imagen_perfil}" class="profilePicture">`;
+            
+        html += `<h3>${user.nombre}</h3>
+            </a></article>`;
+    });
+
+    div.innerHTML = html;
 }
 
 
@@ -76,6 +118,8 @@ function muestraRespuesta(res){
     const div = document.getElementById("respuestaBusqueda");
 
     div.innerHTML = "";
+
+    console.log(res.response);
 
     res.response.forEach(element => {
         const article = document.createElement('article');

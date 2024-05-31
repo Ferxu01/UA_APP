@@ -224,8 +224,11 @@ async function translateSearchPage() {
 
     const selectProjectUserLabel = document.querySelector('.selectProjectUserLabel');
     selectProjectUserLabel.textContent = i18nFile.search.form.selectProjectUserLabel;
-    const selectProjectUserOption = document.querySelector('.selectType');
-    selectProjectUserOption.textContent = i18nFile.search.form.selectProjectUserText;
+
+    const selectProjectOption = document.querySelectorAll('.typeOption')[0];
+    selectProjectOption.textContent = i18nFile.search.form.optionProject;
+    const selectUserOption = document.querySelectorAll('.typeOption')[1];
+    selectUserOption.textContent = i18nFile.search.form.optionUser;
 
     const selectTagsLabel = document.querySelector('.selectTagsLabel');
     selectTagsLabel.textContent = i18nFile.search.form.selectTagsLabel;
