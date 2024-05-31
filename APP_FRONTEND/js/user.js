@@ -1,4 +1,3 @@
-url = "http://localhost:3000";
 let i = 0;
 let id = 0;
 
@@ -69,9 +68,9 @@ function usuario() {
 }
 
 function nomestudios(estud) {
-    let url = "http://localhost:3000";
+    let url = getRequestUrl(`/studies/degree/${estud}`);
     if (estud != 0) {
-        fetch(`${url}/studies/degree/${estud}`)
+        fetch(url)
             .then(response => response.json())
             .then(r => {
                 console.log(r);

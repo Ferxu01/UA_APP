@@ -21,12 +21,12 @@ function busqueda(e){
         proyOrUser: parseInt(fd.get("selProyectPerson")),
         tag: parseInt(fd.get("etiqueta")),
         curso: parseInt(fd.get("estudios")),
-        urlFind: 'http://localhost:3000/project/find'
+        urlFind: getRequestUrl(`/project/find`)
     }
 
 
     let url = '';
-    let urlCurso = 'http://localhost:3000/studies/degree';
+    let urlCurso = getRequestUrl(`/studies/degree`);
     let esGrado = -1;
     let pu = "";
 
@@ -122,7 +122,7 @@ function encuentra(id, lista) {
 
 function creaURL(obj, esGrado){
     
-    let url = "http://localhost:3000/project/find";
+    let url = getRequestUrl(`/project/find`);
 
     if(obj.title){
         if(obj.proyOrUser == 0){
@@ -135,7 +135,7 @@ function creaURL(obj, esGrado){
     }
 
     if(obj.tag && obj.proyOrUser == 0){
-        if(url == "http://localhost:3000/project/find"){
+        if(url == getRequestUrl(`/project/find`)){
             url += `?t=${obj.tag}`;
         }else{
             url += `&t=${obj.tag}`;
@@ -150,7 +150,7 @@ function creaURL(obj, esGrado){
             grado = `m=${obj.curso}`;
         }
 
-        if(url == "http://localhost:3000/project/find"){
+        if(url == getRequestUrl(`/project/find`)){
             url += '?' + grado;
         }else{
             url += '&' + grado;
@@ -161,10 +161,10 @@ function creaURL(obj, esGrado){
 }
 
 function cargaGradoMaster(){
-    const lang = sessionStorage.getItem('lang') || 'es';
+    //const lang = sessionStorage.getItem('lang') || 'es';
     
-    let urlG = `http://localhost:3000/:${lang}/studies/degree`;
-    let urlM = `http://localhost:3000/:${lang}/studies/master`;
+    let urlG = getRequestUrl(`/studies/degree`);
+    let urlM = getRequestUrl(`/studies/master`);
     
     fetch(urlG, {
         method: 'GET',
@@ -207,7 +207,7 @@ function cargaGradoMaster(){
 function cargaEtiquetas(){
     const lang = sessionStorage.getItem('lang') || 'es';
     
-    url = `http://localhost:3000/:${lang}/tag`;
+    url = getRequestUrl(`/tag`);
     
     fetch(url, {
         method: 'GET',

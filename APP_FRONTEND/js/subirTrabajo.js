@@ -53,9 +53,14 @@ async function postFicheroATrabajo(idTrabajo, body) {
 }
 
 async function postTagToProject(idTrabajo, idEtiqueta) {
+    console.log(idTrabajo);
+    console.log(idEtiqueta);
     const url = getRequestUrl(`/tag/${idEtiqueta}/project/${idTrabajo}`);
     return fetch(url, {
-        method: 'PUT'
+        method: 'PUT',
+        headers: {
+            'token': localStorage.getItem('[TOKEN]')
+        }
     })
     .then(res => res.json());
 }
@@ -133,74 +138,87 @@ async function subirTrabajo(e) {
         usuario: parseInt(user.id),
         estudio: parseInt(user.estudio)
     };
-
-    const resp = await postTrabajo(objTrabajo);
-    let idTrabajo = null;
-
-    if (resp.status === 200) {
-        idTrabajo = resp.response.id;
-        if (opcion !== null) {
-            //AGREGAR LA ETIQUETA AL PROYECTO
-            const res = await postTagToProject(idTrabajo, idEtiqueta);
-        }
-    }
-
-    let inputPortada = document.querySelector('input[name="imagen_portada"]');
-    const filePortada = inputPortada.files[0];
-    let inputImg = document.querySelector('input[name="adjunto"]');
-    const file = inputImg.files[0];
-    let base64String = null, base64StringPortada = null;
-    let respTrabajo = null, respTrabajo2 = null;
     
-    if (file) {
-        base64String = await convertirBase64(file);
+    let idTrabajo = null;
+    let trabajoSubido = false;
 
-        const objFile = {
-            'descripcion': '',
-            'fileName': file.name,
-            'alternativo': 'Fichero del trabajo',
-            'data': base64String
-        };
+    if (document.querySelector('input[name="adjunto"]').files[0] !== undefined) {
+        const resp = await postTrabajo(objTrabajo);
 
-        respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
+        if (resp.status === 200) {
+            trabajoSubido = true;
+            idTrabajo = resp.response.id;
+            if (opcion !== null) {
+                //AGREGAR LA ETIQUETA AL PROYECTO
+                const res = await postTagToProject(idTrabajo, idEtiqueta);
+            }
+
+            let inputPortada = document.querySelector('input[name="imagen_portada"]');
+            const filePortada = inputPortada.files[0];
+            let inputImg = document.querySelector('input[name="adjunto"]');
+            const file = inputImg.files[0];
+            let base64String = null, base64StringPortada = null;
+            let respTrabajo = null, respTrabajo2 = null;
+
+            base64String = await convertirBase64(file);
+            console.log(base64String);
+            console.log(!base64String.error);
+
+            if (!base64String.error) {
+                const objFile = {
+                    'descripcion': '',
+                    'fileName': file.name,
+                    'alternativo': 'Fichero del trabajo',
+                    'data': base64String
+                };
+                respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
+                console.log(respTrabajo);
+            } else {
+                if (getLanguage() === 'en')
+                    ponMsgErr('No file has been attached to the project');
+                else
+                    ponMsgErr('No se ha adjuntado fichero al trabajo');
+            }
+
+            if (filePortada) {
+                base64StringPortada = await convertirBase64(filePortada);
+
+                const objFilePortada = {
+                    'descripcion': '',
+                    'fileName': filePortada.name,
+                    'alternativo': 'Portada del trabajo',
+                    'data': base64StringPortada,
+                    'portada': true
+                };
+
+                respTrabajo2 = await postFicheroATrabajo(idTrabajo, objFilePortada);
+            }
+
+            if (respTrabajo !== null && respTrabajo.status === 200)
+                location.href = 'profile.html';
+        }
+    } else {
+        if (getLanguage() === 'en')
+            ponMsgErr('You have to attach a project file');
+        else
+            ponMsgErr('Tienes que adjuntar un fichero del trabajo');
+    }
+}
+
+function ponMsgErr(msg){
+    const divErr = document.getElementsByClassName('cuadritoError');
+
+    if (divErr.length > 0 && divErr[0].firstElementChild) {
+        divErr[0].removeChild(divErr[0].firstElementChild);
     }
 
-    if (filePortada) {
-        base64StringPortada = await convertirBase64(filePortada);
+    const msgErr = document.createElement('p');
+    msgErr.setAttribute('class', 'msgErr');
+    msgErr.style = 'color: #000';
 
-        const objFilePortada = {
-            'descripcion': '',
-            'fileName': filePortada.name,
-            'alternativo': 'Portada del trabajo',
-            'data': base64StringPortada,
-            'portada': true
-        };
+    msgErr.textContent = msg;
 
-        respTrabajo2 = await postFicheroATrabajo(idTrabajo, objFilePortada);
-    }
-
-    if (respTrabajo.status === 200)
-        location.href = 'profile.html';
-
-    // if (file) {
-    //     const reader = new FileReader();
-
-    //     reader.onload = async (event) => {
-    //         // Datos de la imagen en base64
-    //         const base64String = event.target.result;
-
-    //         // AGREGAR EL FICHERO DEL TRABAJO
-    //         // const respTrabajo = await postFicheroATrabajo(idTrabajo, {
-    //         //     'descripcion': '',
-    //         //     'fileName': file.name,
-    //         //     'alternativo': 'Fichero del trabajo',
-    //         //     'data': base64String
-    //         // });
-    //         // console.log(base64String);
-    //     };
-
-    //     reader.readAsDataURL(file);
-    // }
+    divErr[0].appendChild(msgErr);
 }
 
 function convertirBase64(file) {
@@ -215,7 +233,10 @@ function convertirBase64(file) {
             };
 
             reader.readAsDataURL(file);
-        }
+        } else
+            resolve({
+                error: 'No existe el fichero'
+            });
     });
 }
 

@@ -2,7 +2,7 @@
 function login(e){
     e.preventDefault();
 
-    url = "http://localhost:3000/auth/login"
+    url = getRequestUrl('/auth/login');
 
     const form = e.currentTarget,
         fd = new FormData(form);
@@ -15,7 +15,10 @@ function login(e){
     let emailValido = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
     if(!emailValido.test(obj.email)){
-        ponMsgErr("Por favor, introduce un email válido.")
+        if (getLanguage() === 'en')
+            ponMsgErr('Please enter a valid email.');
+        else
+            ponMsgErr('Por favor, introduce un email válido.');
     }else{
         fetch(url, {
             method: 'POST',
@@ -29,17 +32,23 @@ function login(e){
         })
         .then(res => res.json())
         .then(res => {
-            console.warn(res);
             if(res.status == 200){
                 localStorage.setItem('[SESSION]', JSON.stringify(res.response));
                 localStorage.setItem('[TOKEN]', res.token);
         
                 location.href = "index.html";
-            }else if(res.status == 401){
-                ponMsgErr("Email o contraseña equivocados.");
-            }else{
-                ponMsgErr("Algo ha fallado, por favor, vuelve a intentarlo.");
+            } else {
+                if (res.response && Array.isArray(res.response)) {
+                    ponMsgErr(res.response[0].message);
+                } else {
+                    ponMsgErr(res.response);
+                }
             }
+            // else if(res.status == 401){
+            //     ponMsgErr("Email o contraseña equivocados.");
+            // }else{
+            //     ponMsgErr("Algo ha fallado, por favor, vuelve a intentarlo.");
+            // }
     
         });
     }

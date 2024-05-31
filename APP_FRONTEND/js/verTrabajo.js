@@ -1,5 +1,17 @@
-let url = "http://localhost:3000";
 let i = 0;
+
+function descargaFichero(nombreFichero) {
+    //let url = '../APP_BACKEND/files/29-05-2024_23-29-28_poema.pdf';
+    let url = `../APP_BACKEND/files/${nombreFichero}`;
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'archivo.pdf';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 function trabajo() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -154,6 +166,7 @@ function etiquetas() {
                         r.response.forEach(function (etiqueta) {
                             html += `<p>${etiqueta.texto}</p>`;
                         });
+
                         document.querySelector('#etiqs').innerHTML += html;
                     }
                 }
@@ -229,7 +242,31 @@ function pedirForm(allcom){
     }
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
+async function getFicheroTrabajo(idTrabajo) {
+    let url = getRequestUrl(`/project/${idTrabajo}/files`);
+    return fetch(url)
+            .then(res => res.json());
+}
+
+document.addEventListener('DOMContentLoaded', async (event) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ID = urlParams.get('ID');
+    
+    if (ID) {
+        const res = await getFicheroTrabajo(ID);
+        console.log(res);
+        let nombreFichero = res.response[0].nombre;
+        console.log(nombreFichero);
+
+        //Generar enlace de descarga del fichero
+        let html = `
+            <a style="color: #fff; cursor: pointer;" id="descargar" onclick="descargaFichero('${nombreFichero}')">Descargar</a>
+        `;
+
+        //FIXME: CAMBIAR SITIO PARA PONER EL BOTON DE DESCARGA
+        document.querySelector('header').insertAdjacentHTML('beforeend', html);
+    }
+
     translateNav();
     translateViewProjectPage();
 });
