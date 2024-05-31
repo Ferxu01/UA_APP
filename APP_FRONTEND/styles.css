@@ -244,8 +244,8 @@ footer>div>a>div>p{
 .borrarLista{
     border-radius: 40px;
     position: absolute;
-    top: 85px;
-    left: 79px;
+    top: 84px;
+    left: 67px;
     width: 30px; /* Ancho de la imagen superpuesta */
     height: auto; /* Altura automática para mantener la proporción */
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
