@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    translateNav();
-    translateSearchPage();
-
-    const selProyectPerson = document.getElementById('selProyectPerson');
-    const etiqueta = document.getElementById('etiqueta');
-
-});
-
 function busqueda(e){
     e.preventDefault();
 
@@ -210,8 +201,6 @@ function creaURL(obj, esGrado){
 }
 
 function cargaGradoMaster(){
-    //const lang = sessionStorage.getItem('lang') || 'es';
-    
     let urlG = getRequestUrl(`/studies/degree`);
     let urlM = getRequestUrl(`/studies/master`);
     
@@ -236,6 +225,7 @@ function cargaGradoMaster(){
                 const opt = document.createElement("option");
                 
                 opt.setAttribute("value", `${element.id}`);
+                opt.setAttribute('class', 'optStudy');
                 opt.textContent = `${element.nombre}`;
                 
                 selectEstudios.appendChild(opt);
@@ -245,6 +235,7 @@ function cargaGradoMaster(){
                 const opt = document.createElement("option");
                 
                 opt.setAttribute("value", `${element.id}`);
+                opt.setAttribute('class', 'optStudy');
                 opt.textContent = `${element.nombre}`;
                 
                 selectEstudios.appendChild(opt);
@@ -283,12 +274,16 @@ function cargaEtiquetas(){
 function compruebaParams(){
     const urlParams = new URLSearchParams(window.location.search);
     const estudios = document.getElementById('estudios');
+    const options = document.querySelectorAll('.optStudy');
     const form = document.querySelector('.formulario-busq');
 
     if(urlParams.has('d')){
         id = urlParams.get('d');
-        console.log(id);
+        console.log('ID: '+id);
         estudios.value = id;
+
+        console.warn(options);
+        console.warn(Array.from(estudios.children));
 
         // Llamar a la función buscar con un evento simulado
         // busqueda(new Event('submit', { bubbles: true, cancelable: true }));
@@ -312,4 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
             etiqueta.disabled = true;
         }
     });
+
+    translateNav();
+    translateSearchPage();
 });
