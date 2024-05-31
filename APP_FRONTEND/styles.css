@@ -72,6 +72,7 @@ header{
 }
 
 .cabezeraderecha>.subirtrabajo{
+    cursor: pointer;
     margin-right: 1em;
     background-color: var(--color-terciario);
     padding: 0.3em;
@@ -371,6 +372,7 @@ footer>div>a>div>p{
   margin-bottom: 0.8em;
 }
 .Estilo{
+  cursor: pointer;
   margin-right: 1em;
   border: none;
   background-color: var(--color-terciario);
@@ -650,6 +652,14 @@ footer>div>a>div>p{
     grid-template-columns: repeat(2, 1fr);
     margin-top:0px;
     margin-bottom: 5em;
+}
+
+#descargar, #addToList {
+  border-radius: 20px;
+  background-color: var(--color-terciario);
+  cursor: pointer;
+  color: var(--color-texto1);
+  padding: 0.4em;
 }
 
 /* PARA VER TRABAJO */

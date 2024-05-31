@@ -86,7 +86,11 @@ async function translateViewProjectPage() {
         btnComment.value = i18nFile.viewProject.commentBtn;
 
     const btnDescarga = document.querySelector('#descargar');
-    btnDescarga.textContent = i18nFile.viewProject.downloadBtn;
+    if (btnDescarga !== null)
+        btnDescarga.textContent = i18nFile.viewProject.downloadBtn;
+
+    const btnAddToList = document.querySelector('#addToList');
+    btnAddToList.textContent = i18nFile.viewProject.addToList;
 }
 
 async function translateNav() {

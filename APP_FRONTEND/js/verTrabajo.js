@@ -1,7 +1,6 @@
 let i = 0;
 
 function descargaFichero(nombreFichero) {
-    //let url = '../APP_BACKEND/files/29-05-2024_23-29-28_poema.pdf';
     let url = `../APP_BACKEND/files/${nombreFichero}`;
 
     const link = document.createElement('a');
@@ -29,8 +28,6 @@ function trabajo() {
                     //<p>${r.response.fecha}</p> falta añadir, no tienen propiedad fecha aun
                     let id_usu = r.response.usuario;
                     let allow_comments = r.response.comentarios;
-                    console.log(id_usu);
-                    console.log(allow_comments);
 
                     const fecha = new Date(r.response.fecha);
                     const dia = String(fecha.getDate()).padStart(2, '0');
@@ -50,16 +47,19 @@ function trabajo() {
                     if (r.response.imagen_portada === '')
                         html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo" class="portadaTrabajo2">`;
                     else
-                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}" class="portadaTrabajo2" title="portada del trabajo" id="portada" onclick=  getFicheroTrabajo(${r.response.id})>`;
+                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}" class="portadaTrabajo2" title="portada del trabajo" id="portada">`;
                     
                     html += `
-                        <div>
+                        <div id="projectInfo">
                             <p id="autor-receta"></p>
                             <p id="fecha-trabajo">${fechabuena}</p>
                             <p>${r.response.numVisitas} visitas</p>
                             <div id="etiqs"></div>
                         </div>
                     </div>
+
+                    <div id="downloadFile"></div>
+
                     <h2 class="descriptionHeader">Descripción</h2>
                     <section id="proyectDesc">
                         <article>
@@ -258,12 +258,7 @@ function pedirForm(allcom){
 async function getFicheroTrabajo(idTrabajo) {
     let url = getRequestUrl(`/project/${idTrabajo}/files`);
     return fetch(url)
-            .then(res => res.json()).then(r=>{
-                let nombreFichero = r.response[0].nombre;
-                console.log(nombreFichero);
-                descargaFichero(nombreFichero)
-            });
-           
+            .then(res => res.json());
 }
 
 document.addEventListener('DOMContentLoaded', async (event) => {
@@ -271,17 +266,12 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     const ID = urlParams.get('ID');
     
     if (ID) {
-        // const res = await getFicheroTrabajo(ID);
-        // console.log(res);
-        // let nombreFichero = res.response[0].nombre;
-        // console.log(nombreFichero);
+        const res = await getFicheroTrabajo(ID);
+        let nombreFichero = res.response[0].nombre;
 
-        // //Generar enlace de descarga del fichero
-       
-       
-        // const imagen =  document.getElementById("#portada");
-        // imagen.onclick=descargaFichero(nombreFichero);
-
+        //Generar enlace de descarga del fichero
+        let html = `<a id="descargar" onclick="descargaFichero('${nombreFichero}')">Descargar</a>`;
+        document.querySelector('#projectInfo').innerHTML += html;
     }
 
     translateNav();
