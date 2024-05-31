@@ -1,4 +1,3 @@
-let url = "http://localhost:3000";
 let i = 0;
 
 function descargaFichero(nombreFichero) {

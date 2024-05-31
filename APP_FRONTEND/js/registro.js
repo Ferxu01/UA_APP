@@ -1,7 +1,7 @@
 function registro(e){
     e.preventDefault();
 
-    // Este metodo ya te genera la url completa de la peticion, para mayor comodidad
+    // Este metodo genera la url completa de la peticion, para mayor comodidad
     url = getRequestUrl('/auth/register');
 
     const form = e.currentTarget,
@@ -17,40 +17,36 @@ function registro(e){
         password: fd.get("pwd"),
         password2: fd.get("pwd2")
     };
-
-    if(obj.password != obj.password2){
-        ponMsgErr("Las contraseñas no coinciden.");
-    }else{
-        console.log(obj);
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': '*',
-                'Access-Control-Allow-Headers': '*'
-            }
-        })
-        .then(res => res.json())
-        .then(res => {
-            if(res.status == 200){
-                localStorage.setItem('[SESSION]', JSON.stringify(res.response));
-                localStorage.setItem('[TOKEN]', res.token);
         
-                location.href = "index.html";
-            }else{
-                //FIXME: MOSTRAR EL MENSAJE QUE VIENE DEL API en la variable "res.response"
-                ponMsgErr("Algo ha fallado, por favor, vuelve a intentarlo.");
-            }
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*'
+        }
+    })
+    .then(res => res.json())
+    .then(res => {
+        if(res.status == 200){
+            localStorage.setItem('[SESSION]', JSON.stringify(res.response));
+            localStorage.setItem('[TOKEN]', res.token);
     
-        })
-        .catch(err => {
-            console.log("Algo ha fallado en el servidor:");
-            console.log(err);
-        });
-    }
+            location.href = "index.html";
+        }else {
+            if (res.response && Array.isArray(res.response)) {
+                ponMsgErr(res.response[0].message);
+            } else {
+                ponMsgErr(res.response);
+            }
+        }
+    })
+    .catch(err => {
+        console.log("Algo ha fallado en el servidor:");
+        console.log(err);
+    });
 }
 
 function ponMsgErr(msg){
@@ -69,10 +65,8 @@ function ponMsgErr(msg){
 }
 
 function cargaGradoMaster(){
-    const lang = sessionStorage.getItem('lang') || 'es';
-
-    let urlG = `http://localhost:3000/${lang}/studies/degree`;
-    let urlM = `http://localhost:3000/${lang}/studies/master`;
+    let urlG = getRequestUrl(`/studies/degree`);
+    let urlM = getRequestUrl(`/studies/master`);
 
     fetch(urlG, {
         method: 'GET',
@@ -89,11 +83,7 @@ function cargaGradoMaster(){
             }
         }).then(res2 => res2.json())
         .then(res2 => {
-            console.log(res);
-            console.log(res2);
-
             const selectEstudios = document.getElementById("selectEstudios");
-            console.log(res.response);
 
             res.response.forEach(element => {
                 const opt = document.createElement("option");
@@ -103,8 +93,6 @@ function cargaGradoMaster(){
 
                 selectEstudios.appendChild(opt);
             });
-
-            console.log(res2.response);
 
             res2.response.forEach(element => {
                 const opt = document.createElement("option");

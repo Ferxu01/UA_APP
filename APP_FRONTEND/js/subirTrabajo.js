@@ -173,8 +173,12 @@ async function subirTrabajo(e) {
                 };
                 respTrabajo = await postFicheroATrabajo(idTrabajo, objFile);
                 console.log(respTrabajo);
-            } else
-                ponMsgErr('No se ha adjuntado fichero al trabajo');
+            } else {
+                if (getLanguage() === 'en')
+                    ponMsgErr('No file has been attached to the project');
+                else
+                    ponMsgErr('No se ha adjuntado fichero al trabajo');
+            }
 
             if (filePortada) {
                 base64StringPortada = await convertirBase64(filePortada);
@@ -194,16 +198,10 @@ async function subirTrabajo(e) {
                 location.href = 'profile.html';
         }
     } else {
-        let textoRespuesta = '';
-        console.log(getLanguage());
-        console.log('AAAAAAAAAAAA');
-
-        if (getLanguage() === 'es')
-            textoRespuesta = 'Tienes que adjuntar un fichero del trabajo';
-        else if (getLanguage() === 'en')
-            textoRespuesta = 'You have to attach a project file';
-        
-        ponMsgErr(textoRespuesta);
+        if (getLanguage() === 'en')
+            ponMsgErr('You have to attach a project file');
+        else
+            ponMsgErr('Tienes que adjuntar un fichero del trabajo');
     }
 }
 

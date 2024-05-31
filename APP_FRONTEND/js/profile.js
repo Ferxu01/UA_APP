@@ -1,4 +1,3 @@
-let url = "http://localhost:3000";
 let i = 0;
 let screenWidth = window.innerWidth;
 let id;
@@ -54,8 +53,6 @@ function miperfil() {
     }
 }
 
-///studies/degree/{id}
-
 function nomestudios(estud) {
     if (estud != 0) {
         let url = getRequestUrl(`/studies/degree/${estud}`);
@@ -87,14 +84,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 function Trabajos() {
-    // const divTrabajos = document.querySelector('#ParaTi');
-    // divTrabajos.innerHTML = '';
     let url = getRequestUrl('/project');
     const userid = id;
     fetch(url)
     .then(response => response.json())
     .then(r => {
-        console.log(r.response);
         if (r.status == 200) {
             let html = '';
             let tam = r.response.length;
