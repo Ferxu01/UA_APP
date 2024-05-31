@@ -75,6 +75,8 @@ function busqueda(e){
 function muestraRespuesta(res){
     const div = document.getElementById("respuestaBusqueda");
 
+    div.innerHTML = "";
+
     res.response.forEach(element => {
         const article = document.createElement('article');
         article.classList.add('Trabajo');

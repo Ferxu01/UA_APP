@@ -49,7 +49,12 @@ function trabajo() {
                         </div>
                     </div>
                     <h2 class="descriptionHeader">Descripción</h2>
-                    <section><article><p id="desc">${r.response.descripcion}</p></article></section>
+                    <section>
+                        <button onclick="addToList(${ID})">Añadir a mi lista</button>
+                        <article>
+                            <p id="desc">${r.response.descripcion}</p>
+                        </article>
+                    </section>
                     <hr>
                     <h2 class="commentsHeader">Comentarios</h2>
                     <div id="dejarcomentario"></div>
@@ -74,6 +79,36 @@ function trabajo() {
     } else {
         window.location.href = "index.html";
     }
+}
+
+function addToList(r){
+    
+    ses = JSON.parse(localStorage.getItem('[SESSION]'));
+    token = localStorage.getItem('[TOKEN]');
+
+    console.log(r);
+    console.log(ses);
+    console.log(token);
+
+    url = "http://localhost:3000/favList"
+
+    obj = {
+        'user': ses.id,
+        'project': r 
+    }
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'token': token
+        },
+        body: JSON.stringify(obj)
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res);
+    });
+
 }
 
 async function aumentarVisitaTrabajo(idTrabajo) {

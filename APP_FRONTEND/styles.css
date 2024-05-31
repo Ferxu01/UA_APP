@@ -33,7 +33,8 @@ a{
 #navlow {
     display: flex;
     align-items: center;
-    gap: 70px;
+    justify-content: space-evenly;
+    width: 100%;
 }
 /* HEADER GENERAL */
 header{
@@ -54,6 +55,7 @@ header{
 
 .cabezeraizquierda{
     display: flex;
+    flex-direction: column;
     justify-content: left;
     align-items: center;
     margin-right: 1em;
@@ -62,7 +64,6 @@ header{
     color: var(--color-texto1);
     font-size: 20px;
     font-weight:500;
-    margin-left: 10px;
 }
 .cabezeraderecha{
     display: flex;
@@ -114,10 +115,6 @@ footer>div>a>div>p{
 }
 /*FIN FOOTER GENERAL*/
 /*PAGINA INDEX*/
-.main {
-    padding-top: 15px; /* Margen superior para dejar espacio para el header */
-    
-  }
 
   .main>h3{
     font-size: 27px;
@@ -778,9 +775,12 @@ section > article > div > p {
     border-radius: 20px;
 }
 
+@media (min-width: 767){
+  .cabezeraizquierda{
+    flex-direction: row;
+  }
+}
 
-@media all and (width>= 1000px){
-    #navlow {
-        gap: 500px;
-    }
+@media (min-width: 1023){
+
 }
