@@ -6,4 +6,4 @@ Primero de todo tendremos que tener instalado XAMPP y NodeJS (versión 18.x.x o 
 3. Entrar a `http://localhost/phpmyadmin` e importar la base de datos BBDDUA.sql.
 4. Abrir la carpeta del servidor en la consola y ejecutar el comando `npm install` para instalar todas las dependencias de Node.
 5. Para iniciar el server ejecutar `npm start`.
-6. Abrir en el navegador localhost/UA_APP/APP_FRONTEND/index.html, para abrir la página principal de la app.
+6. Abrir en el navegador `localhost/UA_APP/APP_FRONTEND/index.html`, para abrir la página principal de la app.
