@@ -285,8 +285,8 @@ function compruebaParams(){
     const estudios = document.getElementById('estudios');
     const form = document.querySelector('.formulario-busq');
 
-    if(urlParams.has('g')){
-        id = urlParams.get('g');
+    if(urlParams.has('d')){
+        id = urlParams.get('d');
         console.log(id);
         estudios.value = id;
 

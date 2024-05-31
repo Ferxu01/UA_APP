@@ -144,6 +144,7 @@ footer>div>a>div>p{
     display:flex;
     justify-content: space-between;
     align-items: center;
+
 }
 .botonesCarruselUsuario> button{
     margin: 0.8em;
@@ -161,6 +162,7 @@ footer>div>a>div>p{
     display:flex;
     justify-content: space-between;
     align-items: center;
+
     
     
 }
@@ -248,14 +250,17 @@ footer>div>a>div>p{
     /* Asegúrate de que la imagen superpuesta esté sobre la imagen base */
 }
 
-
+.Grado>a{
+  display:grid;
+  justify-items: center;
+}
 
 .Grado>img{
     width: 60px;
     height:auto;
     
 }
-.Grado>h3{
+.Grado>a>h3{
     text-align: center;
     font-size: 15px;
     width: 140px;
@@ -635,9 +640,16 @@ footer>div>a>div>p{
     font-size: 18px;
     font-weight: 1000;
 }
-body.night-mode {
-    background-color: #000000; /* Color de fondo para el modo nocturno */
-    color: #ffffff; /* Color de texto para el modo nocturno */
+
+/*SECCION DE RESPUESTA DE BUSQUEDA*/
+.respuestaBusqueda{
+  display: grid;
+    gap: 1%;
+    justify-content: center;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top:0px;
+    margin-bottom: 5em;
 }
 
 /* PARA VER TRABAJO */

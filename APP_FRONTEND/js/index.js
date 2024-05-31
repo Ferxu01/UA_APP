@@ -132,8 +132,11 @@ function Grados() {
                 let currentIndex = (i + j) % tam; // Usamos el operador de módulo para obtener un comportamiento de "carrusel"
                 let foto = r.response[currentIndex];
                 html += `<article class="Grado">
+                <a href=buscar.html?d=${foto.id}>
                     <img src="img/${foto.imagen}">
                     <h3>${foto.nombre}</h3>
+                
+                </a>
                     </article>`;
             }
 
