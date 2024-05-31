@@ -135,7 +135,12 @@ function muestraRespuesta(res){
         contenedor.classList.add('contenedor');
 
         const portadaImg = document.createElement('img');
-        portadaImg.src = `img/${element.imagen_portada}`;
+        
+        if (element.imagen_portada === '')
+            portadaImg.src = `img/imagen_predefinida.png`;
+        else
+            portadaImg.src = `img/${element.imagen_portada}`;
+
         portadaImg.classList.add('portadaTrabajo');
         portadaImg.title = "portada del trabajo";
 
