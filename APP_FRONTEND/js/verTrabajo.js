@@ -50,7 +50,7 @@ function trabajo() {
                     if (r.response.imagen_portada === '')
                         html += `<img src="./img/imagen_predefinida.png"class="portadaTrabajo" title="portada del trabajo" class="portadaTrabajo2">`;
                     else
-                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}" class="portadaTrabajo2" title="portada del trabajo">`;
+                        html += `<img src="../APP_BACKEND/files/portadas/${r.response.imagen_portada}" class="portadaTrabajo2" title="portada del trabajo" id="portada" onclick=  getFicheroTrabajo(${r.response.id})>`;
                     
                     html += `
                         <div>
@@ -245,7 +245,12 @@ function pedirForm(allcom){
 async function getFicheroTrabajo(idTrabajo) {
     let url = getRequestUrl(`/project/${idTrabajo}/files`);
     return fetch(url)
-            .then(res => res.json());
+            .then(res => res.json()).then(r=>{
+                let nombreFichero = r.response[0].nombre;
+                console.log(nombreFichero);
+                descargaFichero(nombreFichero)
+            });
+           
 }
 
 document.addEventListener('DOMContentLoaded', async (event) => {
@@ -253,18 +258,17 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     const ID = urlParams.get('ID');
     
     if (ID) {
-        const res = await getFicheroTrabajo(ID);
-        console.log(res);
-        let nombreFichero = res.response[0].nombre;
-        console.log(nombreFichero);
+        // const res = await getFicheroTrabajo(ID);
+        // console.log(res);
+        // let nombreFichero = res.response[0].nombre;
+        // console.log(nombreFichero);
 
-        //Generar enlace de descarga del fichero
-        let html = `
-            <a style="color: #fff; cursor: pointer;" id="descargar" onclick="descargaFichero('${nombreFichero}')">Descargar</a>
-        `;
+        // //Generar enlace de descarga del fichero
+       
+       
+        // const imagen =  document.getElementById("#portada");
+        // imagen.onclick=descargaFichero(nombreFichero);
 
-        //FIXME: CAMBIAR SITIO PARA PONER EL BOTON DE DESCARGA
-        document.querySelector('header').insertAdjacentHTML('beforeend', html);
     }
 
     translateNav();

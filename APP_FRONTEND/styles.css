@@ -58,7 +58,7 @@ header{
     flex-direction: column;
     justify-content: left;
     align-items: center;
-    margin-right: 1em;
+    margin-right: 0.5em;
 }
 .cabezeraizquierda>h1{
     color: var(--color-texto1);
@@ -775,12 +775,20 @@ section > article > div > p {
     border-radius: 20px;
 }
 
-@media (min-width: 767){
-  .cabezeraizquierda{
+@media (min-width: 767px) {
+  .cabezeraizquierda {
     flex-direction: row;
+    margin-right: 1em;
+  }
+  .cabezeraizquierda>h1 {
+
+    margin-left: 1em;
+  }
+  .cabezeraderecha{
+    margin-right: 1em;
   }
 }
 
-@media (min-width: 1023){
-
+@media (min-width: 1023px) {
+  /* Agrega tus reglas para resoluciones mayores a 1023px aquí */
 }
