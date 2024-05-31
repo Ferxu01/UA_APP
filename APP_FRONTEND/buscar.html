@@ -51,7 +51,7 @@
             <div> 
                 <label class="selectTagsLabel" for="etiqueta">Etiquetas:</label>
                 <select class="estiloform" type="text" name="etiqueta" id="etiqueta" placeholder="Etiquetas">
-                    <option class="selectTagOption" value="" disabled selected>Elige una etiqueta</option>
+                    <option class="selectTagOption" value="0" disabled selected>Elige una etiqueta</option>
                 </select>
             </div>
 
@@ -81,5 +81,6 @@
         mostrarMenu();
         cargaGradoMaster();
         cargaEtiquetas();
+        compruebaParams();
 </script>
 </html>

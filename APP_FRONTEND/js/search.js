@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function busqueda(e){
     e.preventDefault();
+
+    console.log('holi');
     
     //TODO: cambiar esta llamada
     const lang = sessionStorage.getItem('lang') || 'es';
@@ -41,7 +43,6 @@ function busqueda(e){
             esGrado = encuentra(obj.curso, res.response); 
 
             url = creaURL(obj, esGrado);
-            //TODO: añadir fetch de busqueda y montar resultado
             console.log(url);
 
             fetch(url, {
@@ -57,7 +58,6 @@ function busqueda(e){
     }else{
         url = creaURL(obj, esGrado);
 
-        //TODO: añadir fetch de busqueda y montar resultado
         console.log(url);
         fetch(url, {
             method: 'GET',
@@ -229,6 +229,22 @@ function cargaEtiquetas(){
         });
     });
     
+}
+
+function compruebaParams(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const estudios = document.getElementById('estudios');
+    const form = document.querySelector('.formulario-busq');
+
+    if(urlParams.has('g')){
+        id = urlParams.get('g');
+        console.log(id);
+        estudios.value = id;
+
+        // Llamar a la función buscar con un evento simulado
+        // busqueda(new Event('submit', { bubbles: true, cancelable: true }));
+        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
