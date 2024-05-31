@@ -61,8 +61,7 @@ function trabajo() {
                     <div id="downloadFile"></div>
 
                     <h2 class="descriptionHeader">Descripción</h2>
-                    <section>
-                        <a id="addToList" onclick="addToList(${ID})">Añadir a mi lista</a>
+                    <section id="proyectDesc">
                         <article>
                             <p id="desc">${r.response.descripcion}</p>
                         </article>
@@ -77,7 +76,7 @@ function trabajo() {
                     document.querySelector('#trabajo-container').innerHTML = html;
 
                     
-                    
+                    botonMiLista(ID);
                     nombreUsu(id_usu);
                     etiquetas();
                     verComentarios(allow_comments);
@@ -90,6 +89,21 @@ function trabajo() {
             .catch(error => console.error('Error:', error));
     } else {
         window.location.href = "index.html";
+    }
+}
+
+function botonMiLista(id){
+    if(localStorage.getItem('[SESSION]')){
+        const sec = document.getElementById('proyectDesc');
+
+        const button = document.createElement('button');
+        button.setAttribute('id', 'addToList');
+        button.textContent = "Añadir a mi lista";
+        button.onclick = function() {
+            addToList(id);
+        };
+
+        sec.appendChild(button);
     }
 }
 
