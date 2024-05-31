@@ -44,21 +44,13 @@
 </section>
 
 <h3 class="mostVisited">Más visitados</h3>
-<section class="MasVistos">
-    <!-- <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article>
-    <article class="Trabajo">
-        <h3>Titulo</h3>
-        <div class="contenedor">
-            <img src="img/imagen_predefinida.png"  title="portada del trabajo" alt="portada del trabajo"class="portadaTrabajo">
-            <img src="img/defaultprofile.png" alt="autor del trabajo"class="autorTrabajo">
-        </div>
-    </article> -->
+<section class="botonesCarrusel">
+    <button id="prevButton" class="prev-button" onclick="anteriorTrabajo()">&lt;</button>
+    <div class="MasVistos" id="Visitas">
+    
+    </div>
+    <button id="nextButton" class="next-button"onclick="siguienteTrabajo()">&gt;</button>
+
     
 </section>
 
@@ -101,10 +93,11 @@
 </footer>
 </body>
 <script>
-        Trabajos()
-        Grados()
-        Masteres()
-        Usuario()
+        Trabajos();
+        Trabajosporvisitas();
+        Grados();
+        Masteres();
+        Usuario();
         mostrarMenu();
         translateNav();
         translateIndexPage();
